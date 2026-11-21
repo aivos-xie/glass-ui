@@ -1,6 +1,6 @@
 interface:
   display_name: "Glass UI · 玻璃界面"
-  short_description: "构建统一的磨砂、液态与染色玻璃组件，覆盖卡片、导航、按钮和表单交互"
-  default_prompt: "使用 $glass-ui 为当前项目构建一套统一的玻璃 UI，覆盖按钮、选项、表单、卡片、导航和弹层，并验证交互与降级。"
+  short_description: "按需生成或改造磨砂与液态玻璃组件，适配现有项目并保留完整交互"
+  default_prompt: "使用 $glass-ui，按当前请求在现有项目中生成或改造所需的玻璃组件，沿用项目技术栈和业务行为，并验证交互与降级。"
 policy:
   allow_implicit_invocation: true

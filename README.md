@@ -52,6 +52,16 @@ npx --yes skills@1.9.0 add aivos-xie/glass-ui --skill glass-ui --agent claude-co
 
 支持显式 Skill 命令的 Agent 也可以使用自己的原生语法，例如 Codex 的 `$glass-ui`。单个开关、表单、按钮或导航的请求只实现对应组件，无需引入整套展示页。
 
+也可以直接指定要生成或改造的组件：
+
+> 使用 Glass UI Skill，为当前项目生成一个有加载状态的玻璃按钮，沿用现有提交逻辑。
+>
+> 使用 Glass UI Skill，给现有卡片加入磨砂、内部追光和最多 2° 的倾斜。
+>
+> 使用 Glass UI Skill，生成玻璃风格的数据表格，接入现有数据、排序与分页。
+
+组件名称、内容、状态、材质和交互都可用自然语言描述，不必填写固定参数表。Agent 根据当前技术栈生成项目内的实际源文件、接入代码并验证；未列在[组件配方](references/components.md)中的组件也按其语义和结构组合实现。自然语言要求中的倾角等选项由 Agent 实现，不是现有控制器的同名参数。生成后的组件随项目运行。
+
 ## 交互效果
 
 ![默认深色玻璃展示站](docs/preview.png?v=20261121-dark-glass)

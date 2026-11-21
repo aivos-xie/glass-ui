@@ -4,6 +4,17 @@
 
 Apply materials through existing component semantics. For complex dropdowns, comboboxes, calendars, and editable tables, prefer the project's established primitives and add glass styling. A visual change must preserve keyboard and form behavior.
 
+## Generate on demand
+
+The recipes below describe common semantics, not an allowlist of components. Compose glass capabilities around the structure and behavior of an unlisted component rather than maintaining a template for every component type.
+
+1. Infer the component type, stack, content, state, and events from natural language and the project. Theme, material, spotlight, tilt, and similar options are optional; require neither a fixed JSON form nor every parameter. Clarify only when missing information affects data or action behavior.
+2. Adapt an existing project component first. Otherwise create it in the current stack, reusing established primitives for complex interactions. Preserve the applicable brand, theme, and business logic; one component does not require an entire interface.
+3. Read only relevant recipes, styles, and controller sections. Generate real component files, necessary exports, styles, event wiring, and unmount cleanup in the project, with usage matching those files. Use names such as `GlassCard` only after actually creating and exporting them; do not invent an importable component package.
+4. Verify applicable states, keyboard/touch behavior, and preference fallbacks. Generated components do not call the skill or an agent at runtime. Instructions or unwired static styling do not establish a working interactive component.
+
+## Common semantic recipes
+
 | Component | Material and interaction | Required behavior |
 | --- | --- | --- |
 | Standard, primary, and icon buttons | Light or tinted glass; local hover highlight and a small press compression | Native button with an explicit type; accessible name for icon buttons; disabled buttons cannot activate; loading preserves name and layout and indicates busy state |
@@ -20,6 +31,8 @@ Apply materials through existing component semantics. For complex dropdowns, com
 | Dialogs and drawers | Frosted panel with a softer backdrop | Prefer dialog/showModal or an established modal; title, close control, Esc, focus containment and restoration; scrollable long content |
 | Tags, badges, and notifications | Tinted light glass; mostly static | State text or icon; create the toast live region before writing text; do not communicate failure only through a brief animation |
 | Tooltips and loading indicators | Light glass tooltip; small spinner or progress indicator | Tooltips open on hover and focus; essential instructions exist outside the tooltip; reduced motion retains loading text |
+| Tables, trees, and calendars | Stable frosted container and low blur in dense regions | Retain each component's native semantics or existing primitives, sorting, selection, date rules, and appropriate keyboard behavior; distinguish empty, loading, and error states |
+| Accordions, steps, and timelines | Grouped frost, light tracks, and a clear current item | Accordion buttons synchronize aria-expanded and the related region; steps distinguish current, complete, and unavailable; static timelines receive no unnecessary focus or interactions |
 
 ## Suggested state matrix
 

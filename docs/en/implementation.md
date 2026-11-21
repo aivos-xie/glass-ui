@@ -2,6 +2,16 @@
 
 [English](implementation.md) | [简体中文](../../references/implementation.md)
 
+## Generate into the project on demand
+
+Create or modify source files in the project's actual component directory for the requested component and current stack. Follow its naming, exports, props, events, and data-flow conventions. Clarify only missing business details that materially affect behavior; use the project context and user requirements for other defaults.
+
+Select the needed materials and behaviors from the [component recipes](components.md), then read the relevant baseline code. Extract only the tokens, styles, and controller logic needed by the component. In an existing product, prefer its theme and scoped styles over copying the demo's global reset, showcase layout, or sample business content. Integrate the generated component at a real usage point, including mounting, cleanup, and applicable states.
+
+`GlassUI.mount()` only mounts decorative card and tab interactions. It does not submit forms, manage dialogs, or generate arbitrary components. Real business and keyboard behavior comes from existing project components, native controls, or the implementation required by the task. Names such as `GlassCard` may identify project components actually created and exported; they are not existing package exports supplied by this skill.
+
+Natural-language requests such as “tilt up to 2°” or “disable the spotlight” describe generation requirements. The existing card controller has no matching prop or `data-max-tilt` interface. Adapt the generated instance logic when needed, and verify the total tilt limit and preference fallbacks rather than inventing accepted parameters. Generated results run with the project and do not call the skill at runtime.
+
 ## Included native baseline
 
 Keep `assets/demo/index.html`, `glass.css`, `glass.js`, `demo.css`, `demo.js`, and `lens-map.js` in the same directory to open the demo directly. Production integration normally takes only `glass.css` and `glass.js`, adding `lens-map.js` when refraction enhancement is needed. The two demo files handle showcase layout and controls. The global objects are `GlassUI` and `GlassLens`; no bundler or network dependency is required.

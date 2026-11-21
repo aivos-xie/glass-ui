@@ -52,6 +52,16 @@ After installation, ask:
 
 Hosts with explicit skill syntax can also use their own syntax, such as `$glass-ui` in Codex. A request for one switch, form, button, or navigation component only needs that component; it does not require the entire demo.
 
+You can name the component to generate or adapt directly:
+
+> Use the Glass UI skill to generate a glass button with a loading state, keeping this project's existing submission logic.
+>
+> Use the Glass UI skill to add frost, an internal spotlight, and tilt up to 2° to the existing card.
+>
+> Use the Glass UI skill to generate a glass data table connected to the existing data, sorting, and pagination.
+
+Describe the component, content, states, material, and interactions in natural language; no fixed parameter form is required. The agent generates real source files for the current stack, integrates them, and validates them. Components absent from the [recipe list](docs/en/components.md) are composed according to their semantics and structure. Options such as a requested tilt angle are implemented by the agent; they are not existing controller parameters with matching names. Generated components run as part of the project.
+
 ## Interactions
 
 ![Default dark glass showcase](docs/preview.png?v=20261121-dark-glass)
