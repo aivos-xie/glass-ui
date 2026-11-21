@@ -52,3 +52,7 @@ CSS 和控制器响应 `prefers-reduced-motion`、`prefers-reduced-transparency`
 - 先批量读布局再写样式。只有实际运动的元素短暂使用 `will-change`，静止停止 RAF，卸载清理 listeners、observers、滤镜和 RAF。
 - 单独检查圆角裁切、滤镜输入范围、RG 中点、sRGB、实例 ID、图片解码和 transform/opacity 引起的合成层。不要不经最小复现就套用其他项目的浏览器 UA 补丁。
 - 同一位置截图对比基础/增强，用像素差与边缘细节判断；颜色变了或属性设置成功都不是折射证明。可用[浏览器验证脚本](../scripts/validate_browser.mjs)，细节见[验收](validation.md)。
+
+### 整套升级的规模预算
+
+整套升级会把同屏玻璃表面从几个增加到几十个，先按区域统计实际生效的 blur 层数，再决定哪些保持材质、哪些改为描边或纯色。固定不动的导航与工具栏可以保留 blur；参与滚动的长列表项优先用稳定底色，避免滚动时逐帧重新采样。`backdrop-filter` 元素的祖先不要再叠 `transform`、`filter` 或 `opacity` 动画，否则容易产生额外合成层与掉帧。移动端把 `data-glass-quality="balanced"` 作为主要回退档，并在报告里写清实测设备、滚动帧率与降级选择；不要用桌面结果推断手机表现。

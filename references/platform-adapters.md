@@ -23,6 +23,10 @@ GlassSurface(
 
 基础模糊不是折射。Flutter 的 `ImageFilter.shader` 路线需要检查当前 SDK、Impeller 和 `ImageFilter.isShaderFilterSupported`；不支持则用基础容器。随附样板不提供 shader，也不要求安装第三方包。[官方 BackdropFilter](https://api.flutter.dev/flutter/widgets/BackdropFilter-class.html)与[ImageFilter.shader](https://api.flutter.dev/flutter/dart-ui/ImageFilter/ImageFilter.shader.html)说明是版本核对入口。
 
+### Flutter 整套升级
+
+整套玻璃化的注入点是主题而不是逐个 widget：把材质角色放进 `ThemeExtension`，由 `ThemeData.extensions` 挂到应用主题，widget 只读 `Theme.of(context).extension<GlassTokens>()`。保留原 widget 树、`Navigator` 路由、`TextEditingController` 与 `FocusNode`；换表面时不改变 `TextButton`、`Checkbox`、`Form` 校验等语义组件的行为。逐类迁移（Scaffold/AppBar、NavigationBar、Card、Dialog、InputDecorationTheme），每类先对照改造前后的 `Semantics` 树与焦点顺序。
+
 ## Apple 原生
 
 已有 SwiftUI/UIKit 项目优先评估系统材质，不要把 Web 代码搬进原生界面。较新系统可按项目部署目标检查 `glassEffect` 可用性；较旧目标保留已有材质或不透明底。使用系统按钮和容器时避免再叠一层重复玻璃；让系统负责其可用的无障碍和交互适配。
@@ -48,3 +52,7 @@ Electron、Tauri、WebView 界面根据实际引擎测试 Web 路线。窗口背
 `enhanced` 默认 false，以实色底保证可读；只有目标渲染器和真机验证通过后才传 true。不要以 `wx.canIUse` 的任意字符串、浏览器 `CSS.supports` 或开发者工具画面代替真实绘制验证。不要为了本 Skill 自动更改 `app.json` 的渲染器、基础库或 A/B 配置。
 
 WXSS 与浏览器 CSS 能力不同；降级应由显式类/属性控制，不只依赖 `@supports`。重点检查圆角裁切、原生组件层级、滚动性能、键盘和安全区。分别记录 iOS、Android 与桌面微信结果；uni-app 的 H5、小程序、App 输出也分别验证。背景副本只能用于明确提供的装饰图片，不能复制有状态表单或假设固定偏移永远对齐。参照[WXSS 官方说明](https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html)。
+
+### 小程序整套升级
+
+小程序没有主题 provider，注入点是全局 WXSS 变量与自定义组件封装：在 `app.wxss` 里定义 `page` 级 CSS 变量承载材质角色，页面通过 class 继承；只有需要统一顶栏时才改 `navigationStyle: custom`，并自行补齐状态栏高度、胶囊位置与返回逻辑，同时保留 `navigator` 的原始跳转语义。表单使用原生 `input`、`picker`，玻璃只加在外层容器，`glass-view` 的 slot 承载原业务控件。逐页迁移前先确认 `tabBar`、分包页面与 `onShow` 的数据刷新没有被改动。
