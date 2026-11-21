@@ -198,7 +198,11 @@
   }
   function tabs(track) {
     const items = [...track.querySelectorAll('[role="tab"]')].filter(el => el.closest('[data-glass-tabs]') === track);
-    if (!track.querySelector('[data-glass-pill]') || !items.length) return () => {};
+    if (!track.querySelector('[data-glass-pill]')) {
+      console.warn('[glass-ui] [data-glass-tabs] requires a direct [data-glass-pill] child; tabs controller skipped.');
+      return () => {};
+    }
+    if (!items.length) return () => {};
     const abort = new AbortController(), on = { signal: abort.signal };
     const vertical = track.getAttribute('aria-orientation') === 'vertical';
     const decoration = mountSelectionPill(track, { vertical });

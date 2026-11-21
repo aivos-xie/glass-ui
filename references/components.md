@@ -20,7 +20,7 @@
 | 普通/主/图标按钮 | 轻玻璃或染色；hover 局部高光，active 轻压缩 | 原生 button，明确 type；图标按钮可访问名称；禁用不可激活；loading 保留名称和布局并标 busy |
 | 单选、复选 | 轻玻璃容器，选中使用图形与描边 | input + label；原生 name/value/checked；Space、箭头遵循原生语义；焦点可见 |
 | 开关 | 玻璃轨道和清透滑块 | checkbox `role="switch"` 或原生语义；可见标签；checked 由真实状态驱动；不依赖动画传达开/关 |
-| 分段选择 | 单共享胶囊，方向延伸与小回弹 | 它是 radio group 时用原生 radio；tablist 时同步 panel、aria-selected 与 roving tabindex；导航时使用链接和 aria-current，不滥用 tab 语义 |
+| 分段选择 | 单共享胶囊，方向延伸与小回弹 | 它是 radio group 时用原生 radio；tablist 时同步 panel、aria-selected 与 roving tabindex；导航时使用链接和 aria-current，不滥用 tab 语义。`data-glass-tabs` 轨道内必须留一个直接子层 `data-glass-pill`（`aria-hidden="true"`），控制器靠它定位；缺失时胶囊与键盘接线被静默跳过 |
 | 输入、搜索、文本域 | 轻磨砂，focus ring，错误描边 | label 不是 placeholder；必填/错误关联说明；保留选择、复制、自动填充、输入法和原生验证 |
 | 下拉选择 | 原生 select + 玻璃外层或既有 combobox | 需要弹出搜索时用成熟 primitives；不要用只有 click 的 div 模仿 select |
 | 滑块、进度 | 玻璃轨道，明确当前值，触屏足够大 | range 有 label/min/max/step；output 同步；progress 有名称和值；键盘增减可用 |

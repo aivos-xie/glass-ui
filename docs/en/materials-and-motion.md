@@ -53,7 +53,7 @@ Use one absolutely positioned pill, with buttons and text on a separate layer. A
 
 The example uses separate springs for the left and right edges. Moving right makes the right edge slightly stiffer and the left edge softer; moving left reverses this. Limit velocity-dependent extension to about 12% of target width. Apply any small height compression only to the background. Calculate spring steps in seconds and cap large frame intervals to prevent jumps when resuming a background tab. The settling threshold limits position error to ≤.35px. Framework implementations may use an existing Motion spring.
 
-Repeated clicks must not restart from the old option. New targets inherit both edges' current positions and velocities. Remeasure and align immediately after size changes; align directly under reduced motion. Dragging is optional and cannot replace click or keyboard interaction. The included baseline supports clicks, keyboard control, and pressed expansion; it does not implement drag-to-select.
+Repeated clicks must not restart from the old option. New targets inherit both edges' current positions and velocities. Remeasure and align immediately after size changes; align directly under reduced motion. Dragging is optional and cannot replace click or keyboard interaction. The included baseline supports clicks, keyboard control, and pressed expansion; it does not implement drag-to-select. The controller exposes no runtime switch: to turn the spotlight or motion off, zero the related token (for example `--g-glow: 0`) or use `data-glass-motion="off"`, keeping the structure and decorative layers instead of removing nodes or rewriting controller state.
 
 ## Refraction enhancement
 
