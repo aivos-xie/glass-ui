@@ -31,7 +31,7 @@ def main():
     root = Path(__file__).resolve().parents[1]
     demo = root / 'assets' / 'demo'
     errors = []
-    required = ['SKILL.md', 'agents/openai.yaml', 'references/materials-and-motion.md',
+    required = ['SKILL.md', 'INSTALL.md', 'references/materials-and-motion.md',
                 'references/components.md', 'references/implementation.md',
                 'references/validation.md', 'assets/demo/index.html',
                 'assets/demo/glass.css', 'assets/demo/glass.js',
@@ -70,7 +70,7 @@ def main():
                 errors.append(f'Control lacks label: {attrs["id"]}')
         if tag == 'img' and 'alt' not in attrs:
             errors.append('Image missing alt text')
-    for source in [root / 'SKILL.md', *sorted((root / 'references').glob('*.md'))]:
+    for source in [*sorted(root.glob('*.md')), *sorted((root / 'references').glob('*.md'))]:
         text = source.read_text(encoding='utf-8')
         for path in re.findall(r'\]\(([^)]+)\)', text):
             if urlsplit(path).scheme or path.startswith('#'):
