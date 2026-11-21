@@ -17,7 +17,7 @@ let engines, PNG;
 try { engines = require('playwright'); ({ PNG } = require('pngjs')); }
 catch { console.error('Optional validation dependencies missing. Install playwright and pngjs in your development environment.'); process.exit(1); }
 const packageRoot = path.resolve(args.package || path.join(path.dirname(fileURLToPath(import.meta.url)), '..'));
-const demo = path.join(packageRoot, 'assets/demo');
+const demo = args.site ? path.resolve(args.site) : path.join(packageRoot, 'assets/demo');
 const output = path.resolve(args.output || 'glass-ui-browser-results');
 await fs.mkdir(output, { recursive: true });
 const names = (args.browser || 'chromium,firefox,webkit').split(',');
@@ -88,7 +88,7 @@ async function run(name) {
   const aligned = async selector => { const result = await alignment(selector); assert.ok(Object.values(result).every(value => Math.abs(value) <= 1), JSON.stringify(result)); return result; };
   try {
     await page.goto(url);
-    await check('Local resources and offline-capable payload', async () => { assert.equal(await page.title(), 'Glass UI · 让界面透一点光'); assert.deepEqual(errors, []); assert.deepEqual(external, []); });
+    await check('Local resources and offline-capable payload', async () => { assert.equal(await page.title(), args.site ? 'Glass UI · 玻璃组件交互展厅' : 'Glass UI · 让界面透一点光'); assert.deepEqual(errors, []); assert.deepEqual(external, []); });
     await check('4 degree total tilt over 6561 points', async () => {
       const max = await page.evaluate(() => { let max = 0; for (let i = -40; i <= 40; i++) for (let j = -40; j <= 40; j++) { const t = GlassUI.math.tiltAt(i / 40, j / 40); max = Math.max(max, GlassUI.math.normalAngle(t.x, t.y)); } return max; });
       assert.ok(max <= 4.00001); return { maxDegrees: max };

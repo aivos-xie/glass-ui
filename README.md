@@ -2,6 +2,8 @@
 
 [简体中文](README.md) | [English](README.en.md)
 
+**[在线体验玻璃组件 →](https://aivos-xie.github.io/glass-ui/)** · 支持中英文、深浅主题、材质调节和完整交互。
+
 给能读取 Markdown 和项目文件的 AI Agent 使用的玻璃 UI 设计规则与组件样板。核心指令不依赖 Codex、Claude 或任何厂商专用工具，采用 [Agent Skills 开放格式](https://agentskills.io/specification)。
 
 ## 给 Agent 一句话就能安装
@@ -12,7 +14,7 @@
 
 Agent 会根据 [安装说明](INSTALL.md) 选择自己的安装位置。支持原生 Skill 的产品使用原生发现机制；没有原生 Skill 的产品可使用本地指令文件接入。只有聊天、没有文件或工具权限的产品可以阅读内容用于当前会话，但不能宣称已经持久安装。
 
-仓库的可见性和 GitHub 访问权限仍然适用：私有仓库需要已有访问权限，公开仓库可直接读取。
+本仓库公开，可直接读取和安装；Agent 仍需能访问 GitHub。
 
 ## 支持哪些 Agent
 
@@ -75,7 +77,7 @@ npx --yes skills@1.9.0 add aivos-xie/glass-ui --skill glass-ui --agent claude-co
 
 ## 多语言文档
 
-中英文文档覆盖项目说明、安装步骤、Skill 使用指南、材质与交互、组件配方、框架接入和验收要求。演示界面的文案目前为中文，本次多语言支持覆盖说明文档。
+中英文文档覆盖项目说明、安装步骤、Skill 使用指南、材质与交互、组件配方、框架接入和验收要求。在线展示站可切换中文与英文；`assets/demo/` 中的基础离线样板使用中文。
 
 | 内容 | 简体中文 | English |
 | --- | --- | --- |
@@ -89,6 +91,7 @@ npx --yes skills@1.9.0 add aivos-xie/glass-ui --skill glass-ui --agent claude-co
 | 渲染与性能 | [路线与图片透镜](references/rendering-and-performance.md) | [Rendering and performance](docs/en/rendering-and-performance.md) |
 | 平台适配 | [原生与小程序](references/platform-adapters.md) | [Platform adapters](docs/en/platform-adapters.md) |
 | 参考项目 | [阅读与取舍](references/research-notes.md) | [Research notes](docs/en/research-notes.md) |
+| 在线展示站 | [体验与发布](docs/website.md) | [Showcase and publishing](docs/en/website.md) |
 
 ## 文件结构
 
@@ -104,9 +107,12 @@ assets/adapters/             Flutter 与小程序基础容器
 scripts/check_assets.py      资源、引用和基础语义检查
 scripts/validate_browser.mjs 可选多引擎回归与截图
 docs/                        演示截图与验证记录
+docs/index.html              GitHub Pages 展示站入口（main 分支 /docs）
 ```
 
 ## 验证
+
+[在线展示站验证](docs/website-validation.json)：19 项站点检查通过，覆盖中英文切换、组件搜索、代码与配置复制、配置下载和响应式布局。[站点核心交互验证](docs/website-core-validation.json)：Edge、Firefox、Playwright WebKit 共 66 项通过。复现方法见[展示站说明](docs/website.md)。
 
 [浏览器验证记录](docs/browser-validation.json)：2026-11-21 在 Windows 上运行 Edge、Firefox 和 Playwright WebKit，每个引擎 22 项，共 66 项通过，无跳过。覆盖原有交互、新增纵向导航、图片折射像素差、质量与无障碍回退。WebKit 结果不代表 Safari 或 iPhone 真机认证。
 

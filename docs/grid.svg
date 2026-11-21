@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="240" viewBox="0 0 700 240">
+  <defs>
+    <linearGradient id="wash"><stop stop-color="#dfd4fa"/><stop offset=".52" stop-color="#e3eaff"/><stop offset="1" stop-color="#d2f0e5"/></linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#8e89b8" stroke-opacity=".45" stroke-width="1"/></pattern>
+  </defs>
+  <rect width="700" height="240" fill="url(#wash)"/>
+  <rect width="700" height="240" fill="url(#grid)"/>
+  <circle cx="225" cy="116" r="76" fill="none" stroke="#7b69ad" stroke-width="3"/>
+  <circle cx="491" cy="118" r="58" fill="none" stroke="#488d89" stroke-width="3"/>
+  <path d="M0 119H700" stroke="#8575b5" stroke-width="2"/>
+  <text x="350" y="105" fill="#37305b" font-family="sans-serif" text-anchor="middle" font-size="27" letter-spacing="7">LIQUID GLASS</text>
+  <text x="350" y="154" fill="#494262" font-family="sans-serif" text-anchor="middle" font-size="14" letter-spacing="4">LIGHT · EDGE · REFRACTION</text>
+</svg>

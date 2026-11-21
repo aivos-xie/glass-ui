@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light" data-material="frosted">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Glass UI：可交互的磨砂、液态与染色玻璃组件样板。">
+  <title>Glass UI · 玻璃组件交互展厅</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='6' y='6' width='28' height='28' rx='9' fill='%23887be0'/%3E%3Cpath d='M13 21h14M20 14v14' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="glass.css">
+  <link rel="stylesheet" href="demo.css">
+  <link rel="stylesheet" href="site.css">
+  <script src="lens-map.js" defer></script>
+  <script src="glass.js" defer></script>
+  <script src="image-lens.js" defer></script>
+  <script src="demo.js" defer></script>
+  <script src="locale.js" defer></script>
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <svg class="icon-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1 1m12 12 1 1M5 19l1-1M18 6l1-1"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.5 5.5a5 5 0 0 0-7 0L12 7l-1.5-1.5a5 5 0 0 0-7 7L12 21l8.5-8.5a5 5 0 0 0 0-7Z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h7m4 0h5M4 17h3m4 0h9"/><circle cx="13" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+  </svg>
+  <div class="ambient" aria-hidden="true"><i></i><i></i><i></i></div>
+  <a class="skip-link g-button" href="#showcase">跳到组件展示</a>
+  <div class="page-shell">
+    <header class="site-header">
+      <a href="#top" class="wordmark" aria-label="Glass UI 首页"><span class="brand-mark" aria-hidden="true"><i></i><i></i></span>glass<span class="wordmark-light">ui</span><span class="version">PLAYGROUND</span></a>
+      <div class="header-right"><nav class="header-nav" aria-label="主导航"><a href="#showcase" data-open-panel="components">组件</a><a href="#showcase" data-open-panel="materials">材质</a><a href="#usage">使用</a></nav><button class="g-button language-button" id="language-toggle" type="button" lang="en" aria-label="Switch to English">EN</button><button class="g-icon-button" id="theme-toggle" type="button" aria-label="切换深色主题" aria-pressed="false"><svg class="g-icon"><use href="#i-moon"/></svg></button></div>
+    </header>
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <span class="eyebrow"><i></i> GLASS INTERFACE SYSTEM</span>
+          <h1 id="hero-title">让界面，<br><span>透一点光。</span></h1>
+          <p class="hero-description">柔和的磨砂，流动的光，恰到好处的回弹。<br>从一个按钮，到一整套轻盈的界面。</p>
+          <div class="hero-actions"><a href="#showcase" class="g-button g-button--primary">探索组件 <svg class="g-icon"><use href="#i-arrow"/></svg></a><span class="hero-meta">原生实现 <b>·</b> 零外部依赖</span></div>
+          <div class="hero-stats"><div><strong>04</strong><span>材质预设</span></div><div><strong>25+</strong><span>组件与变体</span></div><div><strong>≤4°</strong><span>轻倾斜交互</span></div></div>
+        </div>
+        <div class="hero-preview" aria-label="玻璃卡片交互预览">
+          <div class="orbit orbit-one" aria-hidden="true"></div><div class="orbit orbit-two" aria-hidden="true"></div>
+          <span class="floating-note note-top">SOFT LIGHT · REAL DEPTH</span>
+          <div data-glass-card id="hero-card">
+            <article class="glass focus-card" data-glass-face>
+              <span class="glass__light" aria-hidden="true"></span><span class="glass__edge" aria-hidden="true"></span>
+              <div class="glass__content">
+                <div class="row between"><span class="app-icon"><svg class="g-icon"><use href="#i-spark"/></svg></span><span class="g-badge g-badge--success">● 一切就绪</span></div>
+                <div class="focus-copy"><span class="tiny-label">YOUR QUIET SPACE</span><h2>专注于，<br>此刻的美好。</h2><p>留一点空间，让灵感自然发生。</p></div>
+                <div class="focus-setting"><div><strong>专注模式</strong><span>为重要的事，保持安静</span></div><label class="g-option"><input class="g-switch" id="focus-switch" type="checkbox" role="switch" checked aria-label="专注模式"></label></div>
+                <div class="focus-progress"><div class="row between"><span>今日进度</span><strong id="focus-value">68%</strong></div><progress class="g-progress" id="focus-progress" value="68" max="100" aria-label="今日进度">68%</progress></div>
+              </div>
+            </article>
+          </div>
+          <div class="glass floating-tile"><div class="stacked-circles" aria-hidden="true"><i></i><i></i><i></i></div><div><strong>细节，恰到好处。</strong><span>把光标移到卡片上试试</span></div></div>
+          <span class="floating-note note-bottom">FROSTED / INTERACTIVE</span>
+        </div>
+      </section>
+      <section class="component-finder glass" aria-labelledby="finder-title">
+        <div><span class="eyebrow">FIND YOUR COMPONENT</span><h2 id="finder-title">想试试哪一种？</h2><p>搜索组件，或从下方分类开始。</p></div>
+        <div class="finder-input"><label class="sr-only" for="component-search">搜索所有组件</label><div class="g-search"><svg class="g-icon"><use href="#i-search"/></svg><input class="g-input" id="component-search" type="search" placeholder="搜索按钮、透镜、分页…" aria-controls="component-results" autocomplete="off"></div><p id="component-search-status" class="g-hint" role="status" aria-live="polite">25+ 组件与变体，点击即可体验。</p></div>
+        <nav class="component-shortcuts" aria-label="组件快捷入口"><a href="#buttons-title" data-open-panel="components">按钮</a><a href="#form-title" data-open-panel="components">表单</a><a href="#overlay-title" data-open-panel="components">弹层</a><a href="#lens-experiment" data-open-panel="materials">图片透镜</a><a href="#extended-title" data-open-panel="components">更多组件</a></nav>
+        <ul id="component-results" class="component-results" hidden></ul>
+      </section>
+      <section class="showcase" id="showcase" aria-labelledby="showcase-title">
+        <div class="section-heading"><div><span class="eyebrow">THE PLAYGROUND</span><h2 id="showcase-title">每一种交互，都有温度。</h2></div><p>点击、滑动、悬停。试试它们。</p></div>
+        <div class="showcase-toolbar">
+          <div class="g-segment" data-glass-tabs role="tablist" aria-label="展示分类" id="main-tabs">
+            <span class="g-segment__pill" data-glass-pill aria-hidden="true"></span>
+            <button type="button" role="tab" id="tab-components" aria-controls="panel-components" aria-selected="true">组件库</button>
+            <button type="button" role="tab" id="tab-materials" aria-controls="panel-materials" aria-selected="false" tabindex="-1">材质实验室</button>
+            <button type="button" role="tab" id="tab-motion" aria-controls="panel-motion" aria-selected="false" tabindex="-1">交互与状态</button>
+          </div>
+          <label class="motion-control g-option"><input class="g-switch" type="checkbox" id="motion-toggle" checked role="switch"><span>动态效果</span></label>
+        </div>
+        <div role="tabpanel" id="panel-components" aria-labelledby="tab-components" tabindex="0">
+          <div class="component-grid">
+            <section class="glass specimen" aria-labelledby="buttons-title"><div class="specimen-top"><span>01 / ACTIONS</span><svg class="g-icon"><use href="#i-plus"/></svg></div><h3 id="buttons-title">轻触，有回应。</h3><p>按钮 · 图标 · 状态反馈</p>
+              <div class="sample-stack"><div class="row wrap"><button class="g-button g-button--primary" type="button" data-toast="新的灵感已收藏。">开始创作 <svg class="g-icon"><use href="#i-arrow"/></svg></button><button class="g-button" type="button" id="save-button">保存更改</button></div>
+              <div class="row wrap"><button class="g-icon-button" id="favorite-button" type="button" aria-label="收藏此组件" aria-pressed="false"><svg class="g-icon"><use href="#i-heart"/></svg></button><button class="g-icon-button" type="button" data-toast="已添加一个新项目。" aria-label="添加项目"><svg class="g-icon"><use href="#i-plus"/></svg></button><button class="g-button" type="button" disabled>暂不可用</button><span class="g-badge" id="saved-state">未保存</span></div></div>
+            </section>
+            <section class="glass specimen" aria-labelledby="options-title"><div class="specimen-top"><span>02 / SELECTION</span><svg class="g-icon"><use href="#i-check"/></svg></div><h3 id="options-title">选择，清晰可见。</h3><p>复选 · 单选 · 开关 · 筛选标签</p>
+              <div class="options-grid"><div><label class="g-option"><input id="notify-check" type="checkbox" checked>接收灵感提醒</label><label class="g-option"><input type="checkbox">包含周末</label></div><fieldset class="reset-fieldset"><legend class="sr-only">卡片密度</legend><label class="g-option"><input type="radio" name="density" value="comfortable" checked>舒适布局</label><label class="g-option"><input type="radio" name="density" value="compact">紧凑布局</label></fieldset></div>
+              <fieldset class="reset-fieldset"><legend class="sr-only">展示内容筛选</legend><div class="g-choice-row"><label class="g-chip"><input class="sr-only" type="checkbox" checked>设计</label><label class="g-chip"><input class="sr-only" type="checkbox">开发</label><label class="g-chip"><input class="sr-only" type="checkbox">灵感</label></div></fieldset>
+            </section>
+            <section class="glass specimen form-specimen" aria-labelledby="form-title"><div class="specimen-top"><span>03 / INPUTS</span><svg class="g-icon"><use href="#i-sliders"/></svg></div><h3 id="form-title">表达，自然流畅。</h3><p>输入 · 搜索 · 下拉 · 滑块</p>
+              <form id="demo-form" novalidate><div class="g-field"><label for="name-input">项目名称</label><input class="g-input" id="name-input" name="project" autocomplete="off" placeholder="给灵感起个名字" required aria-describedby="name-error"><p class="g-error" id="name-error"></p></div>
+                <div class="two-fields"><div class="g-field"><label for="search-input">查找组件</label><div class="g-search"><svg class="g-icon"><use href="#i-search"/></svg><input class="g-input" id="search-input" type="search" placeholder="试试：按钮"></div></div><div class="g-field"><label for="project-type">项目类型</label><select class="g-select" id="project-type" name="type"><option>产品界面</option><option>个人主页</option><option>移动应用</option></select></div></div>
+                <div class="g-field"><label for="notes-input">一点想法</label><textarea class="g-textarea" id="notes-input" name="notes" placeholder="记录此刻的灵感……"></textarea></div>
+                <div class="g-field"><div class="row between"><label class="g-label" for="progress-range">专注进度</label><output for="progress-range" id="range-value">68%</output></div><input class="g-range" id="progress-range" type="range" min="0" max="100" value="68"></div>
+                <div class="row between"><button class="g-button g-button--primary" type="submit">创建项目</button><output id="form-result" class="g-hint" aria-live="polite"></output></div>
+              </form>
+            </section>
+            <div class="card-column">
+              <div data-glass-card id="stat-card"><section class="glass specimen metric-card" data-glass-face aria-labelledby="card-title"><span class="glass__light" aria-hidden="true"></span><span class="glass__edge" aria-hidden="true"></span><div class="glass__content"><div class="specimen-top"><span>04 / CARDS</span><span class="g-badge g-badge--success">↑ 12.8%</span></div><h3 id="card-title">好事，正在发生。</h3><div class="metric"><strong>2,480</strong><span>次灵感碰撞</span></div><div class="bar-chart" aria-label="最近七天的灵感趋势"><i style="--bar:35%"></i><i style="--bar:53%"></i><i style="--bar:43%"></i><i style="--bar:72%"></i><i style="--bar:57%"></i><i style="--bar:87%"></i><i style="--bar:100%"></i></div><div class="row between chart-caption"><span>MON</span><span>本周趋势</span><span>SUN</span></div></div></section></div>
+              <section class="glass specimen overlay-specimen" aria-labelledby="overlay-title"><div class="specimen-top"><span>05 / OVERLAYS</span><svg class="g-icon"><use href="#i-grid"/></svg></div><h3 id="overlay-title">多一层，仍然轻盈。</h3><p>对话框 · 抽屉 · 提示 · 通知</p><div class="row wrap"><button class="g-button" type="button" data-dialog="preview-dialog">打开对话框</button><button class="g-button" type="button" data-dialog="settings-drawer">设置抽屉</button></div><div class="row wrap overlay-bottom"><details class="g-menu" id="action-menu"><summary class="g-button">更多操作 <svg class="g-icon"><use href="#i-chevron"/></svg></summary><div class="glass g-menu__content"><button type="button" id="copy-settings">复制配置</button><button type="button" id="export-settings">导出配置</button><button type="button" data-toast="组件已重置为初始样式。" id="reset-style">重置样式</button></div></details><span class="g-tooltip-wrap"><button class="g-icon-button" type="button" aria-label="显示使用提示" aria-describedby="tip-content"><svg class="g-icon"><use href="#i-spark"/></svg></button><span class="glass g-tooltip" id="tip-content" role="tooltip">柔和的高光，来自光标的位置。</span></span></div></section>
+            </div>
+          </div>
+          <section class="extended-section" aria-labelledby="extended-title"><div class="section-heading"><div><span class="eyebrow">THE EVERYDAY DETAILS</span><h2 id="extended-title">把细节，也照顾好。</h2></div><p>五种常用组件，自然融入同一套材质。</p></div>
+            <div class="extension-grid">
+              <section class="glass specimen" id="notice-demo"><div class="specimen-top"><span>06 / NOTICES</span><span class="g-badge">状态反馈</span></div><h3>清楚地传递消息。</h3><div id="notice-banner" class="notice-banner"><svg class="g-icon"><use href="#i-check"/></svg><div><strong>新的灵感，已经就位。</strong><p>玻璃通知保留上下文，也给出清晰反馈。</p></div><button id="dismiss-notice" class="g-icon-button" type="button" aria-label="关闭通知"><svg class="g-icon"><use href="#i-close"/></svg></button></div><button id="restore-notice" class="g-button" type="button" hidden>重新显示通知</button></section>
+              <section class="glass specimen" id="people-demo"><div class="specimen-top"><span>07 / PEOPLE</span><span class="g-badge">团队协作</span></div><h3>聚在一起，更有灵感。</h3><div class="people-row"><div class="avatar-group" role="group" aria-label="团队成员"><button class="avatar" type="button" data-person="Lin" aria-label="查看 Lin">L</button><button class="avatar" type="button" data-person="Mia" aria-label="查看 Mia">M</button><button class="avatar" type="button" data-person="Kai" aria-label="查看 Kai">K</button><button class="avatar avatar-more" id="invite-person" type="button" aria-label="邀请成员">+</button></div><span class="g-badge g-badge--success">3 人在线</span></div><p class="g-hint" id="person-detail" role="status" aria-live="polite">点击头像，认识你的协作者。</p></section>
+              <section class="glass specimen" id="pagination-demo"><div class="specimen-top"><span>08 / PAGINATION</span><span class="g-badge">清晰导航</span></div><h3>一步步，发现更多。</h3><ul class="project-list" id="project-list" aria-live="polite"></ul><nav class="pagination" aria-label="示例分页"><button class="g-icon-button" id="page-prev" type="button" aria-label="上一页">←</button><button class="g-button" type="button" data-page="1" aria-current="page">1</button><button class="g-button" type="button" data-page="2">2</button><button class="g-button" type="button" data-page="3">3</button><button class="g-icon-button" id="page-next" type="button" aria-label="下一页">→</button></nav><p class="g-hint" id="page-status" role="status">第 1 页，共 3 页</p></section>
+              <section class="glass specimen" id="breadcrumb-demo"><div class="specimen-top"><span>09 / BREADCRUMBS</span><span class="g-badge">找到方向</span></div><h3>知道自己，身在何处。</h3><nav class="breadcrumbs" aria-label="面包屑导航"><a href="#top">首页</a><span aria-hidden="true">/</span><a href="#showcase" data-open-panel="components">组件库</a><span aria-hidden="true">/</span><span aria-current="page">导航</span></nav><p class="g-hint">每个链接都通向一个真实的位置。</p></section>
+              <section class="glass specimen accordion-specimen" id="accordion-demo"><div class="specimen-top"><span>10 / ACCORDION</span><span class="g-badge">按需展开</span></div><h3>需要时，再多一点。</h3><div class="accordion"><details open><summary>玻璃效果需要安装依赖吗？</summary><p>这个展示站使用原生 HTML、CSS 和 JavaScript，无需构建或安装运行依赖。</p></details><details><summary>触屏和键盘可以操作吗？</summary><p>按钮、表单、导航和弹层都保留原生语义，触屏无需悬停，键盘可通过 Tab 和方向键操作。</p></details><details><summary>如何减少动态和透明效果？</summary><p>在“交互与状态”中选择静态质量或实色表面；系统的减少动态与高对比偏好也会生效。</p></details></div></section>
+            </div>
+          </section>
+          <div class="search-results glass" id="search-results" hidden role="status" aria-live="polite"></div>
+        </div>
+        <div role="tabpanel" id="panel-materials" aria-labelledby="tab-materials" tabindex="0" hidden>
+          <div class="materials-grid"><section class="glass specimen"><div class="specimen-top"><span>THE MATERIAL PALETTE</span><svg class="g-icon"><use href="#i-spark"/></svg></div><h3>同一束光，四种质感。</h3><p>选择预设，整页组件同步变化。</p><fieldset class="reset-fieldset material-options"><legend class="sr-only">选择玻璃材质</legend><label><input type="radio" name="material" value="frosted" checked><span class="material-swatch swatch-frost"></span><strong>磨砂</strong><small>安静、柔和、适合内容</small></label><label><input type="radio" name="material" value="clear"><span class="material-swatch swatch-clear"></span><strong>清透</strong><small>轻盈、通透、边缘更鲜明</small></label><label><input type="radio" name="material" value="tinted"><span class="material-swatch swatch-tint"></span><strong>染色</strong><small>淡紫色调，统一品牌感</small></label><label><input type="radio" name="material" value="prism"><span class="material-swatch swatch-prism"></span><strong>棱镜</strong><small>窄幅彩边，点到为止</small></label></fieldset>
+            <div class="g-field"><div class="row between"><label for="blur-range" class="g-label">背景模糊</label><output id="blur-value" for="blur-range">18px</output></div><input class="g-range" id="blur-range" type="range" min="0" max="32" value="18"></div><div class="g-field"><div class="row between"><label for="glow-range" class="g-label">追光强度</label><output id="glow-value" for="glow-range">13%</output></div><input class="g-range" id="glow-range" type="range" min="0" max="30" value="13"></div>
+          </section><section class="glass specimen lens-specimen"><div class="specimen-top"><span>EDGE REFRACTION</span><span class="g-badge">可选增强</span></div><h3>看见，玻璃的边缘。</h3><p>移动光标，或用滑块控制透镜的位置。</p>
+            <div class="lens-experiment" id="lens-experiment"><img data-glass-source src="grid.svg" alt="用于对比折射的网格与文字背景" width="700" height="240"><div class="lens-window" data-glass-lens aria-hidden="true"></div></div>
+            <div class="g-field"><div class="row between"><label for="lens-position">透镜水平位置</label><output id="lens-position-value" for="lens-position">50%</output></div><input id="lens-position" class="g-range" type="range" min="0" max="100" value="50"></div>
+            <label class="g-option row between"><span>SVG 边缘折射</span><input id="refraction-toggle" class="g-switch" type="checkbox" role="switch"></label><p class="g-hint" id="lens-status" role="status">增强已关闭。上方为已知 SVG 背景的对照实验。</p><p class="technical-note">图片透镜只处理这张已知背景。该开关也尝试开启导航胶囊的背景位移，后者需要单独确认浏览器支持。</p></section></div>
+        </div>
+        <div role="tabpanel" id="panel-motion" aria-labelledby="tab-motion" tabindex="0" hidden>
+          <div class="motion-grid"><section class="glass specimen"><div class="specimen-top"><span>LIQUID SELECTION</span><span class="g-badge">点击 / 键盘</span></div><h3>从这里，轻轻到那里。</h3><p>连续切换，观察前缘伸展与到位回弹。</p><div class="navigation-demo"><div class="g-segment navigation-segment" data-glass-tabs role="tablist" aria-label="导航交互演示" id="demo-tabs"><span class="g-segment__pill" data-glass-pill aria-hidden="true"></span><button type="button" role="tab" id="demo-home" aria-controls="demo-home-panel" aria-selected="true"><svg class="g-icon"><use href="#i-grid"/></svg>功能</button><button type="button" role="tab" id="demo-settings" aria-controls="demo-settings-panel" aria-selected="false" tabindex="-1"><svg class="g-icon"><use href="#i-sliders"/></svg>高级设置</button><button type="button" role="tab" id="demo-mine" aria-controls="demo-mine-panel" aria-selected="false" tabindex="-1"><svg class="g-icon"><use href="#i-heart"/></svg>我的</button></div></div><div class="demo-panel" role="tabpanel" id="demo-home-panel" aria-labelledby="demo-home">所有功能，井然有序。<span>同一个胶囊在不同宽度的选项间移动。</span></div><div class="demo-panel" role="tabpanel" id="demo-settings-panel" aria-labelledby="demo-settings" hidden>精细调节，刚刚好。<span>动画途中再次点击，会从当前位置继续。</span></div><div class="demo-panel" role="tabpanel" id="demo-mine-panel" aria-labelledby="demo-mine" hidden>留给自己的小空间。<span>方向键、Home 和 End 也可以切换。</span></div></section>
+          <section class="glass specimen"><div class="specimen-top"><span>EVERY STATE MATTERS</span><svg class="g-icon"><use href="#i-check"/></svg></div><h3>好看，也好用。</h3><p>聚焦、错误、加载与禁用都有明确反馈。</p><ul class="state-list"><li><span class="state-dot"></span><div><strong>键盘可达</strong><p>Tab 聚焦，Space 操作，焦点环始终可见。</p></div></li><li><span class="state-dot"></span><div><strong>尊重动态偏好</strong><p id="motion-status">动态效果已开启。系统减少动态偏好同样生效。</p></div></li><li><span class="state-dot"></span><div><strong>基础效果独立可用</strong><p>没有背景模糊时，以实色表面维持层次。</p></div></li></ul>
+            <div class="g-field"><label for="quality-select">效果质量</label><select class="g-select" id="quality-select"><option value="full">完整效果</option><option value="balanced">均衡：降低模糊，关闭折射</option><option value="static">静态：关闭动态和透明</option></select></div>
+            <label class="g-option"><input class="g-switch" id="transparency-toggle" type="checkbox" role="switch">提高可读性，使用实色表面</label>
+            <label class="g-option"><input class="g-switch" id="fallback-toggle" type="checkbox" role="switch">模拟无模糊降级</label><button class="g-button" type="button" data-toast="这是一条玻璃通知。状态已清晰传达。">试一条通知 <svg class="g-icon"><use href="#i-arrow"/></svg></button></section>
+            <section class="glass specimen"><div class="specimen-top"><span>VERTICAL SELECTION</span><span class="g-badge">方向键 / Home / End</span></div><h3>换个方向，同样自然。</h3><div class="vertical-demo"><div class="g-segment" data-glass-tabs role="tablist" aria-orientation="vertical" aria-label="纵向设置" id="vertical-tabs"><span class="g-segment__pill" data-glass-pill aria-hidden="true"></span><button type="button" role="tab" id="vertical-general" aria-controls="vertical-general-panel" aria-selected="true">通用设置</button><button type="button" role="tab" id="vertical-disabled" aria-controls="vertical-disabled-panel" aria-selected="false" tabindex="-1" disabled>暂不可用</button><button type="button" role="tab" id="vertical-appearance" aria-controls="vertical-appearance-panel" aria-selected="false" tabindex="-1">外观与主题</button></div><div><div role="tabpanel" id="vertical-general-panel" aria-labelledby="vertical-general">用上下方向键切换。<p class="g-hint">禁用项会被跳过。</p></div><div role="tabpanel" id="vertical-disabled-panel" aria-labelledby="vertical-disabled" hidden>暂不可用</div><div role="tabpanel" id="vertical-appearance-panel" aria-labelledby="vertical-appearance" hidden>保持同一套材质语言。<p class="g-hint">纵向移动也保留连续弹簧状态。</p></div></div></div></section>
+          </div>
+        </div>
+      </section>
+      <section class="usage-section" id="usage" aria-labelledby="usage-title"><div class="section-heading"><div><span class="eyebrow">MAKE SOMETHING LIGHT</span><h2 id="usage-title">从一个组件，开始。</h2></div><p>零外部依赖，把喜欢的细节带入你的页面。</p></div><div class="usage-grid"><section class="glass specimen"><div class="row between"><h3>一个玻璃按钮。</h3><button class="g-button" id="copy-code" type="button">复制代码</button></div><pre class="code-sample"><code id="usage-code">&lt;link rel="stylesheet" href="glass.css"&gt;
+
+&lt;button class="g-button g-button--primary"&gt;
+  Hello, glass.
+&lt;/button&gt;</code></pre><p id="copy-status" class="g-hint" role="status" aria-live="polite">代码使用本展示站的 glass.css。</p></section><section class="glass specimen"><h3>轻盈，也有分寸。</h3><p>用材质建立层次，用明确状态保持可用。</p><div class="token-list"><div><span>圆角</span><strong>16–30px</strong></div><div><span>模糊</span><strong>6–18px</strong></div><div><span>卡片倾角</span><strong>≤4°</strong></div></div><div class="row wrap"><a class="g-button g-button--primary" href="https://github.com/aivos-xie/glass-ui" target="_blank" rel="noopener">查看站点源码 ↗</a><a class="g-button" href="glass.css" download>下载样式</a></div><p class="usage-note">图片透镜折射仅针对已知图片，实际效果随浏览器而异；基础磨砂始终独立可用。</p></section></div></section>
+      <section class="closing"><span class="brand-mark" aria-hidden="true"><i></i><i></i></span><p>材质是起点。<strong>细节让它成为体验。</strong></p><span>GLASS UI / LIVE PLAYGROUND</span></section>
+    </main>
+    <footer><span>Glass UI · 可复用的玻璃界面语言</span><a href="https://github.com/aivos-xie/glass-ui" target="_blank" rel="noopener">GitHub · 查看源码 ↗</a></footer>
+  </div>
+  <dialog class="glass g-dialog" id="preview-dialog" aria-labelledby="dialog-title"><span class="eyebrow">A MOMENT OF CLARITY</span><h2 id="dialog-title">给灵感一点空间。</h2><p>这是一个真正可操作的玻璃对话框。按 Esc 关闭，或通过下方按钮返回。</p><div class="g-field"><label for="dialog-note">记下一句灵感</label><input class="g-input" id="dialog-note" placeholder="此刻，你想到了什么？"></div><form method="dialog"><button class="g-button" value="cancel">返回</button><button class="g-button g-button--primary" value="save">记住这一刻</button></form></dialog>
+  <dialog class="glass g-dialog g-drawer" id="settings-drawer" aria-labelledby="drawer-title"><form method="dialog" class="drawer-close"><button class="g-icon-button" aria-label="关闭设置抽屉"><svg class="g-icon"><use href="#i-close"/></svg></button></form><span class="eyebrow">MAKE IT YOURS</span><h2 id="drawer-title">你的偏好。</h2><p>少一点打扰，多一点从容。</p><label class="g-option row between"><span>灵感提醒</span><input id="drawer-notify" class="g-switch" type="checkbox" checked role="switch"></label><label class="g-option row between"><span>深色主题</span><input id="drawer-theme" class="g-switch" type="checkbox" role="switch"></label><label class="g-option row between"><span>动态效果</span><input id="drawer-motion" class="g-switch" type="checkbox" checked role="switch"></label><div class="drawer-note"><svg class="g-icon"><use href="#i-spark"/></svg><p>这里的设置会立即应用到展示页。</p></div><form method="dialog"><button class="g-button g-button--primary">完成</button></form></dialog>
+  <div class="glass g-toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

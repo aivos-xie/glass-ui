@@ -1,0 +1,389 @@
+{
+  "testedAt": "2026-11-21T06:44:44.005Z",
+  "platform": "win32",
+  "browsers": [
+    {
+      "engine": "edge",
+      "status": "passed",
+      "tests": [
+        {
+          "name": "Local resources and offline-capable payload",
+          "pass": true
+        },
+        {
+          "name": "4 degree total tilt over 6561 points",
+          "pass": true,
+          "details": {
+            "maxDegrees": 3.99999999999995
+          }
+        },
+        {
+          "name": "Pointer light and smooth card reset",
+          "pass": true
+        },
+        {
+          "name": "Rapid horizontal retarget and settled alignment",
+          "pass": true,
+          "details": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "name": "Horizontal keyboard selection and panels",
+          "pass": true
+        },
+        {
+          "name": "Vertical spring, disabled skip and keyboard",
+          "pass": true,
+          "details": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "name": "RTL tab navigation and alignment",
+          "pass": true
+        },
+        {
+          "name": "Buttons, disabled loading and pressed states",
+          "pass": true
+        },
+        {
+          "name": "Form error, safe text and slider values",
+          "pass": true
+        },
+        {
+          "name": "Native form selection and switch synchronization",
+          "pass": true
+        },
+        {
+          "name": "Dialog focus, Escape and return focus",
+          "pass": true
+        },
+        {
+          "name": "Disclosure outside click and tooltip dismissal",
+          "pass": true
+        },
+        {
+          "name": "Material presets and blur controls",
+          "pass": true
+        },
+        {
+          "name": "Known-image refraction changes rim pixels",
+          "pass": true,
+          "details": {
+            "pixels": 136165,
+            "changed": 2525,
+            "meanMaxChannelDifference": 1.155289538427643,
+            "maxChannelDifference": 183
+          }
+        },
+        {
+          "name": "Image movement reuses displacement map and keyboard alternative",
+          "pass": true
+        },
+        {
+          "name": "Quality and transparency fallbacks preserve controls",
+          "pass": true
+        },
+        {
+          "name": "Runtime reduced motion disables tilt, spring and refraction",
+          "pass": true
+        },
+        {
+          "name": "No-blur and increased-contrast fallbacks",
+          "pass": true,
+          "details": {
+            "contrastValidation": "new context",
+            "runtimeReducedMotionValidatedSeparately": true
+          }
+        },
+        {
+          "name": "390px layout, long labels and responsive pill",
+          "pass": true
+        },
+        {
+          "name": "Forced-colors boundaries and selection",
+          "pass": true
+        },
+        {
+          "name": "Idle RAF and controller disposal",
+          "pass": true
+        },
+        {
+          "name": "No browser errors or external resource requests",
+          "pass": true
+        }
+      ],
+      "version": "157.0.4341.60",
+      "summary": {
+        "passed": 22,
+        "failed": 0
+      }
+    },
+    {
+      "engine": "firefox",
+      "status": "passed",
+      "tests": [
+        {
+          "name": "Local resources and offline-capable payload",
+          "pass": true
+        },
+        {
+          "name": "4 degree total tilt over 6561 points",
+          "pass": true,
+          "details": {
+            "maxDegrees": 3.99999999999995
+          }
+        },
+        {
+          "name": "Pointer light and smooth card reset",
+          "pass": true
+        },
+        {
+          "name": "Rapid horizontal retarget and settled alignment",
+          "pass": true,
+          "details": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "name": "Horizontal keyboard selection and panels",
+          "pass": true
+        },
+        {
+          "name": "Vertical spring, disabled skip and keyboard",
+          "pass": true,
+          "details": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "name": "RTL tab navigation and alignment",
+          "pass": true
+        },
+        {
+          "name": "Buttons, disabled loading and pressed states",
+          "pass": true
+        },
+        {
+          "name": "Form error, safe text and slider values",
+          "pass": true
+        },
+        {
+          "name": "Native form selection and switch synchronization",
+          "pass": true
+        },
+        {
+          "name": "Dialog focus, Escape and return focus",
+          "pass": true
+        },
+        {
+          "name": "Disclosure outside click and tooltip dismissal",
+          "pass": true
+        },
+        {
+          "name": "Material presets and blur controls",
+          "pass": true
+        },
+        {
+          "name": "Known-image refraction changes rim pixels",
+          "pass": true,
+          "details": {
+            "pixels": 136165,
+            "changed": 2240,
+            "meanMaxChannelDifference": 0.9204641427679653,
+            "maxChannelDifference": 180
+          }
+        },
+        {
+          "name": "Image movement reuses displacement map and keyboard alternative",
+          "pass": true
+        },
+        {
+          "name": "Quality and transparency fallbacks preserve controls",
+          "pass": true
+        },
+        {
+          "name": "Runtime reduced motion disables tilt, spring and refraction",
+          "pass": true
+        },
+        {
+          "name": "No-blur and increased-contrast fallbacks",
+          "pass": true,
+          "details": {
+            "contrastValidation": "new context",
+            "runtimeReducedMotionValidatedSeparately": true
+          }
+        },
+        {
+          "name": "390px layout, long labels and responsive pill",
+          "pass": true
+        },
+        {
+          "name": "Forced-colors boundaries and selection",
+          "pass": true
+        },
+        {
+          "name": "Idle RAF and controller disposal",
+          "pass": true
+        },
+        {
+          "name": "No browser errors or external resource requests",
+          "pass": true
+        }
+      ],
+      "version": "153.0",
+      "summary": {
+        "passed": 22,
+        "failed": 0
+      }
+    },
+    {
+      "engine": "webkit",
+      "status": "passed",
+      "tests": [
+        {
+          "name": "Local resources and offline-capable payload",
+          "pass": true
+        },
+        {
+          "name": "4 degree total tilt over 6561 points",
+          "pass": true,
+          "details": {
+            "maxDegrees": 3.99999999999995
+          }
+        },
+        {
+          "name": "Pointer light and smooth card reset",
+          "pass": true
+        },
+        {
+          "name": "Rapid horizontal retarget and settled alignment",
+          "pass": true,
+          "details": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "name": "Horizontal keyboard selection and panels",
+          "pass": true
+        },
+        {
+          "name": "Vertical spring, disabled skip and keyboard",
+          "pass": true,
+          "details": {
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "name": "RTL tab navigation and alignment",
+          "pass": true
+        },
+        {
+          "name": "Buttons, disabled loading and pressed states",
+          "pass": true
+        },
+        {
+          "name": "Form error, safe text and slider values",
+          "pass": true
+        },
+        {
+          "name": "Native form selection and switch synchronization",
+          "pass": true
+        },
+        {
+          "name": "Dialog focus, Escape and return focus",
+          "pass": true
+        },
+        {
+          "name": "Disclosure outside click and tooltip dismissal",
+          "pass": true
+        },
+        {
+          "name": "Material presets and blur controls",
+          "pass": true
+        },
+        {
+          "name": "Known-image refraction changes rim pixels",
+          "pass": true,
+          "details": {
+            "pixels": 136165,
+            "changed": 3603,
+            "meanMaxChannelDifference": 1.3823596372048617,
+            "maxChannelDifference": 180
+          }
+        },
+        {
+          "name": "Image movement reuses displacement map and keyboard alternative",
+          "pass": true
+        },
+        {
+          "name": "Quality and transparency fallbacks preserve controls",
+          "pass": true
+        },
+        {
+          "name": "Runtime reduced motion disables tilt, spring and refraction",
+          "pass": true
+        },
+        {
+          "name": "No-blur and increased-contrast fallbacks",
+          "pass": true,
+          "details": {
+            "contrastValidation": "new context",
+            "runtimeReducedMotionValidatedSeparately": true
+          }
+        },
+        {
+          "name": "390px layout, long labels and responsive pill",
+          "pass": true
+        },
+        {
+          "name": "Forced-colors boundaries and selection",
+          "pass": true
+        },
+        {
+          "name": "Idle RAF and controller disposal",
+          "pass": true
+        },
+        {
+          "name": "No browser errors or external resource requests",
+          "pass": true
+        }
+      ],
+      "version": "26.5",
+      "summary": {
+        "passed": 22,
+        "failed": 0
+      }
+    }
+  ],
+  "limitations": [
+    "Playwright WebKit is an engine test, not a Safari or physical iOS device certification.",
+    "Known-image SVG refraction is measured separately from optional arbitrary-DOM backdrop refraction.",
+    "These checks do not constitute a full accessibility or performance audit.",
+    "Increased contrast is checked in a fresh context; runtime contrast emulation left existing MediaQueryList objects stale in the tested Firefox build."
+  ],
+  "summary": {
+    "passed": 66,
+    "failed": 0,
+    "skippedBrowsers": []
+  }
+}

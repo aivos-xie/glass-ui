@@ -2,6 +2,8 @@
 
 [English](README.en.md) | [简体中文](README.md)
 
+**[Explore the live glass components →](https://aivos-xie.github.io/glass-ui/)** · Chinese and English, light and dark themes, material controls, and working interactions.
+
 Reusable glass UI design instructions and component examples for AI agents that can read Markdown and project files. The core follows the [Agent Skills format](https://agentskills.io/specification) and does not depend on Codex, Claude, or vendor-specific tools.
 
 ## Install with one message to your agent
@@ -12,7 +14,7 @@ Copy this sentence into your agent:
 
 The agent follows the [installation guide](INSTALL.en.md) to select its own destination. Hosts with native skills use native discovery. Other hosts can load the skill through project instructions. A chat-only product without file or configuration access can use the instructions for the current conversation, but cannot claim a persistent installation.
 
-Repository visibility still applies: a private repository requires existing access; a public repository can be read directly.
+This repository is public and can be read and installed directly. Your agent still needs network access to GitHub.
 
 ## Supported environments
 
@@ -55,7 +57,7 @@ Hosts with explicit skill syntax can also use their own syntax, such as `$glass-
 - **Component system:** frosted, clear liquid, tinted, and prism-edge treatments for buttons, options, forms, navigation, menus, and overlays.
 - **Usability:** keyboard and touch behavior, reduced motion, forced colors, and a fallback when backdrop blur is unavailable.
 
-Open the [offline demo](assets/demo/index.html) directly. It needs no build step, remote fonts, images, or scripts. The demo's UI labels are currently in Chinese; this documentation update does not localize the demo interface.
+Open the [offline demo](assets/demo/index.html) directly. It needs no build step, remote fonts, images, or scripts. This baseline sample uses Chinese labels; the online showcase provides a Chinese/English language switch.
 
 ![Dark theme component demo](docs/preview-dark.png)
 
@@ -87,6 +89,7 @@ See [research notes](docs/en/research-notes.md) for all five references, reviewe
 | Rendering and performance | [Routes and image lenses](docs/en/rendering-and-performance.md) | [渲染与性能](references/rendering-and-performance.md) |
 | Platform adapters | [Native and mini-program guidance](docs/en/platform-adapters.md) | [平台适配](references/platform-adapters.md) |
 | Reference projects | [Research and adoption decisions](docs/en/research-notes.md) | [参考记录](references/research-notes.md) |
+| Online showcase | [Usage and publishing](docs/en/website.md) | [体验与发布](docs/website.md) |
 
 ```text
 SKILL.md                     Shared skill entrypoint
@@ -100,9 +103,12 @@ assets/adapters/             Flutter and mini-program baseline containers
 scripts/check_assets.py      Local resource, link, and basic semantic checks
 scripts/validate_browser.mjs Optional multi-engine checks and screenshots
 docs/                        Screenshots and validation records
+docs/index.html              GitHub Pages showcase (main branch, /docs)
 ```
 
 ## Validation
+
+The [showcase validation record](docs/website-validation.json) reports 19 passing checks for language switching, component search, code and configuration copying, configuration downloads, and responsive layouts. The [showcase core record](docs/website-core-validation.json) reports 66 passing checks across Edge, Firefox, and Playwright WebKit. See the [showcase guide](docs/en/website.md) to reproduce them.
 
 The [browser validation record](docs/browser-validation.json) reports 66 passing checks on Windows on 2026-11-21: 22 each in Edge, Firefox, and Playwright WebKit, with no skips. These cover existing interactions, vertical navigation, image-refraction pixel differences, quality settings, and accessibility fallbacks. The WebKit result is not Safari or physical iPhone certification.
 

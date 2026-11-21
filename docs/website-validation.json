@@ -1,0 +1,104 @@
+{
+  "testedAt": "2026-11-21T06:44:22.986Z",
+  "browser": "edge",
+  "tests": [
+    {
+      "name": "Default Chinese page, complete gallery and glass rendering",
+      "pass": true
+    },
+    {
+      "name": "English switch translates static content, accessible labels and form feedback",
+      "pass": true
+    },
+    {
+      "name": "Component search opens the material panel and navigates to the requested lens",
+      "pass": true
+    },
+    {
+      "name": "English component search reaches pagination; unmatched queries have feedback",
+      "pass": true
+    },
+    {
+      "name": "Code copy writes the displayed reusable example to the clipboard",
+      "pass": true
+    },
+    {
+      "name": "Configuration menu copies the current changed settings as JSON",
+      "pass": true
+    },
+    {
+      "name": "Configuration export downloads a real JSON file with the current settings",
+      "pass": true
+    },
+    {
+      "name": "Notice can be dismissed and restored with keyboard activation",
+      "pass": true
+    },
+    {
+      "name": "Avatar choices expose meaningful collaborator feedback",
+      "pass": true
+    },
+    {
+      "name": "Pagination changes rows and honors first and last page boundaries",
+      "pass": true
+    },
+    {
+      "name": "Breadcrumb links navigate to real component and home destinations",
+      "pass": true
+    },
+    {
+      "name": "Accordion retains native keyboard disclosure behavior",
+      "pass": true
+    },
+    {
+      "name": "Language changes retain native form values, checked state and selected page",
+      "pass": true
+    },
+    {
+      "name": "390px, 768px and 1440px layouts fit in both languages across all panels",
+      "pass": true,
+      "details": {
+        "viewports": [
+          390,
+          768,
+          1440
+        ],
+        "languages": [
+          "zh-CN",
+          "en"
+        ],
+        "panelsPerCombination": 3
+      }
+    },
+    {
+      "name": "200 percent text resizing preserves page reflow and reachable controls",
+      "pass": true
+    },
+    {
+      "name": "Skip link and tab navigation remain keyboard accessible",
+      "pass": true
+    },
+    {
+      "name": "Reduced motion, solid surfaces and forced colors retain working website controls",
+      "pass": true
+    },
+    {
+      "name": "Every local link targets an existing section or bundled resource",
+      "pass": true
+    },
+    {
+      "name": "No browser errors, failed resources or third-party asset requests",
+      "pass": true
+    }
+  ],
+  "limitations": [
+    "Automated desktop engine checks do not certify physical devices, all accessibility requirements, or production performance.",
+    "The large-text check doubles computed text sizes in a fresh context; it is not an OS accessibility-settings certification."
+  ],
+  "target": "local static server",
+  "browserVersion": "157.0.4341.60",
+  "summary": {
+    "passed": 19,
+    "failed": 0
+  }
+}
