@@ -8,6 +8,24 @@
 
 按[组件配方](components.md)选所需材质与行为，再读取对应基础代码。单个组件只提取需要的 tokens、样式与控制器逻辑；已有产品优先使用项目主题和局部样式，避免把样板的全局 reset、展示页布局或示例业务内容整体带入。生成后接入一个实际使用位置，处理挂载、清理及适用状态。
 
+## 整套 UI 升级的接入
+
+整套升级先确认入口布局、页面与共享组件的所有者，再选现有主题根节点作为玻璃 tokens 的作用范围。尽量映射项目已有 CSS variables、design tokens 和组件 variants；新增 tokens 只表达跨组件共享的材质角色，例如 page scene、surface levels、rim、shadow、focus 与 motion。颜色主题和材质强度分开管理，让原来的浅色/深色切换继续生效。
+
+按宿主架构接入而不接管业务状态：CSS Modules / scoped styles 使用本地类名，CSS-in-JS 沿用主题 provider，utility CSS 映射到现有 config 或组件 class。避免无范围的 `button`、`input`、`*` 选择器，以及修改框架生成 DOM 的脆弱查询。新增 wrapper 只承载定位或装饰，不复制 props、事件或数据状态；玻璃层设为 `pointer-events: none` 并从无障碍树隐藏。批量迁移时分组件类别并运行原有测试，方便定位回归。
+
+两套坐标系不要合并：角色 token 决定跨组件共享范围，材质档位决定数值区间。起点可直接映射到随附变量，避免在项目里另造第三套命名：
+
+| 角色 token | 对应材质档位 | `assets/demo/glass.css` 中的起点 |
+| --- | --- | --- |
+| page scene | 页面底景（浅色 / 深色） | `--g-bg`、`--g-solid` |
+| surface light / regular / thick | 轻玻璃 / 磨砂 / 厚磨砂 | `--g-surface`、`--g-subtle`、`--g-blur` |
+| rim | 边缘窄高光与描边 | `--g-border`、`--g-outline`、`--g-highlight` |
+| shadow | 厚度与层次 | `--g-shadow` |
+| focus | 焦点环 | `--g-focus` |
+| tint | 染色、主操作与选中 | `--g-accent`、`--g-accent-rgb`、`--g-glow` |
+| motion | 胶囊与追光时序 | `glass.js` 中的弹簧参数 |
+
 `GlassUI.mount()` 挂载卡片效果和演示 tabs 控制器。tabs 控制器会写入 `aria-selected`、`tabIndex` 和关联面板显隐，并处理点击与键盘，不能当作纯装饰接管已有导航。已有导航使用 `GlassUI.mountSelectionPill(track, { vertical: true })`，返回 `{ select, dispose }`；宿主提交选中状态后调用 `select(selectedElement)`，无选中项时传 `null`，卸载时调用 `dispose()`。该接口只移动胶囊，不管理路由、ARIA 或焦点。横向传 `vertical: false`。两种接口不要挂载在同一轨道。完整接入见[按需预设](presets.md)。这些接口不提供表单提交、对话框管理或任意组件生成；业务由项目组件或原生控件负责。`GlassCard` 等名称仅可用作实际创建并导出的项目组件名，不能当作本 Skill 已提供的包导出。
 
 自然语言中的“倾斜 2°”“关闭追光”等是生成要求。现有卡片控制器没有对应的 prop 或 `data-max-tilt` 接口；需要时修改生成的实例逻辑，并验证总倾角上限与偏好回退。不要编造可传入的参数。生成结果直接随项目运行，运行时无需调用 Skill。

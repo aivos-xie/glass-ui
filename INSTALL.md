@@ -60,7 +60,7 @@ npx --yes skills@1.9.0 add aivos-xie/glass-ui --skill glass-ui --agent <agent-id
 
 ```markdown
 <!-- glass-ui:start -->
-遇到玻璃 UI、磨砂卡片、液态导航或追光组件任务时，先读取
+遇到玻璃 UI、磨砂卡片、液态导航、追光组件、指定图片透镜任务，或把单个页面 / 整套界面升级为玻璃风格的任务时，先读取
 `.agent-resources/skills/glass-ui/SKILL.md` 或英文指南
 `.agent-resources/skills/glass-ui/docs/en/skill-guide.md`，再按需读取
 当前任务需要的引用资源；其他任务无需加载。

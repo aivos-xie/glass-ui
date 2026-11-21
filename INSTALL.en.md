@@ -60,7 +60,8 @@ Add or update a small entry in a project instruction file that this host actuall
 
 ```markdown
 <!-- glass-ui:start -->
-For glass UI, frosted card, liquid navigation, or pointer-lit component work,
+For glass UI, frosted card, liquid navigation, pointer-lit component, or known-image
+lens work, and for upgrading a page or a whole UI to glass,
 first read `.agent-resources/skills/glass-ui/SKILL.md` or its English guide at
 `.agent-resources/skills/glass-ui/docs/en/skill-guide.md`, then load only the
 referenced resources needed for the task. Other tasks need not load it.

@@ -8,7 +8,7 @@
 
 [Try the spotlight and 3D card directly](https://aivos-xie.github.io/glass-ui/#spotlight-demo): watch the internal pointer light, local rim highlight, tilt of up to 4°, and smooth return on exit.
 
-Reusable glass UI design instructions and component examples for AI agents that can read Markdown and project files. The core follows the [Agent Skills format](https://agentskills.io/specification) and does not depend on Codex, Claude, or vendor-specific tools.
+Reusable glass UI design instructions and component examples for AI agents that can read Markdown and project files. It supports both individual components and a consistent migration of existing frontend pages, component libraries, or full products while preserving component semantics, APIs, data flow, and interactions. The core follows the [Agent Skills format](https://agentskills.io/specification) and does not depend on Codex, Claude, or vendor-specific tools.
 
 ## Install with one message to your agent
 
@@ -49,6 +49,10 @@ For a project-only installation, omit `--global` and run from the project root. 
 After installation, ask:
 
 > Use the Glass UI skill to add frosted glass cards, pointer-lit borders, and a sliding selection pill to this page while preserving its existing behavior.
+
+For a whole-UI upgrade, the agent first inventories shared components and current interactions, then defines shared material tokens and migrates by component category:
+
+> Use the Glass UI skill to upgrade this existing Web project into a consistent glass UI. Preserve every component's purpose, props/APIs, routes, data behavior, and keyboard interactions. Inventory first, migrate in groups, and run behavior regressions.
 
 Hosts with explicit skill syntax can also use their own syntax, such as `$glass-ui` in Codex. A request for one switch, form, button, or navigation component only needs that component; it does not require the entire demo.
 
@@ -118,6 +122,8 @@ See [research notes](docs/en/research-notes.md) for all five references, reviewe
 | Reference projects | [Research and adoption decisions](docs/en/research-notes.md) | [参考记录](references/research-notes.md) |
 | Online showcase | [Usage and publishing](docs/en/website.md) | [体验与发布](docs/website.md) |
 
+## File structure
+
 ```text
 SKILL.md                     Shared skill entrypoint
 README.en.md / README.md      English and Simplified Chinese overview
@@ -127,7 +133,7 @@ references/                  Original material, component, and validation refere
 docs/en/                     English skill guide and technical references
 assets/demo/                 Standalone HTML / CSS / JavaScript examples
 assets/adapters/             Flutter and mini-program baseline containers
-scripts/check_assets.py      Local resource, link, and basic semantic checks
+scripts/check_assets.py      Resource, link, semantic, and bilingual alignment checks
 scripts/validate_browser.mjs Optional multi-engine checks and screenshots
 docs/                        Screenshots and validation records
 docs/index.html              GitHub Pages showcase (main branch, /docs)

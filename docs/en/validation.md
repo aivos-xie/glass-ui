@@ -7,13 +7,27 @@
 1. Validate the original `SKILL.md` with skill-creator's `quick_validate.py` when available, and pass `python scripts/check_assets.py`.
 2. Open the demo in target browsers and check for console errors and failed resource requests. Test a platform before claiming support, or identify it as untested.
 3. Move the pointer across the card center, corners, and edges. Confirm clipped interior light, local edge highlights, total tilt ≤4°, and smooth reset on exit. Buttons inside cards must remain clickable.
-4. Repeatedly select tabs of different widths and reverse direction during animation. The pill must continue from its current shape, settle against the target within ≤1px, and leave text unstretched. Realign after window resizing and font size changes.
+4. Repeatedly select tabs of different widths and reverse direction during animation. The pill must continue from its current shape, settle against the target within ≤1px, and leave text unstretched. Realign after window resizing and font size changes. The track must contain a direct `data-glass-pill` child: without it the controller is skipped silently, so neither the pill nor the keyboard works, and a clean console is not evidence of success.
 5. Use Tab, Space, arrows, and Home/End to check forms and tabs. For dialogs/drawers, check Esc, focus containment, and focus restoration after closing. Menus close on outside click.
 6. Verify real behavior for themes, materials, options, input/error states, slider values, loading, notifications, and overlays. No placeholder buttons or dead links.
 7. Check a 390px narrow viewport, 200% zoom, light/dark themes, and long labels. Avoid horizontal page overflow. Targets should generally be at least 44px and must not fall below the applicable accessibility requirements.
 8. Under reduced motion, disable tilt, extension, bounce, and pulsing while preserving correct selection. Changing the preference during use must also work. Under forced colors, borders, focus, and selection remain visible.
 9. Disable blur and refraction enhancement: content must remain readable and operable. Measure contrast against the actual background. Target at least 4.5:1 for normal text, 3:1 for large text, and 3:1 for necessary control boundaries. Unmeasured translucent colors are not evidence of compliance.
 10. Stop RAF when at rest. An unmounted controller must not keep reacting or animating, and multiple instances must remain independent. Generate displacement maps only on resize; avoid generating a canvas every frame.
+
+## Behavior parity in a whole-UI upgrade
+
+When a request covers multiple pages or a component library, use the existing runtime as the baseline. Check representative routes and navigation targets, form values and validation, selection changes, keyboard actions, loading/error/empty states, overlay open/close and focus, permissions, and persisted settings. Unless a business change was requested, the same actions before and after should produce the same results. Record pre-existing defects separately from visual changes.
+
+Compare states for each shared component, then check light/dark themes, narrow viewports, 200% zoom, and fallback modes. Sampling does not prove every route passed; report the pages, component categories, and differences actually covered. A single-component request only requires checks for that component and its direct integration path.
+
+Use the pre-change runtime as the baseline, not documentation or code descriptions. Record by category and list uncovered items separately:
+
+| Route or component category | Key actions | Before | After | Result |
+| --- | --- | --- | --- | --- |
+| Example: settings page / forms | Submit empty, then correct and submit | Error text and focus match | — | Pending |
+
+Include this table and the uncovered items in the delivery notes; mark a row passed only after running it.
 
 ## Visible material checks
 

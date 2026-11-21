@@ -1,6 +1,6 @@
 interface:
   display_name: "Glass UI · 玻璃界面"
-  short_description: "按需生成或改造磨砂与液态玻璃组件，适配现有项目并保留完整交互"
-  default_prompt: "使用 $glass-ui，按当前请求在现有项目中生成或改造所需的玻璃组件，沿用项目技术栈和业务行为，并验证交互与降级。"
+  short_description: "玻璃化单个组件或整套 UI：磨砂、追光、倾斜、胶囊、图片透镜，保留原职责与交互"
+  default_prompt: "使用 $glass-ui，按当前范围改造现有组件或整套界面，沿用项目技术栈、组件职责、业务逻辑和交互；整套升级先盘点共享组件与行为基线，再统一定义材质 tokens 逐类迁移，并验证回归与降级。"
 policy:
   allow_implicit_invocation: true

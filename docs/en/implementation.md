@@ -8,6 +8,24 @@ Create or modify source files in the project's actual component directory for th
 
 Select the needed materials and behaviors from the [component recipes](components.md), then read the relevant baseline code. Extract only the tokens, styles, and controller logic needed by the component. In an existing product, prefer its theme and scoped styles over copying the demo's global reset, showcase layout, or sample business content. Integrate the generated component at a real usage point, including mounting, cleanup, and applicable states.
 
+## Integrate a whole-UI upgrade
+
+For a whole-UI upgrade, identify the layout entry point, pages, and owners of shared components before choosing where tokens belong. Map existing CSS variables, design tokens, and component variants where possible; add only shared material roles such as page scene, surface levels, rim, shadow, focus, and motion. Keep color themes independent from material strength so existing light/dark switching continues to work.
+
+Integrate through the host architecture without taking over business state: use local classes for CSS Modules/scoped styles, the existing theme provider for CSS-in-JS, or existing configuration/component classes for utility CSS. Avoid unscoped `button`, `input`, and `*` selectors, and avoid brittle queries against framework-generated DOM. A wrapper should provide positioning or decoration without copying props, events, or data state; hide decorative glass from assistive technology and set `pointer-events: none`. Migrate by component category and run existing tests after each group to localize regressions.
+
+Keep the two coordinate systems separate: role tokens define cross-component sharing, while material strengths define value ranges. Map starting points to the included variables instead of inventing a third naming scheme in the project:
+
+| Role token | Material strength | Starting variable in `assets/demo/glass.css` |
+| --- | --- | --- |
+| page scene | Page backdrop (light / dark) | `--g-bg`, `--g-solid` |
+| surface light / regular / thick | Light glass / frosted / thick frost | `--g-surface`, `--g-subtle`, `--g-blur` |
+| rim | Narrow edge highlight and outline | `--g-border`, `--g-outline`, `--g-highlight` |
+| shadow | Depth and separation | `--g-shadow` |
+| focus | Focus ring | `--g-focus` |
+| tint | Tinting, primary actions, selection | `--g-accent`, `--g-accent-rgb`, `--g-glow` |
+| motion | Pill and spotlight timing | Spring parameters in `glass.js` |
+
 `GlassUI.mount()` mounts card effects and the demo tabs controller. The tabs controller writes `aria-selected`, `tabIndex`, and panel visibility and handles clicks and keyboard behavior; it is not a decoration-only adapter for existing navigation. Use `GlassUI.mountSelectionPill(track, { vertical: true })`, returning `{ select, dispose }`, for existing navigation. Call `select(selectedElement)` after committed host updates, pass `null` when nothing is selected, and call `dispose()` on unmount. It moves only the pill without managing routing, ARIA, or focus. Use `vertical: false` horizontally. Do not mount both interfaces on one track. See [on-demand presets](presets.md). These interfaces do not submit forms, manage dialogs, or generate arbitrary components; project components or native controls own business behavior. Names such as `GlassCard` may identify project components actually created and exported; they are not existing package exports supplied by this skill.
 
 Natural-language requests such as “tilt up to 2°” or “disable the spotlight” describe generation requirements. The existing card controller has no matching prop or `data-max-tilt` interface. Adapt the generated instance logic when needed, and verify the total tilt limit and preference fallbacks rather than inventing accepted parameters. Generated results run with the project and do not call the skill at runtime.

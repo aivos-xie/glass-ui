@@ -8,7 +8,7 @@
 
 [直接体验追光与 3D 卡片](https://aivos-xie.github.io/glass-ui/#spotlight-demo)：观察卡片内部跟光、局部边框高光、最多 4° 的倾斜和移出复原。
 
-给能读取 Markdown 和项目文件的 AI Agent 使用的玻璃 UI 设计规则与组件样板。核心指令不依赖 Codex、Claude 或任何厂商专用工具，采用 [Agent Skills 开放格式](https://agentskills.io/specification)。
+给能读取 Markdown 和项目文件的 AI Agent 使用的玻璃 UI 设计规则与组件样板，支持单组件改造以及把现有前端页面、组件库或整套产品 UI 统一升级。改造保留组件语义、接口、数据流和交互。核心指令不依赖 Codex、Claude 或任何厂商专用工具，采用 [Agent Skills 开放格式](https://agentskills.io/specification)。
 
 ## 给 Agent 一句话就能安装
 
@@ -49,6 +49,10 @@ npx --yes skills@1.9.0 add aivos-xie/glass-ui --skill glass-ui --agent claude-co
 安装后可以直接说：
 
 > 使用 Glass UI Skill 为当前页面加入磨砂玻璃卡片、追光边框和滑动选中胶囊，保留现有业务行为。
+
+整套 UI 升级会先盘点共享组件和现有交互，再统一材质 tokens 并逐类迁移：
+
+> 使用 Glass UI Skill，把这个现有 Web 项目整体升级为协调的玻璃 UI。保留全部组件用途、props/API、路由、数据行为和键盘操作，先盘点再分组迁移并回归验证。
 
 支持显式 Skill 命令的 Agent 也可以使用自己的原生语法，例如 Codex 的 `$glass-ui`。单个开关、表单、按钮或导航的请求只实现对应组件，无需引入整套展示页。
 
@@ -131,7 +135,7 @@ references/                  材质、组件配方、实现与验收规则
 docs/en/                     英文使用指南与技术参考
 assets/demo/                 无依赖 HTML / CSS / JavaScript 样板
 assets/adapters/             Flutter 与小程序基础容器
-scripts/check_assets.py      资源、引用和基础语义检查
+scripts/check_assets.py      资源、引用、基础语义与中英结构对齐检查
 scripts/validate_browser.mjs 可选多引擎回归与截图
 docs/                        演示截图与验证记录
 docs/index.html              GitHub Pages 展示站入口（main 分支 /docs）

@@ -2,7 +2,7 @@
 
 [English](skill-guide.md) | [简体中文](../../SKILL.md)
 
-Treat glass as a complete component design language: implement material, layering, states, interactions, and readability together. Preserve the project's framework, design semantics, business behavior, and brand. A request for one component should change only the necessary scope.
+Treat glass as a complete frontend visual system: implement material, layering, states, interactions, and readability together. The skill supports a single component, a page, or a whole existing UI while preserving component semantics, public APIs, data flow, and behavior. A single-component request stays scoped to that component.
 
 Users can ask, “Use glass-ui to generate a …” and describe the component, material, or interaction. Infer unspecified options from the project; clarify missing information when it affects business behavior. Components are not limited to the bundled examples. The skill guides the agent to generate project code; generated components run independently.
 
@@ -18,11 +18,12 @@ Communicate in the user's language. The English and Chinese documentation must r
 
 ## Workflow
 
-1. Inspect the platform, components, style variables, animation libraries, and target browsers/devices. For screenshots, distinguish material, motion, and layering without copying business text. For broad redesigns, use [design decisions](design-system.md) to separate content, structure, and floating controls.
-2. Select materials for the current request: light glass for small controls, frosted glass for content containers, clear liquid glass for selection indicators, and tinted glass for primary actions or states. For a standalone showcase, or an explicit request for pronounced glass without an established theme, dark frost is a useful starting point. Preserve existing project themes and brands. See [materials and motion](materials-and-motion.md) for parameters and hierarchy.
-3. For explicit “settings navigation capsule / settings pill / 设置导航胶囊” or “sidebar drawer / glass drawer / 侧栏抽屉” requests, or matching scenarios, first read the relevant [preset recipe](presets.md). For other components, follow the [component recipes](components.md) to generate or adapt real components in the current project. Reuse existing structure, state, and accessible primitives, combining only needed materials and behaviors. Use the same process for unlisted components, without requiring a fixed parameter form or a prebuilt component package.
-4. Read [implementation](implementation.md) as needed. Take only relevant parts of the dependency-free `assets/demo/glass.css` and `glass.js` baseline; a single component does not need the entire demo. Consult [rendering and performance](rendering-and-performance.md) for refraction or performance work. Known-image lenses use `image-lens.js`; native/mini-program work uses [platform adapters](platform-adapters.md). `assets/demo/index.html` is only a preview.
-5. Check appearance and real interactions using the [validation checklist](validation.md). Report browsers actually tested, untested platforms, and fallback behavior. Syntax support checks are not visual evidence.
+1. Identify the requested scope: one component, one page, or the full UI. Inspect the project's stack, component library, theme entry points, and target browsers/devices; keep a single-component change local. When the user supplies screenshots or references, separate still material, motion deformation, and layering, and take only the visual requirements without copying their business text or content.
+2. For a page or whole-UI upgrade, read [design decisions](design-system.md) first. Inventory routes, shared components, existing style boundaries, and a behavior baseline covering each component's purpose, public interface, states, and user-visible actions. Use screenshots to understand material and hierarchy, not to copy business content.
+3. Define a small shared set of material and state tokens, then apply them to real project components. A single-component request can select one material directly; it does not require a token system. Preserve the project's theme and brand; use dark frost only for a standalone showcase without an established theme. See [materials and motion](materials-and-motion.md) for parameters and hierarchy.
+4. For explicit “settings navigation capsule / settings pill / 设置导航胶囊” or “sidebar drawer / glass drawer / 侧栏抽屉” requests, first read the relevant [preset recipe](presets.md). For other components, follow [component recipes](components.md) and reuse their existing structure, state, and accessible primitives. Apply the same semantic approach to unlisted components. Track components need their decorative layer in place, such as a direct `data-glass-pill` child of `data-glass-tabs`; a missing required layer makes the controller skip silently, so verify it yourself.
+5. Read [implementation](implementation.md) as needed. A whole-UI upgrade uses the host's theme and scoped style boundaries rather than broad tag selectors; a single component only takes the required parts of the dependency-free demo. Consult [rendering and performance](rendering-and-performance.md) for refraction or performance work, and use `image-lens.js` for known-image lenses; native/mini-program work uses [platform adapters](platform-adapters.md).
+6. Check appearance, real interactions, and behavior parity using the [validation checklist](validation.md). Report tested browsers, untested platforms, fallback behavior, and any observed differences. Syntax support checks are not visual evidence.
 
 ## Required effects
 
@@ -37,10 +38,12 @@ Select effects for the current task. The interaction constraints below apply to 
 - Provide clear feedback for applicable default, hover, pressed, keyboard focus, selected, disabled, loading, and error states. Touch interaction must not depend on hover, and color alone must not convey state.
 - Avoid repeated strong blur on nested glass layers. Check light, dark, and complex backgrounds. Provide usable fallbacks for reduced motion, forced colors, missing blur, and missing enhanced refraction.
 - Respect reduced-transparency and increased-contrast preferences. Use `data-glass-quality` for full/balanced/static and `data-glass-transparency="reduced"` for solid surfaces. Browser and device names do not replace rendering checks.
+- Glass changes presentation only. Preserve component purpose, DOM/accessibility roles, props/APIs, form values, events, routes, data flow, permissions, and existing state transitions. Do not replace, remove, or invent business features for visual consistency.
 
 ## Read on demand
 
 - Page style, brand, and material hierarchy: [design decisions](design-system.md).
+- Whole-UI upgrade inventory, shared tokens, and behavior invariants: [design decisions](design-system.md) and [implementation](implementation.md).
 - Refraction routes, quality controls, and performance: [rendering and performance](rendering-and-performance.md).
 - Flutter, Apple, Android, desktop, and mini programs: read only the relevant part of [platform adapters](platform-adapters.md).
 - The five reference projects and adoption decisions: [research notes](research-notes.md); routine tasks need not load them.
@@ -50,7 +53,7 @@ Select effects for the current task. The interaction constraints below apply to 
 - `docs/presets/`: two runnable Web presets; other platforms retain native primitives and port materials.
 - `assets/demo/`: offline component examples, design tokens, pointer and pill controllers, and optional SVG background displacement. No remote fonts, images, analytics, or build step.
 - [Implementation reference](implementation.md): native, React, and Vue integration, with optional library choices. Before installing a third-party library, verify its current API, license, and target browser support. No third-party library is required.
-- `scripts/check_assets.py`: checks resource completeness, local references, and basic semantics. It does not replace browser testing.
+- `scripts/check_assets.py`: checks resource completeness, local references, basic semantics, and Chinese/English structural alignment. It does not replace browser testing.
 - `scripts/validate_browser.mjs`: optional Playwright/PNG checks reporting actual engines, screenshots, and passed/failed/skipped checks. WebKit engine tests are not Safari or physical iPhone certification.
 - `assets/adapters/`: baseline Flutter and mini-program containers, not complete native apps, video engines, or an untested promise of universal refraction.
 
