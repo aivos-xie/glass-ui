@@ -1,0 +1,138 @@
+{
+  "testedAt": "2026-11-21",
+  "tests": [
+    {
+      "name": "Offline opening, resources and no external requests",
+      "pass": true
+    },
+    {
+      "name": "Total tilt bound for normalized pointer grid",
+      "pass": true,
+      "detail": {
+        "samples": 6561,
+        "maxDegrees": 3.99999999999995
+      }
+    },
+    {
+      "name": "Pointer spotlight, real card corner tilt, and smooth reset",
+      "pass": true,
+      "detail": {
+        "maxObservedDegrees": 3.7875406260779014,
+        "reset": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "Shared pill retarget, different widths, and settled alignment",
+      "pass": true,
+      "detail": {
+        "midAnimation": {
+          "x": 77.52700805664062,
+          "y": 8.5050048828125,
+          "width": 191.34375,
+          "height": 82.989990234375,
+          "target": 171,
+          "targetWidth": 187,
+          "targetY": 7
+        },
+        "settled": {
+          "x": 7,
+          "y": 7,
+          "width": 161,
+          "height": 86,
+          "target": 7,
+          "targetWidth": 161,
+          "targetY": 7
+        }
+      }
+    },
+    {
+      "name": "Tab keyboard semantics, focus and panels",
+      "pass": true
+    },
+    {
+      "name": "Buttons, busy state and favorite toggle",
+      "pass": true
+    },
+    {
+      "name": "Form validation, safe user text, selection and range",
+      "pass": true
+    },
+    {
+      "name": "Native selection and synchronized switches",
+      "pass": true
+    },
+    {
+      "name": "Dialog focus, Escape and return focus",
+      "pass": true
+    },
+    {
+      "name": "Disclosure outside click and tooltip Escape",
+      "pass": true
+    },
+    {
+      "name": "All four material presets and adjustable tokens",
+      "pass": true
+    },
+    {
+      "name": "Controlled SVG refraction visibly changes edge pixels",
+      "pass": true,
+      "detail": {
+        "beforeBytes": 85307,
+        "afterBytes": 87610
+      }
+    },
+    {
+      "name": "Reduced-motion change disables tilt, refraction and springs",
+      "pass": true
+    },
+    {
+      "name": "No-blur fallback keeps usable opaque surfaces",
+      "pass": true
+    },
+    {
+      "name": "Idle animation loops stop",
+      "pass": true,
+      "detail": {
+        "pendingAnimationFrames": 0
+      }
+    },
+    {
+      "name": "Mobile touch, panel overflow and navigation resizing",
+      "pass": true
+    },
+    {
+      "name": "Forced colors preserves focus and selected state",
+      "pass": true
+    },
+    {
+      "name": "Controller disposal removes pointer updates and RAF",
+      "pass": true
+    },
+    {
+      "name": "No browser runtime errors",
+      "pass": true
+    },
+    {
+      "name": "Final visual refinements: inward refraction and long-name mobile form",
+      "pass": true,
+      "detail": {
+        "mobileWidth": 390,
+        "buttonHeight": 44
+      }
+    }
+  ],
+  "limitations": [
+    "Only installed Microsoft Edge / Chromium tested; Safari and Firefox not tested.",
+    "SVG scene refraction is tested separately from arbitrary DOM backdrop refraction.",
+    "Visual review is not a full WCAG conformance audit."
+  ],
+  "browser": "Microsoft Edge 157.0.4341.60",
+  "summary": {
+    "passed": 20,
+    "failed": 0
+  }
+}
