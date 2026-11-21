@@ -9,13 +9,13 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='6' y='6' width='28' height='28' rx='9' fill='%23887be0'/%3E%3Cpath d='M13 21h14M20 14v14' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="glass.css">
   <link rel="stylesheet" href="demo.css">
-  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="site.css?v=20261121-spotlight">
   <script src="lens-map.js" defer></script>
   <script src="glass.js" defer></script>
   <script src="image-lens.js" defer></script>
   <script src="demo.js" defer></script>
-  <script src="locale.js" defer></script>
-  <script src="site.js" defer></script>
+  <script src="locale.js?v=20261121-spotlight" defer></script>
+  <script src="site.js?v=20261121-spotlight" defer></script>
 </head>
 <body>
   <svg class="icon-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -69,8 +69,33 @@
       <section class="component-finder glass" aria-labelledby="finder-title">
         <div><span class="eyebrow">FIND YOUR COMPONENT</span><h2 id="finder-title">想试试哪一种？</h2><p>搜索组件，或从下方分类开始。</p></div>
         <div class="finder-input"><label class="sr-only" for="component-search">搜索所有组件</label><div class="g-search"><svg class="g-icon"><use href="#i-search"/></svg><input class="g-input" id="component-search" type="search" placeholder="搜索按钮、透镜、分页…" aria-controls="component-results" autocomplete="off"></div><p id="component-search-status" class="g-hint" role="status" aria-live="polite">25+ 组件与变体，点击即可体验。</p></div>
-        <nav class="component-shortcuts" aria-label="组件快捷入口"><a href="#buttons-title" data-open-panel="components">按钮</a><a href="#form-title" data-open-panel="components">表单</a><a href="#overlay-title" data-open-panel="components">弹层</a><a href="#lens-experiment" data-open-panel="materials">图片透镜</a><a href="#extended-title" data-open-panel="components">更多组件</a></nav>
+        <nav class="component-shortcuts" aria-label="组件快捷入口"><a href="#spotlight-demo" data-open-panel="components">追光与 3D 卡片</a><a href="#buttons-title" data-open-panel="components">按钮</a><a href="#form-title" data-open-panel="components">表单</a><a href="#overlay-title" data-open-panel="components">弹层</a><a href="#lens-experiment" data-open-panel="materials">图片透镜</a><a href="#extended-title" data-open-panel="components">更多组件</a></nav>
         <ul id="component-results" class="component-results" hidden></ul>
+      </section>
+      <section class="spotlight-showcase" id="spotlight-demo" aria-labelledby="spotlight-title">
+        <div class="section-heading"><div><span class="eyebrow">LIGHT THAT FOLLOWS YOU</span><h2 id="spotlight-title">一束光，跟着你的指尖。</h2></div><p>专属追光与 3D 卡片体验</p></div>
+        <div class="spotlight-layout">
+          <div class="spotlight-stage" id="spotlight-stage" data-spotlight-mode="ready">
+            <div class="spotlight-scenery" aria-hidden="true"><span class="scenery-orb"></span><span class="scenery-ring"></span><span class="scenery-ribbon"></span><span class="scenery-caption">FROST / LIGHT / DEPTH</span></div>
+            <div class="spotlight-host" id="spotlight-card" data-glass-card>
+              <article class="glass spotlight-face" id="spotlight-face" data-glass-face aria-labelledby="spotlight-card-title">
+                <span class="glass__light" id="spotlight-light" aria-hidden="true"></span><span class="glass__edge" id="spotlight-edge" aria-hidden="true"></span>
+                <div class="glass__content">
+                  <div class="row between"><span class="app-icon"><svg class="g-icon"><use href="#i-spark"/></svg></span><span class="spotlight-card-label">THE FROSTED EDIT</span></div>
+                  <h3 id="spotlight-card-title">光，停在你<br>想停的地方。</h3><p class="spotlight-card-copy">移动到中心，看柔光跟随；靠近边缘，看局部高光；扫过四角，感受轻微倾斜。</p>
+                  <div class="spotlight-card-bottom"><span class="spotlight-pin-state" id="spotlight-pin-state">给灵感留个位置</span><button class="g-button" id="spotlight-pin" type="button" aria-pressed="false">置顶灵感 <svg class="g-icon"><use href="#i-plus"/></svg></button></div>
+                </div>
+              </article>
+            </div>
+            <span class="spotlight-stage-note">MOVE SLOWLY. NOTICE THE LIGHT.</span>
+          </div>
+          <div class="spotlight-explainer">
+            <ol class="spotlight-steps"><li><span>01</span><div><h3>内部柔光，随光标游走。</h3><p>径向光斑留在磨砂表面里，光线柔和，前景文字始终清晰。</p></div></li><li><span>02</span><div><h3>高光，只在靠近的边缘。</h3><p>沿圆角边框慢慢移动，观察局部提亮，而不是整圈一起发光。</p></div></li><li><span>03</span><div><h3>轻轻倾斜，再平滑归位。</h3><p>固定外框测量光标，内层卡片转动；总倾角不超过 4°，移出后自然复原。</p></div></li></ol>
+            <div class="spotlight-readout"><div><span>当前总倾角</span><output id="spotlight-angle" aria-label="当前总倾角" aria-live="off">0.0°</output></div><div><span>倾角上限</span><strong>4.0°</strong></div><div><span>交互方式</span><strong>Pointer</strong></div></div>
+            <p class="spotlight-status" id="spotlight-status" role="status" aria-live="polite">将鼠标或触控笔移到左侧卡片上，开始体验。</p>
+            <p class="spotlight-access-note">触屏保留静态磨砂和可操作按钮；减少动态、实色表面与高对比偏好优先生效。<a href="#quality-select" data-open-panel="motion">调整效果偏好 →</a></p>
+          </div>
+        </div>
       </section>
       <section class="showcase" id="showcase" aria-labelledby="showcase-title">
         <div class="section-heading"><div><span class="eyebrow">THE PLAYGROUND</span><h2 id="showcase-title">每一种交互，都有温度。</h2></div><p>点击、滑动、悬停。试试它们。</p></div>

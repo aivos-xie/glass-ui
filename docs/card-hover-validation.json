@@ -1,0 +1,2937 @@
+{
+  "testedAt": "2026-11-21T07:16:51.905122+00:00",
+  "target": "docs static website",
+  "summary": {
+    "passed": 57,
+    "failed": 0,
+    "skipped": 0
+  },
+  "sourceSha256": {
+    "index.html": "eec733eef5866c1323fdd22e1d50a408fc5e20fcc29c3c4a4d7ad0e1b8706345",
+    "site.css": "5ca54b6782690c2fca7be3ba2ee20fb617180e2512519465803d4b74dd0e6140",
+    "site.js": "825fca8c85daf94a0bfab0b395f41d55fb57285fbf5e3b2347ab5acad931081d",
+    "locale.js": "5e348b90528afe16e70f603ecc6d46f12567054015571e721e332b1618619f9f",
+    "glass.css": "333542a38c149785a4fcbf2a3365e7424ad43ce87debafc08bf860fe1694f2c2",
+    "glass.js": "5800236f000b3d670d139266b8aec19e5c65a152d2d66bdc172d9dbc012a9521"
+  },
+  "engines": [
+    {
+      "testedAt": "2026-11-21T07:11:16.428Z",
+      "browser": "edge",
+      "tests": [
+        {
+          "name": "Dedicated sample has a fixed measurement host, clipped frost and independent non-intercepting light layers",
+          "pass": true,
+          "details": {
+            "nested": true,
+            "hostTransform": "none",
+            "overflow": "hidden",
+            "radius": "27px",
+            "blur": "blur(18px) saturate(1.3)",
+            "lightPointerEvents": "none",
+            "edgePointerEvents": "none",
+            "edgeMask": "exclude, exclude"
+          }
+        },
+        {
+          "name": "light center: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 0,
+            "lightNear": {
+              "samples": 21200,
+              "changed": 19468,
+              "meanMaxChannelDifference": 7.438301886792453,
+              "maxChannelDifference": 17
+            },
+            "lightFar": {
+              "samples": 15984,
+              "changed": 14810,
+              "meanMaxChannelDifference": 8.33108108108108,
+              "maxChannelDifference": 17
+            },
+            "edgeNear": {
+              "samples": 0,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeFar": {
+              "samples": 0,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "light top-left: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991490035904085,
+            "lightNear": {
+              "samples": 11095,
+              "changed": 10429,
+              "meanMaxChannelDifference": 6.613519603424966,
+              "maxChannelDifference": 14
+            },
+            "lightFar": {
+              "samples": 8939,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1051,
+              "changed": 369,
+              "meanMaxChannelDifference": 6.74500475737393,
+              "maxChannelDifference": 32
+            },
+            "edgeFar": {
+              "samples": 930,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "light top-right: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991490035904085,
+            "lightNear": {
+              "samples": 10990,
+              "changed": 10349,
+              "meanMaxChannelDifference": 8.66041856232939,
+              "maxChannelDifference": 16
+            },
+            "lightFar": {
+              "samples": 9031,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1048,
+              "changed": 279,
+              "meanMaxChannelDifference": 5.846374045801527,
+              "maxChannelDifference": 42
+            },
+            "edgeFar": {
+              "samples": 933,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "light bottom-right: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991490035904085,
+            "lightNear": {
+              "samples": 10882,
+              "changed": 9299,
+              "meanMaxChannelDifference": 6.153188752067635,
+              "maxChannelDifference": 16
+            },
+            "lightFar": {
+              "samples": 9128,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1044,
+              "changed": 190,
+              "meanMaxChannelDifference": 3.8955938697318007,
+              "maxChannelDifference": 45
+            },
+            "edgeFar": {
+              "samples": 936,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "light bottom-left: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991490035904085,
+            "lightNear": {
+              "samples": 10986,
+              "changed": 10335,
+              "meanMaxChannelDifference": 9.15665392317495,
+              "maxChannelDifference": 18
+            },
+            "lightFar": {
+              "samples": 9035,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1047,
+              "changed": 283,
+              "meanMaxChannelDifference": 7.835721107927411,
+              "maxChannelDifference": 51
+            },
+            "edgeFar": {
+              "samples": 933,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "dark center: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 0,
+            "lightNear": {
+              "samples": 21200,
+              "changed": 19837,
+              "meanMaxChannelDifference": 40.70212264150943,
+              "maxChannelDifference": 82
+            },
+            "lightFar": {
+              "samples": 15984,
+              "changed": 15046,
+              "meanMaxChannelDifference": 44.79823573573574,
+              "maxChannelDifference": 82
+            },
+            "edgeNear": {
+              "samples": 0,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeFar": {
+              "samples": 0,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "dark top-left: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991490035904085,
+            "lightNear": {
+              "samples": 11095,
+              "changed": 10580,
+              "meanMaxChannelDifference": 42.936998648039655,
+              "maxChannelDifference": 77
+            },
+            "lightFar": {
+              "samples": 8939,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1051,
+              "changed": 381,
+              "meanMaxChannelDifference": 48.01141769743102,
+              "maxChannelDifference": 197
+            },
+            "edgeFar": {
+              "samples": 930,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "dark top-right: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991490035904085,
+            "lightNear": {
+              "samples": 10990,
+              "changed": 10425,
+              "meanMaxChannelDifference": 46.7171974522293,
+              "maxChannelDifference": 81
+            },
+            "lightFar": {
+              "samples": 9031,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1048,
+              "changed": 286,
+              "meanMaxChannelDifference": 37.29389312977099,
+              "maxChannelDifference": 206
+            },
+            "edgeFar": {
+              "samples": 933,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "dark bottom-right: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991490035904085,
+            "lightNear": {
+              "samples": 10882,
+              "changed": 10214,
+              "meanMaxChannelDifference": 43.97794523065613,
+              "maxChannelDifference": 83
+            },
+            "lightFar": {
+              "samples": 9128,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1044,
+              "changed": 196,
+              "meanMaxChannelDifference": 24.208812260536398,
+              "maxChannelDifference": 197
+            },
+            "edgeFar": {
+              "samples": 936,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "dark bottom-left: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991490035904085,
+            "lightNear": {
+              "samples": 10986,
+              "changed": 10382,
+              "meanMaxChannelDifference": 44.36282541416348,
+              "maxChannelDifference": 78
+            },
+            "lightFar": {
+              "samples": 9035,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1047,
+              "changed": 289,
+              "meanMaxChannelDifference": 38.61509073543458,
+              "maxChannelDifference": 196
+            },
+            "edgeFar": {
+              "samples": 933,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "Real pointer grid and continuous motion stay within a four-degree total tilt",
+          "pass": true,
+          "details": {
+            "sampleCount": 387,
+            "maxAngle": 3.9991490035904085,
+            "endpoints": [
+              {
+                "point": [
+                  0.02,
+                  0.02
+                ],
+                "x": 2.7893,
+                "y": -2.8327,
+                "lit": 1,
+                "transform": "matrix3d(0.998778, -0.00240493, 0.0493613, 0, 0, 0.998815, 0.0486632, 0, -0.0494198, -0.0486038, 0.997595, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.974675166853768
+              },
+              {
+                "point": [
+                  0.5,
+                  0.02
+                ],
+                "x": 3.8331,
+                "y": -0.025,
+                "lit": 1,
+                "transform": "matrix3d(1, -2.9169e-05, 0.000435356, 0, 0, 0.997763, 0.0668503, 0, -0.000436332, -0.0668503, 0.997763, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.833181404172902
+              },
+              {
+                "point": [
+                  0.98,
+                  0.02
+                ],
+                "x": 2.839,
+                "y": 2.8054,
+                "lit": 1,
+                "transform": "matrix3d(0.998802, 0.00242417, -0.0488838, 0, 0, 0.998773, 0.0495296, 0, 0.0489439, -0.0494703, 0.997576, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.990456999906679
+              },
+              {
+                "point": [
+                  0.98,
+                  0.5
+                ],
+                "x": 0.0258,
+                "y": 3.833,
+                "lit": 1,
+                "transform": "matrix3d(0.997763, 3.01016e-05, -0.0668486, 0, 0, 1, 0.000450295, 0, 0.0668486, -0.000449288, 0.997763, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.833086699606566
+              },
+              {
+                "point": [
+                  0.98,
+                  0.98
+                ],
+                "x": -2.8068,
+                "y": 2.838,
+                "lit": 1,
+                "transform": "matrix3d(0.998774, -0.00242453, -0.0494528, 0, 0, 0.9988, -0.0489683, 0, 0.0495122, 0.0489083, 0.997575, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.990729915471944
+              },
+              {
+                "point": [
+                  0.5,
+                  0.98
+                ],
+                "x": -3.8321,
+                "y": 0.0284,
+                "lit": 1,
+                "transform": "matrix3d(1, -3.31273e-05, -0.000494565, 0, 0, 0.997764, -0.0668329, 0, 0.000495673, 0.0668329, 0.997764, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.8322050789301274
+              },
+              {
+                "point": [
+                  0.02,
+                  0.98
+                ],
+                "x": -2.8375,
+                "y": -2.8085,
+                "lit": 1,
+                "transform": "matrix3d(0.998799, 0.00242557, 0.0489379, 0, 0, 0.998774, -0.0495035, 0, -0.0489979, 0.049444, 0.997574, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.991569613751013
+              },
+              {
+                "point": [
+                  0.02,
+                  0.5
+                ],
+                "x": -0.0264,
+                "y": -3.8329,
+                "lit": 1,
+                "transform": "matrix3d(0.997763, 3.08008e-05, 0.0668468, 0, 0, 1, -0.000460767, 0, -0.0668468, 0.000459736, 0.997763, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.832990781363521
+              },
+              {
+                "point": [
+                  0.5,
+                  0.5
+                ],
+                "x": -0.0001,
+                "y": -0.0275,
+                "lit": 1,
+                "transform": "matrix3d(1, 8.37698e-10, 0.000479966, 0, 0, 1, -1.74533e-06, 0, -0.000479966, 1.74533e-06, 1, 0, 0, 0, 0, 1)",
+                "totalAngle": 0.02750018182252167
+              }
+            ]
+          }
+        },
+        {
+          "name": "Pointer exit resets gradually, monotonically and finally returns to zero",
+          "pass": true,
+          "details": {
+            "initialAngle": 3.9991490035904085,
+            "finalAngle": 0,
+            "samples": [
+              {
+                "ms": -4.999999999628926,
+                "x": 2.8284,
+                "y": 2.8284,
+                "lit": 1,
+                "angle": 3.9991490035904085
+              },
+              {
+                "ms": 1.3000000003739842,
+                "x": 2.8284,
+                "y": 2.8284,
+                "lit": 1,
+                "angle": 3.9991490035904085
+              },
+              {
+                "ms": 9.900000000372529,
+                "x": 2.3941,
+                "y": 2.3941,
+                "lit": 0.8465,
+                "angle": 3.3852759153848755
+              },
+              {
+                "ms": 18.500000000371074,
+                "x": 2.1968,
+                "y": 2.1968,
+                "lit": 0.7767,
+                "angle": 3.106363663554579
+              },
+              {
+                "ms": 26.90000000037253,
+                "x": 2.0158,
+                "y": 2.0158,
+                "lit": 0.7127,
+                "angle": 2.850477578810707
+              },
+              {
+                "ms": 35.40000000037253,
+                "x": 1.8534,
+                "y": 1.8534,
+                "lit": 0.6553,
+                "angle": 2.6208748168897302
+              },
+              {
+                "ms": 45.10000000037326,
+                "x": 1.7024,
+                "y": 1.7024,
+                "lit": 0.6019,
+                "angle": 2.4073800188863443
+              },
+              {
+                "ms": 53.7000000003718,
+                "x": 1.545,
+                "y": 1.545,
+                "lit": 0.5462,
+                "angle": 2.184827541300652
+              },
+              {
+                "ms": 62.10000000037326,
+                "x": 1.4177,
+                "y": 1.4177,
+                "lit": 0.5012,
+                "angle": 2.00482826445493
+              },
+              {
+                "ms": 70.7000000003718,
+                "x": 1.3035,
+                "y": 1.3035,
+                "lit": 0.4608,
+                "angle": 1.8433478613803633
+              },
+              {
+                "ms": 79.2000000003718,
+                "x": 1.196,
+                "y": 1.196,
+                "lit": 0.4229,
+                "angle": 1.6913379998446547
+              },
+              {
+                "ms": 87.7000000003718,
+                "x": 1.0986,
+                "y": 1.0986,
+                "lit": 0.3884,
+                "angle": 1.5536074165255385
+              },
+              {
+                "ms": 96.00000000037107,
+                "x": 1.0091,
+                "y": 1.0091,
+                "lit": 0.3568,
+                "angle": 1.4270460152788036
+              },
+              {
+                "ms": 104.50000000037107,
+                "x": 0.9287,
+                "y": 0.9287,
+                "lit": 0.3283,
+                "angle": 1.3133513789577351
+              },
+              {
+                "ms": 112.90000000037253,
+                "x": 0.853,
+                "y": 0.853,
+                "lit": 0.3016,
+                "angle": 1.2063018867933717
+              },
+              {
+                "ms": 121.40000000037253,
+                "x": 0.7843,
+                "y": 0.7843,
+                "lit": 0.2773,
+                "angle": 1.1091503769102808
+              },
+              {
+                "ms": 129.90000000037253,
+                "x": 0.7204,
+                "y": 0.7204,
+                "lit": 0.2547,
+                "angle": 1.0187860281981138
+              },
+              {
+                "ms": 138.2000000003718,
+                "x": 0.6617,
+                "y": 0.6617,
+                "lit": 0.2339,
+                "angle": 0.935774713056266
+              },
+              {
+                "ms": 146.50000000037107,
+                "x": 0.609,
+                "y": 0.609,
+                "lit": 0.2153,
+                "angle": 0.861247950827746
+              },
+              {
+                "ms": 154.80000000037398,
+                "x": 0.5605,
+                "y": 0.5605,
+                "lit": 0.1982,
+                "angle": 0.7926603801744547
+              },
+              {
+                "ms": 163.30000000037398,
+                "x": 0.5158,
+                "y": 0.5158,
+                "lit": 0.1824,
+                "angle": 0.7294464289695924
+              },
+              {
+                "ms": 171.60000000037326,
+                "x": 0.4738,
+                "y": 0.4738,
+                "lit": 0.1675,
+                "angle": 0.6700505674754835
+              },
+              {
+                "ms": 179.90000000037253,
+                "x": 0.4361,
+                "y": 0.4361,
+                "lit": 0.1542,
+                "angle": 0.6167355570545
+              },
+              {
+                "ms": 188.2000000003718,
+                "x": 0.4013,
+                "y": 0.4013,
+                "lit": 0.1419,
+                "angle": 0.5675215825176776
+              },
+              {
+                "ms": 196.60000000037326,
+                "x": 0.3694,
+                "y": 0.3694,
+                "lit": 0.1306,
+                "angle": 0.5224086803418654
+              },
+              {
+                "ms": 205.80000000037398,
+                "x": 0.3396,
+                "y": 0.3396,
+                "lit": 0.1201,
+                "angle": 0.4802655197523446
+              },
+              {
+                "ms": 215.00000000037107,
+                "x": 0.3098,
+                "y": 0.3098,
+                "lit": 0.1095,
+                "angle": 0.43812229420355014
+              },
+              {
+                "ms": 224.30000000037398,
+                "x": 0.2825,
+                "y": 0.2825,
+                "lit": 0.0999,
+                "angle": 0.39951452200365567
+              },
+              {
+                "ms": 233.50000000037107,
+                "x": 0.2574,
+                "y": 0.2574,
+                "lit": 0.091,
+                "angle": 0.3640179587227086
+              },
+              {
+                "ms": 243.50000000037107,
+                "x": 0.2348,
+                "y": 0.2348,
+                "lit": 0.083,
+                "angle": 0.33205687973380066
+              },
+              {
+                "ms": 252.90000000037253,
+                "x": 0.2125,
+                "y": 0.2125,
+                "lit": 0.0751,
+                "angle": 0.3005200375224449
+              },
+              {
+                "ms": 262.2000000003718,
+                "x": 0.1934,
+                "y": 0.1934,
+                "lit": 0.0684,
+                "angle": 0.27350864327024765
+              },
+              {
+                "ms": 271.60000000037326,
+                "x": 0.1762,
+                "y": 0.1762,
+                "lit": 0.0623,
+                "angle": 0.24918423330656722
+              },
+              {
+                "ms": 281.0000000003711,
+                "x": 0.1604,
+                "y": 0.1604,
+                "lit": 0.0567,
+                "angle": 0.2268397072537608
+              },
+              {
+                "ms": 292.10000000037326,
+                "x": 0.146,
+                "y": 0.146,
+                "lit": 0.0516,
+                "angle": 0.20647506838418386
+              },
+              {
+                "ms": 301.90000000037253,
+                "x": 0.1307,
+                "y": 0.1307,
+                "lit": 0.0462,
+                "angle": 0.18483763244813864
+              },
+              {
+                "ms": 311.60000000037326,
+                "x": 0.1185,
+                "y": 0.1185,
+                "lit": 0.0419,
+                "angle": 0.1675842474054049
+              },
+              {
+                "ms": 321.300000000374,
+                "x": 0.1075,
+                "y": 0.1075,
+                "lit": 0.038,
+                "angle": 0.15202791335787505
+              },
+              {
+                "ms": 331.0000000003711,
+                "x": 0.0976,
+                "y": 0.0976,
+                "lit": 0.0345,
+                "angle": 0.13802721031302215
+              },
+              {
+                "ms": 341.90000000037253,
+                "x": 0.0886,
+                "y": 0.0886,
+                "lit": 0.0313,
+                "angle": 0.12529929665592068
+              },
+              {
+                "ms": 351.7000000003718,
+                "x": 0.0794,
+                "y": 0.0794,
+                "lit": 0.0281,
+                "angle": 0.11228853887876887
+              },
+              {
+                "ms": 361.5000000003711,
+                "x": 0.072,
+                "y": 0.072,
+                "lit": 0.0255,
+                "angle": 0.10182336309511925
+              },
+              {
+                "ms": 371.2000000003718,
+                "x": 0.0653,
+                "y": 0.0653,
+                "lit": 0.0231,
+                "angle": 0.09234813563050209
+              },
+              {
+                "ms": 381.0000000003711,
+                "x": 0.0593,
+                "y": 0.0593,
+                "lit": 0.0209,
+                "angle": 0.0838628567592919
+              },
+              {
+                "ms": 393.300000000374,
+                "x": 0.0537,
+                "y": 0.0537,
+                "lit": 0.019,
+                "angle": 0.075943262740752
+              },
+              {
+                "ms": 401.90000000037253,
+                "x": 0.0475,
+                "y": 0.0475,
+                "lit": 0.0168,
+                "angle": 0.0671751403649336
+              },
+              {
+                "ms": 410.5000000003711,
+                "x": 0.0436,
+                "y": 0.0436,
+                "lit": 0.0154,
+                "angle": 0.06165970834777927
+              },
+              {
+                "ms": 419.10000000037326,
+                "x": 0.04,
+                "y": 0.04,
+                "lit": 0.0141,
+                "angle": 0.05656854019630157
+              },
+              {
+                "ms": 427.7000000003718,
+                "x": 0.0367,
+                "y": 0.0367,
+                "lit": 0.013,
+                "angle": 0.051901635971724404
+              },
+              {
+                "ms": 436.300000000374,
+                "x": 0.0337,
+                "y": 0.0337,
+                "lit": 0.0119,
+                "angle": 0.04765899567008151
+              },
+              {
+                "ms": 444.60000000037326,
+                "x": 0.0309,
+                "y": 0.0309,
+                "lit": 0.0109,
+                "angle": 0.04369919802488828
+              },
+              {
+                "ms": 453.10000000037326,
+                "x": 0.0284,
+                "y": 0.0284,
+                "lit": 0.0101,
+                "angle": 0.040163664343505975
+              },
+              {
+                "ms": 461.40000000037253,
+                "x": 0.0261,
+                "y": 0.0261,
+                "lit": 0.0092,
+                "angle": 0.03691097333392994
+              },
+              {
+                "ms": 470.0000000003711,
+                "x": 0.024,
+                "y": 0.024,
+                "lit": 0.0085,
+                "angle": 0.033941125007738326
+              },
+              {
+                "ms": 478.300000000374,
+                "x": 0.0221,
+                "y": 0.0221,
+                "lit": 0.0078,
+                "angle": 0.03125411934511695
+              },
+              {
+                "ms": 486.7000000003718,
+                "x": 0.0203,
+                "y": 0.0203,
+                "lit": 0.0072,
+                "angle": 0.028708535024465586
+              },
+              {
+                "ms": 495.10000000037326,
+                "x": 0.0187,
+                "y": 0.0187,
+                "lit": 0.0066,
+                "angle": 0.026445793377975372
+              },
+              {
+                "ms": 504.800000000374,
+                "x": 0.0172,
+                "y": 0.0172,
+                "lit": 0.0061,
+                "angle": 0.024324473099006327
+              },
+              {
+                "ms": 514.5000000003711,
+                "x": 0.0156,
+                "y": 0.0156,
+                "lit": 0.0055,
+                "angle": 0.02206173143718305
+              },
+              {
+                "ms": 524.4000000003725,
+                "x": 0.0141,
+                "y": 0.0141,
+                "lit": 0.005,
+                "angle": 0.01994041112832785
+              },
+              {
+                "ms": 534.1000000003733,
+                "x": 0.0128,
+                "y": 0.0128,
+                "lit": 0.0045,
+                "angle": 0.018101933499383598
+              },
+              {
+                "ms": 544.1000000003733,
+                "x": 0.0116,
+                "y": 0.0116,
+                "lit": 0.0041,
+                "angle": 0.016404877277035143
+              },
+              {
+                "ms": 554.0000000003711,
+                "x": 0.0105,
+                "y": 0.0105,
+                "lit": 0.0037,
+                "angle": 0.014849242346767823
+              },
+              {
+                "ms": 563.9000000003725,
+                "x": 0.0095,
+                "y": 0.0095,
+                "lit": 0.0034,
+                "angle": 0.01343502878834063
+              },
+              {
+                "ms": 574.0000000003711,
+                "x": 0.0086,
+                "y": 0.0086,
+                "lit": 0.003,
+                "angle": 0.012162236600868539
+              },
+              {
+                "ms": 583.9000000003725,
+                "x": 0.0078,
+                "y": 0.0078,
+                "lit": 0.0028,
+                "angle": 0.011030865783124538
+              },
+              {
+                "ms": 595.9000000003725,
+                "x": 0.0071,
+                "y": 0.0071,
+                "lit": 0.0025,
+                "angle": 0.010040916296958828
+              },
+              {
+                "ms": 604.2000000003718,
+                "x": 0.0063,
+                "y": 0.0063,
+                "lit": 0.0022,
+                "angle": 0.008909545475553084
+              },
+              {
+                "ms": 612.7000000003718,
+                "x": 0.0058,
+                "y": 0.0058,
+                "lit": 0.002,
+                "angle": 0.008202438706371704
+              },
+              {
+                "ms": 621.2000000003718,
+                "x": 0.0053,
+                "y": 0.0053,
+                "lit": 0.0019,
+                "angle": 0.007495331896462354
+              },
+              {
+                "ms": 629.6000000003733,
+                "x": 0.0049,
+                "y": 0.0049,
+                "lit": 0.0017,
+                "angle": 0.006929646427580469
+              },
+              {
+                "ms": 638.0000000003711,
+                "x": 0.0045,
+                "y": 0.0045,
+                "lit": 0.0016,
+                "angle": 0.006363961069526443
+              },
+              {
+                "ms": 646.300000000374,
+                "x": 0.0041,
+                "y": 0.0041,
+                "lit": 0.0015,
+                "angle": 0.005798275603244754
+              },
+              {
+                "ms": 656.4000000003725,
+                "x": 0.0038,
+                "y": 0.0038,
+                "lit": 0.0013,
+                "angle": 0.005374011602654994
+              },
+              {
+                "ms": 666.300000000374,
+                "x": 0.0034,
+                "y": 0.0034,
+                "lit": 0.0012,
+                "angle": 0.004808326140209567
+              },
+              {
+                "ms": 676.300000000374,
+                "x": 0.0031,
+                "y": 0.0031,
+                "lit": 0.0011,
+                "angle": 0.004384062082317658
+              },
+              {
+                "ms": 686.300000000374,
+                "x": 0.0028,
+                "y": 0.0028,
+                "lit": 0.001,
+                "angle": 0.003959797938208098
+              },
+              {
+                "ms": 695.6000000003733,
+                "x": 0.0025,
+                "y": 0.0025,
+                "lit": 0.0009,
+                "angle": 0.003535533882987461
+              },
+              {
+                "ms": 705.300000000374,
+                "x": 0.0023,
+                "y": 0.0023,
+                "lit": 0.0008,
+                "angle": 0.0032526911464528306
+              },
+              {
+                "ms": 715.300000000374,
+                "x": 0.0021,
+                "y": 0.0021,
+                "lit": 0.0007,
+                "angle": 0.0029698484073768685
+              },
+              {
+                "ms": 725.1000000003733,
+                "x": 0.0019,
+                "y": 0.0019,
+                "lit": 0.0007,
+                "angle": 0.0026870056649490677
+              },
+              {
+                "ms": 735.1000000003733,
+                "x": 0.0017,
+                "y": 0.0017,
+                "lit": 0.0006,
+                "angle": 0.002404162917978318
+              },
+              {
+                "ms": 743.9000000003725,
+                "x": 0.0016,
+                "y": 0.0016,
+                "lit": 0.0006,
+                "angle": 0.002262741783862765
+              },
+              {
+                "ms": 753.300000000374,
+                "x": 0.0014,
+                "y": 0.0014,
+                "lit": 0.0005,
+                "angle": 0.0019798990608497643
+              },
+              {
+                "ms": 762.7000000003718,
+                "x": 0.0013,
+                "y": 0.0013,
+                "lit": 0.0005,
+                "angle": 0.0018384777984692246
+              },
+              {
+                "ms": 772.0000000003711,
+                "x": 0.0012,
+                "y": 0.0012,
+                "lit": 0.0004,
+                "angle": 0.001697056337848825
+              },
+              {
+                "ms": 781.4000000003725,
+                "x": 0.0011,
+                "y": 0.0011,
+                "lit": 0.0004,
+                "angle": 0.0015556350934957293
+              },
+              {
+                "ms": 794.2000000003718,
+                "x": 0.001,
+                "y": 0.001,
+                "lit": 0.0003,
+                "angle": 0.001414213614858225
+              },
+              {
+                "ms": 803.800000000374,
+                "x": 0.0009,
+                "y": 0.0009,
+                "lit": 0.0003,
+                "angle": 0.001272792396541514
+              },
+              {
+                "ms": 813.2000000003718,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 822.800000000374,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 832.300000000374,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 844.1000000003733,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 854.0000000003711,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 863.9000000003725,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 873.7000000003718,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 883.6000000003733,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 894.2000000003718,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 904.0000000003711,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 913.800000000374,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 923.6000000003733,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 933.4000000003725,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 944.0000000003711,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 953.800000000374,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 963.5000000003711,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 973.300000000374,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 983.2000000003718,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 993.1000000003733,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1002.7000000003718,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              }
+            ]
+          }
+        },
+        {
+          "name": "Inner action receives clicks during tilt and stays keyboard operable",
+          "pass": true
+        },
+        {
+          "name": "Reduced motion disables hover decoration without hiding the real action",
+          "pass": true
+        },
+        {
+          "name": "Solid transparency fallback and forced colors preserve readable, operable content",
+          "pass": true
+        },
+        {
+          "name": "Touch and coarse pointer need no hover and do not activate tilt",
+          "pass": true,
+          "details": {
+            "coarsePointer": true,
+            "hoverActivated": false
+          }
+        },
+        {
+          "name": "Dedicated card works in both languages at 390, 768 and 1440 pixels without overflow",
+          "pass": true,
+          "details": {
+            "languages": [
+              "zh-CN",
+              "en"
+            ],
+            "viewports": [
+              390,
+              768,
+              1440
+            ]
+          }
+        },
+        {
+          "name": "No console or resource failures during pointer and preference tests",
+          "pass": true
+        }
+      ],
+      "limitations": [
+        "Screenshots and pointer motion use the real controller. Layer-pixel isolation only removes the face transform and hides the other light layer to prevent geometric changes from being mistaken for light.",
+        "The isolation checks do not add glow, alter material colors, or change the pointer-generated variables.",
+        "Coarse pointer and accessibility preferences are browser emulation, not physical-device or operating-system certification.",
+        "Pixel checks quantify this sample scene and do not establish full accessibility or general performance compliance."
+      ],
+      "target": "local static server",
+      "browserVersion": "157.0.4341.60",
+      "summary": {
+        "passed": 19,
+        "failed": 0
+      }
+    },
+    {
+      "testedAt": "2026-11-21T07:11:16.436Z",
+      "browser": "firefox",
+      "tests": [
+        {
+          "name": "Dedicated sample has a fixed measurement host, clipped frost and independent non-intercepting light layers",
+          "pass": true,
+          "details": {
+            "nested": true,
+            "hostTransform": "none",
+            "overflow": "hidden",
+            "radius": "27px",
+            "blur": "blur(18px) saturate(1.3)",
+            "lightPointerEvents": "none",
+            "edgePointerEvents": "none",
+            "edgeMask": "exclude"
+          }
+        },
+        {
+          "name": "light center: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 0.01247757989170808,
+            "lightNear": {
+              "samples": 21200,
+              "changed": 19250,
+              "meanMaxChannelDifference": 6.795188679245283,
+              "maxChannelDifference": 16
+            },
+            "lightFar": {
+              "samples": 15984,
+              "changed": 14629,
+              "meanMaxChannelDifference": 7.56956956956957,
+              "maxChannelDifference": 16
+            },
+            "edgeNear": {
+              "samples": 0,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeFar": {
+              "samples": 0,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "light top-left: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991518965527915,
+            "lightNear": {
+              "samples": 11095,
+              "changed": 10429,
+              "meanMaxChannelDifference": 6.561063542136098,
+              "maxChannelDifference": 16
+            },
+            "lightFar": {
+              "samples": 8939,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1051,
+              "changed": 278,
+              "meanMaxChannelDifference": 5.157944814462417,
+              "maxChannelDifference": 31
+            },
+            "edgeFar": {
+              "samples": 930,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "light top-right: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991493639595617,
+            "lightNear": {
+              "samples": 10990,
+              "changed": 10284,
+              "meanMaxChannelDifference": 7.846405823475887,
+              "maxChannelDifference": 16
+            },
+            "lightFar": {
+              "samples": 9031,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1048,
+              "changed": 189,
+              "meanMaxChannelDifference": 3.1020992366412212,
+              "maxChannelDifference": 36
+            },
+            "edgeFar": {
+              "samples": 933,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "light bottom-right: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991662437131557,
+            "lightNear": {
+              "samples": 10882,
+              "changed": 9754,
+              "meanMaxChannelDifference": 6.486675243521412,
+              "maxChannelDifference": 23
+            },
+            "lightFar": {
+              "samples": 9128,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1044,
+              "changed": 191,
+              "meanMaxChannelDifference": 4.7203065134099615,
+              "maxChannelDifference": 57
+            },
+            "edgeFar": {
+              "samples": 936,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "light bottom-left: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991906485322892,
+            "lightNear": {
+              "samples": 10986,
+              "changed": 10266,
+              "meanMaxChannelDifference": 8.873111232477699,
+              "maxChannelDifference": 21
+            },
+            "lightFar": {
+              "samples": 9035,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1047,
+              "changed": 285,
+              "meanMaxChannelDifference": 8.46704871060172,
+              "maxChannelDifference": 66
+            },
+            "edgeFar": {
+              "samples": 933,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "dark center: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 0.01247757989170808,
+            "lightNear": {
+              "samples": 21200,
+              "changed": 19766,
+              "meanMaxChannelDifference": 40.69188679245283,
+              "maxChannelDifference": 82
+            },
+            "lightFar": {
+              "samples": 15984,
+              "changed": 14973,
+              "meanMaxChannelDifference": 44.638450950950954,
+              "maxChannelDifference": 82
+            },
+            "edgeNear": {
+              "samples": 0,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeFar": {
+              "samples": 0,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "dark top-left: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991518965527915,
+            "lightNear": {
+              "samples": 11095,
+              "changed": 10582,
+              "meanMaxChannelDifference": 43,
+              "maxChannelDifference": 77
+            },
+            "lightFar": {
+              "samples": 8939,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1051,
+              "changed": 292,
+              "meanMaxChannelDifference": 34.22169362511893,
+              "maxChannelDifference": 181
+            },
+            "edgeFar": {
+              "samples": 930,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "dark top-right: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991493639595617,
+            "lightNear": {
+              "samples": 10990,
+              "changed": 10377,
+              "meanMaxChannelDifference": 46.350500454959054,
+              "maxChannelDifference": 82
+            },
+            "lightFar": {
+              "samples": 9031,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1048,
+              "changed": 199,
+              "meanMaxChannelDifference": 23.048664122137403,
+              "maxChannelDifference": 199
+            },
+            "edgeFar": {
+              "samples": 933,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "dark bottom-right: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991662437131557,
+            "lightNear": {
+              "samples": 10882,
+              "changed": 10182,
+              "meanMaxChannelDifference": 40.612387428781474,
+              "maxChannelDifference": 79
+            },
+            "lightFar": {
+              "samples": 9128,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1044,
+              "changed": 198,
+              "meanMaxChannelDifference": 23.6360153256705,
+              "maxChannelDifference": 185
+            },
+            "edgeFar": {
+              "samples": 936,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "dark bottom-left: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991906485322892,
+            "lightNear": {
+              "samples": 10986,
+              "changed": 10345,
+              "meanMaxChannelDifference": 44.832696158747495,
+              "maxChannelDifference": 82
+            },
+            "lightFar": {
+              "samples": 9035,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1047,
+              "changed": 291,
+              "meanMaxChannelDifference": 38.276026743075455,
+              "maxChannelDifference": 200
+            },
+            "edgeFar": {
+              "samples": 933,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "Real pointer grid and continuous motion stay within a four-degree total tilt",
+          "pass": true,
+          "details": {
+            "sampleCount": 155,
+            "maxAngle": 3.999242019219331,
+            "endpoints": [
+              {
+                "point": [
+                  0.02,
+                  0.02
+                ],
+                "x": 2.8247,
+                "y": -2.8284,
+                "lit": 1,
+                "transform": "matrix3d(0.998782, -0.00243173, 0.0492849, 0, 0, 0.998785, 0.0492803, 0, -0.0493448, -0.0492203, 0.997568, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.9965351595586696
+              },
+              {
+                "point": [
+                  0.5,
+                  0.02
+                ],
+                "x": 3.8553,
+                "y": -0.0135,
+                "lit": 1,
+                "transform": "matrix3d(1, -0.0000158423, 0.000235086, 0, 0, 0.997737, 0.0672369, 0, -0.000235619, -0.0672369, 0.997737, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.855323600537775
+              },
+              {
+                "point": [
+                  0.98,
+                  0.02
+                ],
+                "x": 2.8413,
+                "y": 2.8142,
+                "lit": 1,
+                "transform": "matrix3d(0.998794, 0.00243374, -0.0490369, 0, 0, 0.998771, 0.0495697, 0, 0.0490973, -0.0495099, 0.997566, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.9982762830328213
+              },
+              {
+                "point": [
+                  0.98,
+                  0.5
+                ],
+                "x": 0.0178,
+                "y": 3.83,
+                "lit": 1,
+                "transform": "matrix3d(0.997767, 0.0000207515, -0.0667963, 0, 0, 1, 0.000310669, 0, 0.0667963, -0.000309975, 0.997767, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.8300413010744774
+              },
+              {
+                "point": [
+                  0.98,
+                  0.98
+                ],
+                "x": -2.8266,
+                "y": 2.8295,
+                "lit": 1,
+                "transform": "matrix3d(0.998781, -0.00243431, -0.049304, 0, 0, 0.998783, -0.0493135, 0, 0.049364, 0.0492534, 0.997566, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.99865485679964
+              },
+              {
+                "point": [
+                  0.5,
+                  0.98
+                ],
+                "x": -3.8329,
+                "y": 0.0072,
+                "lit": 1,
+                "transform": "matrix3d(1, -0.00000840022, -0.000125383, 0, 0, 0.997763, -0.0668468, 0, 0.000125664, 0.0668468, 0.997763, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.832906752406923
+              },
+              {
+                "point": [
+                  0.02,
+                  0.98
+                ],
+                "x": -2.8288,
+                "y": -2.8269,
+                "lit": 1,
+                "transform": "matrix3d(0.998783, 0.00243397, 0.0492586, 0, 0, 0.998781, -0.0493518, 0, -0.0493187, 0.0492918, 0.997566, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.9983718861403816
+              },
+              {
+                "point": [
+                  0.02,
+                  0.5
+                ],
+                "x": -0.0004,
+                "y": -3.8402,
+                "lit": 1,
+                "transform": "matrix3d(0.997755, 4.67566e-7, 0.066974, 0, 0, 1, -0.00000698132, 0, -0.066974, 0.00000696564, 0.997755, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.8402000208010407
+              },
+              {
+                "point": [
+                  0.5,
+                  0.5
+                ],
+                "x": 0.0112,
+                "y": -0.0114,
+                "lit": 1,
+                "transform": "matrix3d(1, -3.88935e-8, 0.000198968, 0, 0, 1, 0.000195477, 0, -0.000198968, -0.000195477, 1, 0, 0, 0, 0, 1)",
+                "totalAngle": 0.015981238961109694
+              }
+            ]
+          }
+        },
+        {
+          "name": "Pointer exit resets gradually, monotonically and finally returns to zero",
+          "pass": true,
+          "details": {
+            "initialAngle": 3.9991493639595617,
+            "finalAngle": 0,
+            "samples": [
+              {
+                "ms": -0.040000000000873115,
+                "x": 2.8296,
+                "y": 2.8272,
+                "lit": 1,
+                "angle": 3.9991493639595617
+              },
+              {
+                "ms": 0.3600000000005821,
+                "x": 2.8296,
+                "y": 2.8272,
+                "lit": 1,
+                "angle": 3.9991493639595617
+              },
+              {
+                "ms": 1.319999999999709,
+                "x": 2.8296,
+                "y": 2.8272,
+                "lit": 1,
+                "angle": 3.9991493639595617
+              },
+              {
+                "ms": 9.639999999999418,
+                "x": 2.8296,
+                "y": 2.8272,
+                "lit": 1,
+                "angle": 3.9991493639595617
+              },
+              {
+                "ms": 20.860000000000582,
+                "x": 2.3951,
+                "y": 2.3931,
+                "lit": 0.8465,
+                "angle": 3.38527621095372
+              },
+              {
+                "ms": 76.36000000000058,
+                "x": 2.1409,
+                "y": 2.1391,
+                "lit": 0.7566,
+                "angle": 3.0260653778558364
+              },
+              {
+                "ms": 136.61999999999898,
+                "x": 1.229,
+                "y": 1.228,
+                "lit": 0.4344,
+                "angle": 1.7372949398435074
+              },
+              {
+                "ms": 198.20000000000073,
+                "x": 0.6728,
+                "y": 0.6722,
+                "lit": 0.2378,
+                "angle": 0.9510477965093714
+              },
+              {
+                "ms": 249.5600000000013,
+                "x": 0.3634,
+                "y": 0.3631,
+                "lit": 0.1284,
+                "angle": 0.5137113996195853
+              },
+              {
+                "ms": 317.5,
+                "x": 0.2175,
+                "y": 0.2173,
+                "lit": 0.0768,
+                "angle": 0.30744969211943246
+              },
+              {
+                "ms": 369.380000000001,
+                "x": 0.1102,
+                "y": 0.1101,
+                "lit": 0.039,
+                "angle": 0.15577559196606228
+              },
+              {
+                "ms": 426.619999999999,
+                "x": 0.0656,
+                "y": 0.0656,
+                "lit": 0.0232,
+                "angle": 0.0927723995577466
+              },
+              {
+                "ms": 487.5600000000013,
+                "x": 0.037,
+                "y": 0.037,
+                "lit": 0.0131,
+                "angle": 0.05232589998068644
+              },
+              {
+                "ms": 542.380000000001,
+                "x": 0.0201,
+                "y": 0.0201,
+                "lit": 0.0071,
+                "angle": 0.02842569231469198
+              },
+              {
+                "ms": 585.7999999999993,
+                "x": 0.0116,
+                "y": 0.0116,
+                "lit": 0.0041,
+                "angle": 0.016404877277035143
+              },
+              {
+                "ms": 619.119999999999,
+                "x": 0.0075,
+                "y": 0.0075,
+                "lit": 0.0027,
+                "angle": 0.010606601696786764
+              },
+              {
+                "ms": 654.2200000000012,
+                "x": 0.0054,
+                "y": 0.0054,
+                "lit": 0.0019,
+                "angle": 0.007636753239342916
+              },
+              {
+                "ms": 695.9000000000015,
+                "x": 0.0038,
+                "y": 0.0038,
+                "lit": 0.0013,
+                "angle": 0.005374011602654994
+              },
+              {
+                "ms": 729.2200000000012,
+                "x": 0.0025,
+                "y": 0.0025,
+                "lit": 0.0009,
+                "angle": 0.003535533882987461
+              },
+              {
+                "ms": 762.5600000000013,
+                "x": 0.0018,
+                "y": 0.0018,
+                "lit": 0.0006,
+                "angle": 0.002545584506889552
+              },
+              {
+                "ms": 804.2200000000012,
+                "x": 0.0013,
+                "y": 0.0013,
+                "lit": 0.0005,
+                "angle": 0.0018384777984692246
+              },
+              {
+                "ms": 850.2200000000012,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 859.7400000000016,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 870.619999999999,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 878.9599999999991,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 888.5600000000013,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 898.2000000000007,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 908.2999999999993,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 918.2999999999993,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 928.2999999999993,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 938.2599999999984,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 948.2599999999984,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 960.4000000000015,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 968.7400000000016,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 977.0800000000017,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 986.9199999999983,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 995.2400000000016,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1003.5800000000017,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              }
+            ]
+          }
+        },
+        {
+          "name": "Inner action receives clicks during tilt and stays keyboard operable",
+          "pass": true
+        },
+        {
+          "name": "Reduced motion disables hover decoration without hiding the real action",
+          "pass": true
+        },
+        {
+          "name": "Solid transparency fallback and forced colors preserve readable, operable content",
+          "pass": true
+        },
+        {
+          "name": "Touch and coarse pointer need no hover and do not activate tilt",
+          "pass": true,
+          "details": {
+            "coarsePointer": true,
+            "hoverActivated": false
+          }
+        },
+        {
+          "name": "Dedicated card works in both languages at 390, 768 and 1440 pixels without overflow",
+          "pass": true,
+          "details": {
+            "languages": [
+              "zh-CN",
+              "en"
+            ],
+            "viewports": [
+              390,
+              768,
+              1440
+            ]
+          }
+        },
+        {
+          "name": "No console or resource failures during pointer and preference tests",
+          "pass": true
+        }
+      ],
+      "limitations": [
+        "Screenshots and pointer motion use the real controller. Layer-pixel isolation only removes the face transform and hides the other light layer to prevent geometric changes from being mistaken for light.",
+        "The isolation checks do not add glow, alter material colors, or change the pointer-generated variables.",
+        "Coarse pointer and accessibility preferences are browser emulation, not physical-device or operating-system certification.",
+        "Pixel checks quantify this sample scene and do not establish full accessibility or general performance compliance."
+      ],
+      "target": "local static server",
+      "browserVersion": "153.0",
+      "summary": {
+        "passed": 19,
+        "failed": 0
+      }
+    },
+    {
+      "testedAt": "2026-11-21T07:14:22.701Z",
+      "browser": "webkit",
+      "tests": [
+        {
+          "name": "Dedicated sample has a fixed measurement host, clipped frost and independent non-intercepting light layers",
+          "pass": true,
+          "details": {
+            "nested": true,
+            "hostTransform": "none",
+            "overflow": "hidden",
+            "radius": "27px",
+            "blur": "blur(18px) saturate(1.3)",
+            "lightPointerEvents": "none",
+            "edgePointerEvents": "none",
+            "edgeMask": "exclude"
+          }
+        },
+        {
+          "name": "light center: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 0.012034118133332156,
+            "lightNear": {
+              "samples": 21200,
+              "changed": 19305,
+              "meanMaxChannelDifference": 7.015518867924528,
+              "maxChannelDifference": 16
+            },
+            "lightFar": {
+              "samples": 15984,
+              "changed": 14685,
+              "meanMaxChannelDifference": 7.87769019019019,
+              "maxChannelDifference": 16
+            },
+            "edgeNear": {
+              "samples": 0,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeFar": {
+              "samples": 0,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "light top-left: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9992224796098568,
+            "lightNear": {
+              "samples": 11095,
+              "changed": 10431,
+              "meanMaxChannelDifference": 6.738801261829653,
+              "maxChannelDifference": 16
+            },
+            "lightFar": {
+              "samples": 8939,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1051,
+              "changed": 281,
+              "meanMaxChannelDifference": 5.119885823025689,
+              "maxChannelDifference": 31
+            },
+            "edgeFar": {
+              "samples": 930,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "light top-right: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9992198970108648,
+            "lightNear": {
+              "samples": 10990,
+              "changed": 10287,
+              "meanMaxChannelDifference": 8.084713375796179,
+              "maxChannelDifference": 16
+            },
+            "lightFar": {
+              "samples": 9031,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1048,
+              "changed": 191,
+              "meanMaxChannelDifference": 3.107824427480916,
+              "maxChannelDifference": 37
+            },
+            "edgeFar": {
+              "samples": 933,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "light bottom-right: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991658307919504,
+            "lightNear": {
+              "samples": 10882,
+              "changed": 9792,
+              "meanMaxChannelDifference": 6.636280095570667,
+              "maxChannelDifference": 22
+            },
+            "lightFar": {
+              "samples": 9128,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1044,
+              "changed": 194,
+              "meanMaxChannelDifference": 4.755747126436781,
+              "maxChannelDifference": 57
+            },
+            "edgeFar": {
+              "samples": 936,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "light bottom-left: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991881059535856,
+            "lightNear": {
+              "samples": 10986,
+              "changed": 10287,
+              "meanMaxChannelDifference": 9.022665210267613,
+              "maxChannelDifference": 21
+            },
+            "lightFar": {
+              "samples": 9035,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1047,
+              "changed": 286,
+              "meanMaxChannelDifference": 8.46704871060172,
+              "maxChannelDifference": 67
+            },
+            "edgeFar": {
+              "samples": 933,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "dark center: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 0.012034118133332156,
+            "lightNear": {
+              "samples": 21200,
+              "changed": 19780,
+              "meanMaxChannelDifference": 40.71882075471698,
+              "maxChannelDifference": 81
+            },
+            "lightFar": {
+              "samples": 15984,
+              "changed": 14988,
+              "meanMaxChannelDifference": 44.743931431431434,
+              "maxChannelDifference": 81
+            },
+            "edgeNear": {
+              "samples": 0,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeFar": {
+              "samples": 0,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "dark top-left: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9992224796098568,
+            "lightNear": {
+              "samples": 11095,
+              "changed": 10577,
+              "meanMaxChannelDifference": 42.74051374493015,
+              "maxChannelDifference": 77
+            },
+            "lightFar": {
+              "samples": 8939,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1051,
+              "changed": 293,
+              "meanMaxChannelDifference": 33.94291151284491,
+              "maxChannelDifference": 181
+            },
+            "edgeFar": {
+              "samples": 930,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "dark top-right: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9992198970108648,
+            "lightNear": {
+              "samples": 10990,
+              "changed": 10366,
+              "meanMaxChannelDifference": 46.13803457688808,
+              "maxChannelDifference": 81
+            },
+            "lightFar": {
+              "samples": 9031,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1048,
+              "changed": 199,
+              "meanMaxChannelDifference": 22.86736641221374,
+              "maxChannelDifference": 199
+            },
+            "edgeFar": {
+              "samples": 933,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "dark bottom-right: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9991658307919504,
+            "lightNear": {
+              "samples": 10882,
+              "changed": 10186,
+              "meanMaxChannelDifference": 40.333945965815104,
+              "maxChannelDifference": 77
+            },
+            "lightFar": {
+              "samples": 9128,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1044,
+              "changed": 197,
+              "meanMaxChannelDifference": 23.542145593869733,
+              "maxChannelDifference": 187
+            },
+            "edgeFar": {
+              "samples": 936,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "dark bottom-left: real hover plus isolated interior light and local border pixel evidence",
+          "pass": true,
+          "details": {
+            "actualAngle": 3.9986128569045256,
+            "lightNear": {
+              "samples": 10986,
+              "changed": 10343,
+              "meanMaxChannelDifference": 44.46941561987985,
+              "maxChannelDifference": 81
+            },
+            "lightFar": {
+              "samples": 9035,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            },
+            "edgeNear": {
+              "samples": 1047,
+              "changed": 290,
+              "meanMaxChannelDifference": 38.02101241642789,
+              "maxChannelDifference": 200
+            },
+            "edgeFar": {
+              "samples": 933,
+              "changed": 0,
+              "meanMaxChannelDifference": 0,
+              "maxChannelDifference": 0
+            }
+          }
+        },
+        {
+          "name": "Real pointer grid and continuous motion stay within a four-degree total tilt",
+          "pass": true,
+          "details": {
+            "sampleCount": 164,
+            "maxAngle": 3.9992212984214763,
+            "endpoints": [
+              {
+                "point": [
+                  0.02,
+                  0.02
+                ],
+                "x": 2.8015,
+                "y": -2.8474,
+                "lit": 1,
+                "transform": "matrix3d(0.998765, -0.002428, 0.049617, 0, 0, 0.998805, 0.048876, 0, -0.049676, -0.048816, 0.997572, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.993698253312776
+              },
+              {
+                "point": [
+                  0.5,
+                  0.02
+                ],
+                "x": 3.8554,
+                "y": -0.0417,
+                "lit": 1,
+                "transform": "matrix3d(1, -0.000049, 0.000726, 0, 0, 0.997737, 0.067239, 0, -0.000728, -0.067239, 0.997737, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.8556251665222643
+              },
+              {
+                "point": [
+                  0.98,
+                  0.02
+                ],
+                "x": 2.8514,
+                "y": 2.8035,
+                "lit": 1,
+                "transform": "matrix3d(0.998803, 0.002433, -0.04885, 0, 0, 0.998762, 0.049746, 0, 0.048911, -0.049686, 0.997567, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.997949912723433
+              },
+              {
+                "point": [
+                  0.98,
+                  0.5
+                ],
+                "x": 0.0466,
+                "y": 3.8303,
+                "lit": 1,
+                "transform": "matrix3d(0.997766, 0.000054, -0.066802, 0, 0, 1, 0.000813, 0, 0.066802, -0.000812, 0.997766, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.8305830383978225
+              },
+              {
+                "point": [
+                  0.98,
+                  0.98
+                ],
+                "x": -2.8137,
+                "y": 2.8414,
+                "lit": 1,
+                "transform": "matrix3d(0.998771, -0.002433, -0.049512, 0, 0, 0.998794, -0.049089, 0, 0.049571, 0.049028, 0.997566, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.997995673609947
+              },
+              {
+                "point": [
+                  0.5,
+                  0.98
+                ],
+                "x": -3.8337,
+                "y": 0.0306,
+                "lit": 1,
+                "transform": "matrix3d(1, -0.000036, -0.000533, 0, 0, 0.997762, -0.066861, 0, 0.000534, 0.066861, 0.997762, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.83382193798938
+              },
+              {
+                "point": [
+                  0.02,
+                  0.98
+                ],
+                "x": -2.8292,
+                "y": -2.8273,
+                "lit": 1,
+                "transform": "matrix3d(0.998783, 0.002435, 0.049266, 0, 0, 0.998781, -0.049359, 0, -0.049326, 0.049299, 0.997565, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.9989372267452454
+              },
+              {
+                "point": [
+                  0.02,
+                  0.5
+                ],
+                "x": 0.0023,
+                "y": -3.8409,
+                "lit": 1,
+                "transform": "matrix3d(0.997754, -0.000003, 0.066986, 0, 0, 1, 0.00004, 0, -0.066986, -0.00004, 0.997754, 0, 0, 0, 0, 1)",
+                "totalAngle": 3.8409006876087424
+              },
+              {
+                "point": [
+                  0.5,
+                  0.5
+                ],
+                "x": 0.0109,
+                "y": -0.042,
+                "lit": 1,
+                "transform": "matrix3d(1, 0, 0.000733, 0, 0, 1, 0.00019, 0, -0.000733, -0.00019, 1, 0, 0, 0, 0, 1)",
+                "totalAngle": 0.04339135833718843
+              }
+            ]
+          }
+        },
+        {
+          "name": "Pointer exit resets gradually, monotonically and finally returns to zero",
+          "pass": true,
+          "details": {
+            "initialAngle": 3.9992198970108648,
+            "finalAngle": 0,
+            "samples": [
+              {
+                "ms": 32,
+                "x": 2.8294,
+                "y": 2.8275,
+                "lit": 1,
+                "angle": 3.9992198970108648
+              },
+              {
+                "ms": 197,
+                "x": 2.3949,
+                "y": 2.3933,
+                "lit": 0.8465,
+                "angle": 3.385276104548939
+              },
+              {
+                "ms": 370,
+                "x": 0.8811,
+                "y": 0.8805,
+                "lit": 0.3114,
+                "angle": 1.2456148456916745
+              },
+              {
+                "ms": 531,
+                "x": 0.3241,
+                "y": 0.3239,
+                "lit": 0.1146,
+                "angle": 0.45820399500504216
+              },
+              {
+                "ms": 698,
+                "x": 0.1192,
+                "y": 0.1192,
+                "lit": 0.0421,
+                "angle": 0.16857419583406985
+              },
+              {
+                "ms": 838,
+                "x": 0.0439,
+                "y": 0.0438,
+                "lit": 0.0155,
+                "angle": 0.06201330199489068
+              },
+              {
+                "ms": 972,
+                "x": 0.0161,
+                "y": 0.0161,
+                "lit": 0.0057,
+                "angle": 0.02276883820394536
+              },
+              {
+                "ms": 1105,
+                "x": 0.0059,
+                "y": 0.0059,
+                "lit": 0.0021,
+                "angle": 0.008343860007220314
+              },
+              {
+                "ms": 1289,
+                "x": 0.0022,
+                "y": 0.0022,
+                "lit": 0.0008,
+                "angle": 0.003111269952991374
+              },
+              {
+                "ms": 1467,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1493,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1509,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1524,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1540,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1555,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1571,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1586,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1601,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1618,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1633,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1648,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1663,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1678,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1694,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1725,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1739,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1755,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1770,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1786,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1800,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1815,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1830,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1845,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1861,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1875,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1891,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1906,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1922,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1938,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1954,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 1970,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 2000,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 2015,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 2031,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 2046,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 2061,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 2078,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 2092,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 2106,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 2121,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 2136,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 2152,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 2167,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 2183,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              },
+              {
+                "ms": 2213,
+                "x": 0,
+                "y": 0,
+                "lit": 0,
+                "angle": 0
+              }
+            ]
+          }
+        },
+        {
+          "name": "Inner action receives clicks during tilt and stays keyboard operable",
+          "pass": true
+        },
+        {
+          "name": "Reduced motion disables hover decoration without hiding the real action",
+          "pass": true
+        },
+        {
+          "name": "Solid transparency fallback and forced colors preserve readable, operable content",
+          "pass": true
+        },
+        {
+          "name": "Touch and coarse pointer need no hover and do not activate tilt",
+          "pass": true,
+          "details": {
+            "coarsePointer": true,
+            "hoverActivated": false
+          }
+        },
+        {
+          "name": "Dedicated card works in both languages at 390, 768 and 1440 pixels without overflow",
+          "pass": true,
+          "details": {
+            "languages": [
+              "zh-CN",
+              "en"
+            ],
+            "viewports": [
+              390,
+              768,
+              1440
+            ]
+          }
+        },
+        {
+          "name": "No console or resource failures during pointer and preference tests",
+          "pass": true
+        }
+      ],
+      "limitations": [
+        "Screenshots and pointer motion use the real controller. Layer-pixel isolation only removes the face transform and hides the other light layer to prevent geometric changes from being mistaken for light.",
+        "The isolation checks do not add glow, alter material colors, or change the pointer-generated variables.",
+        "Coarse pointer and accessibility preferences are browser emulation, not physical-device or operating-system certification.",
+        "Pixel checks quantify this sample scene and do not establish full accessibility or general performance compliance."
+      ],
+      "target": "local static server",
+      "browserVersion": "26.5",
+      "summary": {
+        "passed": 19,
+        "failed": 0
+      }
+    }
+  ],
+  "notes": [
+    "The initial WebKit exit sample window was too short under concurrent screenshot load. The final test observes 2.2 seconds and retains checks for intermediate motion, monotonic reset, zero final angle and light fade.",
+    "Playwright WebKit is an engine check, not certification of Safari or a physical Apple device."
+  ]
+}

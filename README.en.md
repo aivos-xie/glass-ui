@@ -4,6 +4,8 @@
 
 **[Explore the live glass components →](https://aivos-xie.github.io/glass-ui/)** · Chinese and English, light and dark themes, material controls, and working interactions.
 
+[Try the spotlight and 3D card directly](https://aivos-xie.github.io/glass-ui/#spotlight-demo): watch the internal pointer light, local rim highlight, tilt of up to 4°, and smooth return on exit.
+
 Reusable glass UI design instructions and component examples for AI agents that can read Markdown and project files. The core follows the [Agent Skills format](https://agentskills.io/specification) and does not depend on Codex, Claude, or vendor-specific tools.
 
 ## Install with one message to your agent

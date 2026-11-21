@@ -4,6 +4,8 @@
 
 **[在线体验玻璃组件 →](https://aivos-xie.github.io/glass-ui/)** · 支持中英文、深浅主题、材质调节和完整交互。
 
+[直接体验追光与 3D 卡片](https://aivos-xie.github.io/glass-ui/#spotlight-demo)：观察卡片内部跟光、局部边框高光、最多 4° 的倾斜和移出复原。
+
 给能读取 Markdown 和项目文件的 AI Agent 使用的玻璃 UI 设计规则与组件样板。核心指令不依赖 Codex、Claude 或任何厂商专用工具，采用 [Agent Skills 开放格式](https://agentskills.io/specification)。
 
 ## 给 Agent 一句话就能安装

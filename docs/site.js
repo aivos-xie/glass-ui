@@ -77,7 +77,8 @@
     {zh:'按钮与图标',en:'Buttons and icons',keys:'button icon loading disabled 按钮 图标 加载 禁用',id:'buttons-title',panel:'components'},
     {zh:'选择与开关',en:'Selection and switches',keys:'checkbox radio switch chip 单选 复选 开关 标签',id:'options-title',panel:'components'},
     {zh:'输入与表单',en:'Inputs and forms',keys:'input search select textarea range form 输入 搜索 下拉 滑块 表单',id:'form-title',panel:'components'},
-    {zh:'追光卡片',en:'Spotlight cards',keys:'card tilt spotlight progress 卡片 倾斜 追光 统计 进度',id:'stat-card',panel:'components'},
+    {zh:'追光与 3D 卡片',en:'Spotlight and 3D cards',keys:'card tilt spotlight frost frosted 3d 卡片 倾斜 追光 磨砂 柔光 高光 边框',id:'spotlight-demo',panel:'components'},
+    {zh:'统计卡片',en:'Statistics cards',keys:'stat progress statistics chart 卡片 统计 进度 图表',id:'stat-card',panel:'components'},
     {zh:'对话框与弹层',en:'Dialogs and overlays',keys:'dialog drawer toast tooltip menu overlay 对话框 抽屉 提示 菜单 通知 弹层',id:'overlay-title',panel:'components'},
     {zh:'通知横幅',en:'Notice banners',keys:'notice banner alert 通知 横幅 消息',id:'notice-demo',panel:'components'},
     {zh:'头像组',en:'Avatar groups',keys:'avatar people team invite 头像 团队 邀请',id:'people-demo',panel:'components'},
@@ -174,8 +175,41 @@
     if(!success){const selection=getSelection(), range=document.createRange();range.selectNodeContents($('#usage-code'));selection.removeAllRanges();selection.addRange(range);try{success=document.execCommand('copy');}catch(_){} if(success)selection.removeAllRanges();}
     $('#copy-status').textContent=success?'复制成功，可以粘贴到你的页面。':'无法自动复制，请选中上方代码后手动复制。'; localize($('#copy-status'));
   });
+  // The original GlassUI.mount(document) in demo.js owns the card controller.
+  // This observer only reports its state; it never writes transforms or pointer positions.
+  const spotlightHost=$('#spotlight-card'), spotlightFace=$('#spotlight-face'), spotlightStage=$('#spotlight-stage');
+  let spotlightHovered=false, spotlightPreferences;
+  function updateSpotlightAngle() {
+    const prefs=spotlightPreferences?.current();
+    const x=parseFloat(spotlightFace.style.getPropertyValue('--g-rx'))||0, y=parseFloat(spotlightFace.style.getPropertyValue('--g-ry'))||0;
+    const angle=!prefs || prefs.reduced || prefs.solid || !prefs.fine ? 0 : Math.min(4,GlassUI.math.normalAngle(x,y));
+    const value=`${angle.toFixed(1)}°`;if($('#spotlight-angle').textContent!==value)$('#spotlight-angle').textContent=value;
+  }
+  function updateSpotlightStatus(prefs=spotlightPreferences.current()) {
+    let state='ready',message='将鼠标或触控笔移到左侧卡片上，开始体验。';
+    if(prefs.solid){state='solid';message='实色或高对比回退已生效：隐藏装饰光与倾斜，按钮仍可操作。';}
+    else if(prefs.reduced){state='reduced';message='减少动态已生效：卡片保持静止，按钮仍可操作。';}
+    else if(!prefs.fine){state='coarse';message='当前为触屏或粗指针：保留静态磨砂与可操作按钮。';}
+    else if(spotlightHovered){state='active';message='追光已激活：缓慢扫过四角或边缘，观察光照与倾斜。';}
+    spotlightStage.dataset.spotlightMode=state;
+    $('#spotlight-status').textContent=message;localize($('#spotlight-status'));updateSpotlightAngle();
+  }
+  spotlightPreferences=GlassUI.observePreferences(spotlightHost,updateSpotlightStatus);
+  const spotlightStyleObserver=new MutationObserver(updateSpotlightAngle);
+  spotlightStyleObserver.observe(spotlightFace,{attributes:true,attributeFilter:['style']});
+  function enterSpotlight(){spotlightHovered=true;updateSpotlightStatus();}
+  function leaveSpotlight(){spotlightHovered=false;updateSpotlightStatus();}
+  spotlightHost.addEventListener('pointerenter',enterSpotlight);
+  spotlightHost.addEventListener('pointerleave',leaveSpotlight);
+  spotlightHost.addEventListener('pointercancel',leaveSpotlight);
+  window.addEventListener('blur',leaveSpotlight);
+  $('#spotlight-pin').addEventListener('click',()=>{
+    const button=$('#spotlight-pin'),selected=button.getAttribute('aria-pressed')!=='true';button.setAttribute('aria-pressed',String(selected));
+    $('#spotlight-pin-state').textContent=selected?'灵感已置顶':'给灵感留个位置';localize($('#spotlight-pin-state'));
+  });
+  updateSpotlightStatus();
   const disposeDemo=window.GlassDemo.dispose.bind(window.GlassDemo);
-  window.GlassDemo.dispose=function(){disposeDemo();observer.disconnect();clearTimeout(highlightTimer);clearTimeout(settingsToastTimer);};
+  window.GlassDemo.dispose=function(){disposeDemo();observer.disconnect();spotlightPreferences.dispose();spotlightStyleObserver.disconnect();spotlightHost.removeEventListener('pointerenter',enterSpotlight);spotlightHost.removeEventListener('pointerleave',leaveSpotlight);spotlightHost.removeEventListener('pointercancel',leaveSpotlight);window.removeEventListener('blur',leaveSpotlight);clearTimeout(highlightTimer);clearTimeout(settingsToastTimer);};
   window.GlassSite={setLanguage,translate,get language(){return language;},visit};
   const hash=decodeURIComponent(location.hash.slice(1));
   const item=catalog.find(entry=>entry.id===hash);if(item)visit(item.id,item.panel,false);
