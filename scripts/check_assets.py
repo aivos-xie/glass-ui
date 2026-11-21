@@ -8,12 +8,18 @@ import re
 import sys
 
 
+VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link',
+        'meta', 'param', 'source', 'track', 'wbr'}
+
+
 class Page(HTMLParser):
     def __init__(self):
         super().__init__()
         self.nodes = []
         self.label_depth = 0
         self.implicit_labels = set()
+        self.stack = []
+        self.tracks = []
 
     def handle_starttag(self, tag, attrs):
         values = dict(attrs)
@@ -22,10 +28,22 @@ class Page(HTMLParser):
         if tag in ['input', 'select', 'textarea'] and self.label_depth:
             self.implicit_labels.add(values.get('id'))
         self.nodes.append((tag, values))
+        frame = {'tag': tag, 'track': 'data-glass-tabs' in values, 'pill': False}
+        if frame['track']:
+            self.tracks.append(frame)
+        # The tabs controller only mounts when the track owns a direct pill child.
+        if 'data-glass-pill' in values and self.stack and self.stack[-1]['track']:
+            self.stack[-1]['pill'] = True
+        if tag not in VOID:
+            self.stack.append(frame)
 
     def handle_endtag(self, tag):
         if tag == 'label':
             self.label_depth = max(0, self.label_depth - 1)
+        for index in range(len(self.stack) - 1, -1, -1):
+            if self.stack[index]['tag'] == tag:
+                del self.stack[index:]
+                break
 
 
 def check_page(page_path, errors):
@@ -58,8 +76,21 @@ def check_page(page_path, errors):
                 issues.append(f'Control lacks label: {attrs["id"]}')
         if tag == 'img' and 'alt' not in attrs:
             issues.append('Image missing alt text')
+    for index, track in enumerate(page.tracks, start=1):
+        if not track['pill']:
+            issues.append(f'[data-glass-tabs] #{index} has no direct [data-glass-pill] child; '
+                          'the tabs controller would be skipped silently')
     errors.extend(f'{page_path.parent.name}/{page_path.name}: {issue}' for issue in issues)
     return len(ids)
+
+
+def structure(path):
+    """Return the section, fence, and table shape that both languages must share."""
+    text = path.read_text(encoding='utf-8')
+    return (len(re.findall(r'^## ', text, re.M)),
+            len(re.findall(r'^### ', text, re.M)),
+            text.count('```'),
+            len(re.findall(r'^\s*\|', text, re.M)))
 
 
 def main():
@@ -107,9 +138,21 @@ def main():
             text = source.read_text(encoding='utf-8')
             if '\ufffd' in text:
                 errors.append(f'Broken encoding: {source.name}')
+    pairs = [('SKILL.md', 'docs/en/skill-guide.md'), ('README.md', 'README.en.md'),
+             ('INSTALL.md', 'INSTALL.en.md'), ('docs/website.md', 'docs/en/website.md')]
+    pairs += [(f'references/{name}.md', f'docs/en/{name}.md') for name in [
+        'components', 'design-system', 'implementation', 'materials-and-motion',
+        'platform-adapters', 'presets', 'rendering-and-performance', 'research-notes',
+        'validation']]
+    for zh_name, en_name in pairs:
+        zh_shape, en_shape = structure(root / zh_name), structure(root / en_name)
+        if zh_shape != en_shape:
+            errors.append(f'Bilingual structure drift (headings, fences, table rows): '
+                          f'{zh_name} {zh_shape} vs {en_name} {en_shape}')
     if errors:
         print('\n'.join(errors)); return 1
-    print(f'PASS: {len(required)} resources, {ids} HTML ids, local links, adapter configuration and sample semantics.')
+    print(f'PASS: {len(required)} resources, {ids} HTML ids, {len(pairs)} bilingual pairs, '
+          'local links, adapter configuration and sample semantics.')
     return 0
 
 
