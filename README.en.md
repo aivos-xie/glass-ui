@@ -4,6 +4,8 @@
 
 **[Explore the live glass components →](https://aivos-xie.github.io/glass-ui/)** · Chinese and English, light and dark themes, material controls, and working interactions.
 
+[Download the complete Skill ZIP](https://github.com/aivos-xie/glass-ui/releases/latest/download/glass-ui.zip) · Extract it and read `glass-ui/INSTALL.en.md` for your agent's installation route.
+
 [Try the spotlight and 3D card directly](https://aivos-xie.github.io/glass-ui/#spotlight-demo): watch the internal pointer light, local rim highlight, tilt of up to 4°, and smooth return on exit.
 
 Reusable glass UI design instructions and component examples for AI agents that can read Markdown and project files. The core follows the [Agent Skills format](https://agentskills.io/specification) and does not depend on Codex, Claude, or vendor-specific tools.
@@ -52,7 +54,7 @@ Hosts with explicit skill syntax can also use their own syntax, such as `$glass-
 
 ## Interactions
 
-![Light theme component demo](docs/preview.png)
+![Default dark glass showcase](docs/preview.png?v=20261121-dark-glass)
 
 - **Glass cards:** a soft pointer spotlight, local border highlights, a maximum total tilt of 4°, and smooth reset on exit.
 - **Selection pills:** directional stretching, a small spring settle, continuous rapid retargeting, and undistorted foreground labels.
@@ -61,9 +63,13 @@ Hosts with explicit skill syntax can also use their own syntax, such as `$glass-
 
 Open the [offline demo](assets/demo/index.html) directly. It needs no build step, remote fonts, images, or scripts. This baseline sample uses Chinese labels; the online showcase provides a Chinese/English language switch.
 
-![Dark theme component demo](docs/preview-dark.png)
+![Dark glass component gallery](docs/preview-dark.png?v=20261121-dark-glass)
 
-See also the [mobile screenshot](docs/preview-mobile.png).
+![Transparent glass navigation pill](docs/preview-navigation.png?v=20261121-dark-glass)
+
+![Spotlight and 3D card during real pointer hover](docs/preview-spotlight.png?v=20261121-dark-glass)
+
+These are actual screenshots of the updated showcase, which opens in dark mode. See also the [light preview](docs/preview-light.png?v=20261121-dark-glass) and [mobile screenshot](docs/preview-mobile.png?v=20261121-dark-glass).
 
 ## Enhanced capabilities
 
@@ -110,13 +116,13 @@ docs/index.html              GitHub Pages showcase (main branch, /docs)
 
 ## Validation
 
-The [showcase validation record](docs/website-validation.json) reports 19 passing checks for language switching, component search, code and configuration copying, configuration downloads, and responsive layouts. The [showcase core record](docs/website-core-validation.json) reports 66 passing checks across Edge, Firefox, and Playwright WebKit. See the [showcase guide](docs/en/website.md) to reproduce them.
+The [showcase validation record](docs/website-validation.json) reports 19 passing checks for the dark default, language switching, component search, code and configuration copying, configuration downloads, and responsive layouts. The [card hover record](docs/card-hover-validation.json) reports 57 passing checks across Edge, Firefox, and Playwright WebKit for real pointer light, local border highlights, tilt limits, and smooth reset. The [material and fallback record](docs/material-validation.json) separately covers dark materials and solid fallbacks. See the [showcase guide](docs/en/website.md) to reproduce them.
 
-The [browser validation record](docs/browser-validation.json) reports 66 passing checks on Windows on 2026-11-21: 22 each in Edge, Firefox, and Playwright WebKit, with no skips. These cover existing interactions, vertical navigation, image-refraction pixel differences, quality settings, and accessibility fallbacks. The WebKit result is not Safari or physical iPhone certification.
+The [offline sample validation record](docs/browser-validation.json) reports 66 passing checks on Windows on 2026-11-21: 22 each in Edge, Firefox, and Playwright WebKit, with no skips. These cover the dark default and theme switching, existing interactions, vertical navigation, image-refraction pixel differences, quality settings, and accessibility fallbacks. The WebKit result is not Safari or physical iPhone certification.
 
 The [adapter validation record](docs/adapter-validation.json) reports no static-analysis issues and four passing widget tests with Flutter 3.44.8. The mini-program adapter has only received source checks, with no DevTools or physical-device run. Apple and Android native guidance has not been compiled or validated on devices.
 
-The [historical UI validation record](docs/validation.json) retains the initial 20 checks. See [validation instructions](docs/en/validation.md) for the new suite and its scope.
+The [historical UI validation record](docs/validation.json) retains the initial 20 checks, and the [historical showcase core record](docs/website-core-validation.json) retains 66 checks from the earlier website. See [validation instructions](docs/en/validation.md) for the new suite and its scope.
 
 The [installation validation record](docs/installation-validation.json) reports installation checks separately. It does not claim runtime testing inside every supported agent product.
 

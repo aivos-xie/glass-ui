@@ -90,6 +90,18 @@ async function run(name) {
     await page.goto(url);
     await check('Local resources and offline-capable payload', async () => { assert.equal(await page.title(), args.site ? 'Glass UI · 玻璃组件交互展厅' : 'Glass UI · 让界面透一点光'); assert.deepEqual(errors, []); assert.deepEqual(external, []); });
     await check('4 degree total tilt over 6561 points', async () => {
+      const assertTheme=async dark=>{
+        assert.equal(await page.locator('html').getAttribute('data-theme'),dark?'dark':'light');
+        assert.equal(await page.locator('#theme-toggle').getAttribute('aria-pressed'),String(dark));
+        assert.equal(await page.locator('#drawer-theme').isChecked(),dark);
+        assert.equal(await page.locator('#theme-toggle use').getAttribute('href'),dark?'#i-sun':'#i-moon');
+        assert.match(await page.locator('#theme-toggle').getAttribute('aria-label'),dark?/浅色/:/深色/);
+      };
+      await assertTheme(true); await page.screenshot({path:path.join(output,`${name}-initial-dark.png`),fullPage:true});
+      await page.locator('#theme-toggle').click();await assertTheme(false);
+      await page.locator('#theme-toggle').click();await assertTheme(true);
+      await page.locator('#theme-toggle').click();await assertTheme(false);
+
       const max = await page.evaluate(() => { let max = 0; for (let i = -40; i <= 40; i++) for (let j = -40; j <= 40; j++) { const t = GlassUI.math.tiltAt(i / 40, j / 40); max = Math.max(max, GlassUI.math.normalAngle(t.x, t.y)); } return max; });
       assert.ok(max <= 4.00001); return { maxDegrees: max };
     });

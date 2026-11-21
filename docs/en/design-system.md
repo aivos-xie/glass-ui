@@ -32,6 +32,14 @@ Use brand color primarily for the main action, selection, and focus. Preserve se
 
 Measure contrast on the brightest, darkest, and most complex background regions and during scrolling. First increase surface opacity, adjust text color, or simplify the background. Shadows and glows are not evidence of legibility. Content regions rarely need refraction; control refraction should remain concentrated near the edge.
 
+## Make the glass material visible
+
+For a standalone showcase or an explicit request for stronger glass without an established theme, start with a dark base and static background shapes in neighboring warm and cool colors. Preserve established brands and light business interfaces. Build material through transparent fills, fine highlights, and visible background detail rather than forcing the sample's dark theme.
+
+Confirm that light or color variation actually exists behind the target before tuning alpha and blur. A long page can use a fixed static backdrop or a scene for each region. Recheck after adding content, changing panels, and actually scrolling so the backdrop does not end at the first screen. Keep decoration behind content, non-intercepting, and independent of continuous animation.
+
+Separate the navigation track, selected pill, and foreground labels. Use light frost for the track, a thinner and clearer pill, and opaque text. A narrow directional highlight and restrained lower shadow convey thickness. Avoid equally dense white fills on the track, pill, and nested buttons. See [materials and motion](materials-and-motion.md) for starting values and fallbacks.
+
 ## Record useful decisions at delivery
 
 Scale the explanation to the task: material purpose, tokens, rendering route, fallback, and test environment. If the user requested implementation, inspect what is necessary and proceed without imposing an extra approval stage. Material changes do not authorize deleting, merging, or rearranging unrelated features.

@@ -4,6 +4,8 @@
 
 **[在线体验玻璃组件 →](https://aivos-xie.github.io/glass-ui/)** · 支持中英文、深浅主题、材质调节和完整交互。
 
+[下载完整 Skill 压缩包](https://github.com/aivos-xie/glass-ui/releases/latest/download/glass-ui.zip) · 解压后先阅读 `glass-ui/INSTALL.md`，按当前 Agent 的方式安装。
+
 [直接体验追光与 3D 卡片](https://aivos-xie.github.io/glass-ui/#spotlight-demo)：观察卡片内部跟光、局部边框高光、最多 4° 的倾斜和移出复原。
 
 给能读取 Markdown 和项目文件的 AI Agent 使用的玻璃 UI 设计规则与组件样板。核心指令不依赖 Codex、Claude 或任何厂商专用工具，采用 [Agent Skills 开放格式](https://agentskills.io/specification)。
@@ -52,7 +54,7 @@ npx --yes skills@1.9.0 add aivos-xie/glass-ui --skill glass-ui --agent claude-co
 
 ## 交互效果
 
-![浅色组件展示](docs/preview.png)
+![默认深色玻璃展示站](docs/preview.png?v=20261121-dark-glass)
 
 - **玻璃卡片**：柔和追光、局部边框高光、最高 4° 的整体倾斜和离开复原。
 - **选中胶囊**：沿切换方向拉伸、到位弹性回弹、连续快速切换，前景文字不被拉伸。
@@ -61,9 +63,13 @@ npx --yes skills@1.9.0 add aivos-xie/glass-ui --skill glass-ui --agent claude-co
 
 直接打开 [离线演示](assets/demo/index.html)，无需构建，也没有远程字体、图片或脚本。
 
-![深色组件展示](docs/preview-dark.png)
+![深色玻璃组件展示](docs/preview-dark.png?v=20261121-dark-glass)
 
-另有 [移动端截图](docs/preview-mobile.png)。
+![透明玻璃导航胶囊](docs/preview-navigation.png?v=20261121-dark-glass)
+
+![真实悬停的追光与 3D 卡片](docs/preview-spotlight.png?v=20261121-dark-glass)
+
+以上为新版展示站的实际截图，默认深色主题。另有[浅色预览](docs/preview-light.png?v=20261121-dark-glass)与[移动端截图](docs/preview-mobile.png?v=20261121-dark-glass)。
 
 ## 增强能力
 
@@ -114,13 +120,13 @@ docs/index.html              GitHub Pages 展示站入口（main 分支 /docs）
 
 ## 验证
 
-[在线展示站验证](docs/website-validation.json)：19 项站点检查通过，覆盖中英文切换、组件搜索、代码与配置复制、配置下载和响应式布局。[站点核心交互验证](docs/website-core-validation.json)：Edge、Firefox、Playwright WebKit 共 66 项通过。复现方法见[展示站说明](docs/website.md)。
+[在线展示站验证](docs/website-validation.json)：19 项站点检查通过，覆盖默认深色、中英文切换、组件搜索、代码与配置复制、配置下载和响应式布局。[追光卡片验证](docs/card-hover-validation.json)：Edge、Firefox、Playwright WebKit 共 57 项通过，包含真实指针追光、局部边框、倾角限幅与退出复原。[材质与降级验证](docs/material-validation.json)单独记录深色材质及实色回退。复现方法见[展示站说明](docs/website.md)。
 
-[浏览器验证记录](docs/browser-validation.json)：2026-11-21 在 Windows 上运行 Edge、Firefox 和 Playwright WebKit，每个引擎 22 项，共 66 项通过，无跳过。覆盖原有交互、新增纵向导航、图片折射像素差、质量与无障碍回退。WebKit 结果不代表 Safari 或 iPhone 真机认证。
+[离线样板验证记录](docs/browser-validation.json)：2026-11-21 在 Windows 上运行 Edge、Firefox 和 Playwright WebKit，每个引擎 22 项，共 66 项通过，无跳过。覆盖默认深色与主题切换、原有交互、纵向导航、图片折射像素差、质量与无障碍回退。WebKit 结果不代表 Safari 或 iPhone 真机认证。
 
 [平台样板验证记录](docs/adapter-validation.json)：Flutter 3.44.8 静态分析无问题，4 项 widget tests 通过；小程序仅完成源文件检查，尚未在开发者工具和真机运行。Apple、Android 原生指南也未作编译或真机验证。
 
-[历史界面验证记录](docs/validation.json) 保留首版的 20 项检查。新版测试命令与判定范围见[验收说明](references/validation.md)。
+[历史界面验证记录](docs/validation.json)保留首版的 20 项检查，[历史站点核心记录](docs/website-core-validation.json)保留此前站点的 66 项检查。新版测试命令与判定范围见[验收说明](references/validation.md)。
 
 跨 Agent 的安装验证单独见 [安装验证记录](docs/installation-validation.json)，不把目录安装检查当成各产品的运行验证。
 

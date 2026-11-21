@@ -1,5 +1,5 @@
 {
-  "testedAt": "2026-11-21T06:17:09.538Z",
+  "testedAt": "2026-11-21T07:40:39.740Z",
   "platform": "win32",
   "browsers": [
     {
@@ -273,10 +273,10 @@
           "name": "Rapid horizontal retarget and settled alignment",
           "pass": true,
           "details": {
-            "left": 0,
-            "top": 0,
-            "width": 0,
-            "height": 0
+            "left": 0.001007080078125,
+            "top": 0.0008544921875,
+            "width": -0.03125,
+            "height": -0.001708984375
           }
         },
         {
@@ -287,10 +287,10 @@
           "name": "Vertical spring, disabled skip and keyboard",
           "pass": true,
           "details": {
-            "left": 0,
-            "top": 0,
-            "width": 0,
-            "height": 0
+            "left": 0.0016021728515625,
+            "top": -0.0009765625,
+            "width": -0.0032196044921875,
+            "height": -0.046875
           }
         },
         {
@@ -327,7 +327,7 @@
           "details": {
             "pixels": 136165,
             "changed": 3603,
-            "meanMaxChannelDifference": 1.382161348364117,
+            "meanMaxChannelDifference": 1.3875371791576396,
             "maxChannelDifference": 180
           }
         },

@@ -2,12 +2,12 @@ html { scroll-behavior: smooth; scroll-padding-top: 30px; }
 body { margin: 0; background: var(--g-bg); color: var(--g-ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; -webkit-font-smoothing: antialiased; }
 body::after { content: ""; position: fixed; inset: 0; z-index: -1; opacity: .25; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.18' filter='url(%23n)'/%3E%3C/svg%3E"); pointer-events: none; }
 .icon-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
-.ambient { position: absolute; inset: 0 0 auto; height: 1600px; overflow: hidden; pointer-events: none; z-index: -1; }
+.ambient { position: fixed; inset: 0 0 auto; height: 100vh; overflow: hidden; pointer-events: none; z-index: -1; }
 .ambient i { position: absolute; border-radius: 50%; filter: blur(65px); }
 .ambient i:nth-child(1) { background: #c6b6f8; width: 620px; height: 500px; right: -160px; top: 110px; opacity: .48; }
 .ambient i:nth-child(2) { background: #b4dedc; width: 510px; height: 490px; right: 23%; top: 230px; opacity: .4; }
 .ambient i:nth-child(3) { background: #efc1d5; width: 500px; height: 440px; left: -260px; top: 770px; opacity: .25; }
-[data-theme="dark"] .ambient { opacity: .22; }
+[data-theme="dark"] .ambient { opacity: .68; }
 .page-shell { max-width: 1240px; margin: 0 auto; padding: 0 52px; }
 .site-header { display: flex; justify-content: space-between; align-items: center; height: 108px; border-bottom: 1px solid var(--g-outline); }
 .wordmark { display: inline-flex; gap: 5px; align-items: center; color: var(--g-ink); text-decoration: none; font-size: 25px; font-weight: 650; letter-spacing: -.8px; }
@@ -207,3 +207,14 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding-botto
   .material-options label:has(input:checked) { outline: 2px solid Highlight; }
   .state-dot, .bar-chart i { background: Highlight; }
 }
+
+/* Scenery belongs to this demonstration, not the reusable components. */
+@media (forced-colors: none) and (prefers-contrast: no-preference) {
+  @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    :root:not([data-no-blur]):not([data-glass-quality="static"]):not([data-glass-transparency="reduced"]) .navigation-demo { border-radius: 25px; background: radial-gradient(ellipse at 9% 12%,#58afd75c,transparent 56%),radial-gradient(ellipse at 90% 95%,#976bd36b,transparent 58%),linear-gradient(120deg,transparent 28%,#b9a0e63d 29%,#b9a0e63d 44%,transparent 45%); }
+  }
+}
+:is([data-no-blur],[data-glass-quality="static"],[data-glass-transparency="reduced"]) .ambient { display: none; }
+:is([data-no-blur],[data-glass-quality="static"],[data-glass-transparency="reduced"]) .navigation-demo { background: none !important; }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .ambient { display: none; } .navigation-demo { background: none !important; } }
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more), (forced-colors: active) { .ambient { display: none; } .navigation-demo { background: none !important; } }

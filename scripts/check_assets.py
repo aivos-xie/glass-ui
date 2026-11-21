@@ -86,9 +86,10 @@ def main():
                    *sorted((root / 'docs').rglob('*.md'))]:
         text = source.read_text(encoding='utf-8')
         for path in re.findall(r'\]\(([^)]+)\)', text):
-            if urlsplit(path).scheme or path.startswith('#'):
+            parsed = urlsplit(path)
+            if parsed.scheme or parsed.netloc or not parsed.path:
                 continue
-            if not (source.parent / unquote(path.split('#')[0])).exists():
+            if not (source.parent / unquote(parsed.path)).exists():
                 errors.append(f'{source.name}: missing relative reference {path}')
         if '[TODO:' in text or '\ufffd' in text:
             errors.append(f'{source.name}: unfinished placeholder or broken encoding')

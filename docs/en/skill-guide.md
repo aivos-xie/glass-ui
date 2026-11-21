@@ -17,13 +17,14 @@ Communicate in the user's language. The English and Chinese documentation must r
 ## Workflow
 
 1. Inspect the platform, components, style variables, animation libraries, and target browsers/devices. For screenshots, distinguish material, motion, and layering without copying business text. For broad redesigns, use [design decisions](design-system.md) to separate content, structure, and floating controls.
-2. Select materials for the current request: light glass for small controls, frosted glass for content containers, clear liquid glass for selection indicators, and tinted glass for primary actions or states. Add prism edges only when useful. See [materials and motion](materials-and-motion.md) for constraints.
+2. Select materials for the current request: light glass for small controls, frosted glass for content containers, clear liquid glass for selection indicators, and tinted glass for primary actions or states. For a standalone showcase, or an explicit request for pronounced glass without an established theme, dark frost is a useful starting point. Preserve existing project themes and brands. See [materials and motion](materials-and-motion.md) for parameters and hierarchy.
 3. Implement states according to component semantics. Consult the [component recipes](components.md), retaining native form behavior or the project's existing accessible primitives.
 4. Use [rendering and performance](rendering-and-performance.md) to distinguish CSS baselines, known images, arbitrary DOM backdrops, and video/shaders. Take only needed resources from the dependency-free `assets/demo/glass.css` and `glass.js` baseline. Known-image lenses use `image-lens.js`; native/mini-program work uses [platform adapters](platform-adapters.md). Open `assets/demo/index.html` to preview, and see [implementation](implementation.md) for integration.
 5. Check appearance and real interactions using the [validation checklist](validation.md). Report browsers actually tested, untested platforms, and fallback behavior. Syntax support checks are not visual evidence.
 
 ## Required effects
 
+- Normal glass mode reveals background layers, fine directional highlights, and separation in depth. The background must remain behind the target after scrolling. Avoid turning glass into a solid white or gray block, except in solid and high-contrast fallbacks.
 - Cards have a soft radial spotlight inside their rounded clipping area. A separate border layer brightens only near the pointer. Decorative light layers do not intercept clicks.
 - A fixed outer card host measures pointer position; an inner face tilts. The maximum **total tilt is 4°**, including at the corners. Reset smoothly on pointer exit, cancellation, or window blur. Do not enable tilt on small controls by default.
 - Each option group uses one shared glass pill. During a change, the leading edge extends in the travel direction, the trailing edge follows, and the pill settles with a small bounce. Retargeting midway preserves its current shape and velocity. Text and icons never stretch with the pill.

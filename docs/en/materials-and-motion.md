@@ -8,17 +8,32 @@ Back to front: a varied scene background → background processing layer → tra
 
 Glass needs visible background detail. A transparent white card on solid white provides few material cues. Prefer the existing background; a showcase may use static, soft color shapes, but a business page does not need gradient spheres. Decoration must not overpower the information hierarchy.
 
+Components still need a backdrop after scrolling. Avoid using a fixed-height hero decoration as the only background for a whole glass page. Use a fixed static backdrop or regional scenes, then recheck coverage after panel changes and content edits. Backgrounds provide light and color cues; foreground text remains clear and opaque.
+
 ## Starting presets
 
 | Material | Use | Light surface alpha | Blur | Edges and refraction |
 | --- | --- | --- | --- | --- |
-| Light glass | Inputs, small buttons, option tracks | .45–.65 | 8–12px | Fine border; no displacement by default |
-| Frosted | Panels, cards, menus | .48–.75 | 16–24px | Soft light and restrained inner highlights |
+| Light glass | Inputs, small buttons, option tracks | .18–.38 | 8–12px | Fine border; no displacement by default |
+| Frosted | Panels, cards, menus | .35–.60 | 16–24px | Soft light and restrained inner highlights |
 | Clear liquid | Shared pills, switch thumbs | .16–.35 | 3–8px | Edge thickness and optional local refraction |
 | Tinted | Primary buttons, tags, selected states | .15–.30 brand color | 12–20px | Preserve text contrast and include a graphic state marker |
 | Prism | Accent component edges | Same as clear liquid | Same as clear liquid | Very narrow colored edges, never a full rainbow surface |
 
 Define surface, ink, muted, border, and shadow tokens separately for dark mode; do not just invert the background. These values are tuning starting points, not mandatory styling. Override the tokens in `assets/demo/glass.css` as needed.
+
+For a pronounced dark glass showcase, the following values are useful starting points, not a required palette for business interfaces:
+
+| Layer | Dark showcase starting point | Tuning priority |
+| --- | --- | --- |
+| Page and frosted panel | A base such as `#0d111e`; dark blue-gray surface alpha .40–.48, for example `rgba(29,36,56,.44)`; blur 16–18px | Reveal the backdrop while measuring text contrast |
+| Option track | Transparent white alpha .04–.08; blur 6–10px | Quieter than the selected item, without another thick frost layer |
+| Shared selected pill | Transparent white or a pale tint at alpha .06–.13; blur 3–5px | Narrow upper highlight and restrained lower shadow; no solid white fill |
+| Buttons and chips inside a panel | Transparent fill; blur 0–4px | Distinguish borders and states without repeating strong frost |
+
+For example, a 9px track, 5px pill, and 3px nested button remain distinct from an 18px frosted container. Start border alpha around .20–.30 and narrow upper highlights around .40–.60, keeping highlights directional and tuning against the actual scene. Scope frosted surface overrides to their theme and material so a global dark surface does not replace clear, tinted, or prism presets.
+
+If the result resembles a white block or gray plastic, check backdrop coverage, stacked fill opacity, repeated blur flattening the scene, and equally bright edges. Remove unnecessary layers and restore background cues before adjusting highlights. More blur or a whole-surface glow is not the first fix.
 
 Ribbed or embossed glass, water ripples, and 3D crystal are advanced presets. Add custom displacement maps or WebGL materials only when requested and explain the additional implementation needed. The included demo does not claim to provide these effects.
 
@@ -30,7 +45,7 @@ Let the normalized position relative to the center be `u,v ∈ [-1,1]`, mapped t
 
 Use time-based smoothing, `a = 1 - exp(-dt/τ)`, so refresh rate does not change the feel. Default tilt uses τ≈70ms; reset uses τ≈100ms and approaches rest within about 350ms. Clear the target on pointer exit, `pointercancel`, window blur, and page hiding. Reset immediately when `prefers-reduced-motion` changes. Do not enable pointer-following tilt for coarse pointers.
 
-Start with a spotlight around 160px and alpha .08–.16. Mask border lighting to a 1px ring. A whole-card `box-shadow` is not a local edge spotlight. Without mask support, retain a normal fine border.
+Start with a spotlight around 160px and alpha .08–.16. If it is hard to see on a light surface, check the backdrop and surface fill before adjusting the light's tint or strength. Mask border lighting to a narrow ring around 1px. A whole-card `box-shadow` is not a local edge spotlight. Without mask support, retain a normal fine border.
 
 ## Shared selection pill
 
@@ -54,3 +69,5 @@ Use `backdrop-filter: blur(...)` as the baseline. The example enhancement uses `
 Disable expansion, displacement, and spring bounce under reduced motion. Under `forced-colors`, use solid borders and selection markers in system colors. Without backdrop support, increase surface opacity and preserve the complete structure.
 
 Keep the ordinary SVG known-image route separate from arbitrary-DOM backdrop filtering; see [rendering and performance](rendering-and-performance.md). Vertical pills use the same leading/trailing-edge logic on the vertical axis, without deforming foreground text. Increased contrast or reduced transparency uses a stable solid fill and disables displacement rather than merely slowing animation.
+
+Do not require a negated query for an unknown `prefers-reduced-transparency` feature before showing the base material. Supply usable baseline styles, then apply solid overrides under the supported positive `reduce` condition. Retain explicit `data-glass-transparency="reduced"`, static-quality, and no-blur routes. Check cascade priority so later gradients, shadows, and filters cannot overwrite the fallback. Forced colors use system colors, including when reduced transparency is also active; a custom solid override must not replace them.

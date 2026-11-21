@@ -1,21 +1,21 @@
 <!doctype html>
-<html lang="zh-CN" data-theme="light" data-material="frosted">
+<html lang="zh-CN" data-theme="dark" data-material="frosted">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="color-scheme" content="light dark">
+  <meta name="color-scheme" content="dark light">
   <meta name="description" content="Glass UI：可交互的磨砂、液态与染色玻璃组件样板。">
   <title>Glass UI · 玻璃组件交互展厅</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='6' y='6' width='28' height='28' rx='9' fill='%23887be0'/%3E%3Cpath d='M13 21h14M20 14v14' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="glass.css">
-  <link rel="stylesheet" href="demo.css">
-  <link rel="stylesheet" href="site.css?v=20261121-spotlight">
+  <link rel="stylesheet" href="glass.css?v=20261121-dark-glass">
+  <link rel="stylesheet" href="demo.css?v=20261121-dark-glass">
+  <link rel="stylesheet" href="site.css?v=20261121-dark-glass">
   <script src="lens-map.js" defer></script>
   <script src="glass.js" defer></script>
   <script src="image-lens.js" defer></script>
   <script src="demo.js" defer></script>
-  <script src="locale.js?v=20261121-spotlight" defer></script>
-  <script src="site.js?v=20261121-spotlight" defer></script>
+  <script src="locale.js?v=20261121-dark-glass" defer></script>
+  <script src="site.js?v=20261121-dark-glass" defer></script>
 </head>
 <body>
   <svg class="icon-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -37,7 +37,7 @@
   <div class="page-shell">
     <header class="site-header">
       <a href="#top" class="wordmark" aria-label="Glass UI 首页"><span class="brand-mark" aria-hidden="true"><i></i><i></i></span>glass<span class="wordmark-light">ui</span><span class="version">PLAYGROUND</span></a>
-      <div class="header-right"><nav class="header-nav" aria-label="主导航"><a href="#showcase" data-open-panel="components">组件</a><a href="#showcase" data-open-panel="materials">材质</a><a href="#usage">使用</a></nav><button class="g-button language-button" id="language-toggle" type="button" lang="en" aria-label="Switch to English">EN</button><button class="g-icon-button" id="theme-toggle" type="button" aria-label="切换深色主题" aria-pressed="false"><svg class="g-icon"><use href="#i-moon"/></svg></button></div>
+      <div class="header-right"><nav class="header-nav" aria-label="主导航"><a href="#showcase" data-open-panel="components">组件</a><a href="#showcase" data-open-panel="materials">材质</a><a href="#usage">使用</a></nav><button class="g-button language-button" id="language-toggle" type="button" lang="en" aria-label="Switch to English">EN</button><button class="g-icon-button" id="theme-toggle" type="button" aria-label="切换浅色主题" aria-pressed="true"><svg class="g-icon"><use href="#i-sun"/></svg></button></div>
     </header>
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
@@ -170,7 +170,7 @@
     <footer><span>Glass UI · 可复用的玻璃界面语言</span><a href="https://github.com/aivos-xie/glass-ui" target="_blank" rel="noopener">GitHub · 查看源码 ↗</a></footer>
   </div>
   <dialog class="glass g-dialog" id="preview-dialog" aria-labelledby="dialog-title"><span class="eyebrow">A MOMENT OF CLARITY</span><h2 id="dialog-title">给灵感一点空间。</h2><p>这是一个真正可操作的玻璃对话框。按 Esc 关闭，或通过下方按钮返回。</p><div class="g-field"><label for="dialog-note">记下一句灵感</label><input class="g-input" id="dialog-note" placeholder="此刻，你想到了什么？"></div><form method="dialog"><button class="g-button" value="cancel">返回</button><button class="g-button g-button--primary" value="save">记住这一刻</button></form></dialog>
-  <dialog class="glass g-dialog g-drawer" id="settings-drawer" aria-labelledby="drawer-title"><form method="dialog" class="drawer-close"><button class="g-icon-button" aria-label="关闭设置抽屉"><svg class="g-icon"><use href="#i-close"/></svg></button></form><span class="eyebrow">MAKE IT YOURS</span><h2 id="drawer-title">你的偏好。</h2><p>少一点打扰，多一点从容。</p><label class="g-option row between"><span>灵感提醒</span><input id="drawer-notify" class="g-switch" type="checkbox" checked role="switch"></label><label class="g-option row between"><span>深色主题</span><input id="drawer-theme" class="g-switch" type="checkbox" role="switch"></label><label class="g-option row between"><span>动态效果</span><input id="drawer-motion" class="g-switch" type="checkbox" checked role="switch"></label><div class="drawer-note"><svg class="g-icon"><use href="#i-spark"/></svg><p>这里的设置会立即应用到展示页。</p></div><form method="dialog"><button class="g-button g-button--primary">完成</button></form></dialog>
+  <dialog class="glass g-dialog g-drawer" id="settings-drawer" aria-labelledby="drawer-title"><form method="dialog" class="drawer-close"><button class="g-icon-button" aria-label="关闭设置抽屉"><svg class="g-icon"><use href="#i-close"/></svg></button></form><span class="eyebrow">MAKE IT YOURS</span><h2 id="drawer-title">你的偏好。</h2><p>少一点打扰，多一点从容。</p><label class="g-option row between"><span>灵感提醒</span><input id="drawer-notify" class="g-switch" type="checkbox" checked role="switch"></label><label class="g-option row between"><span>深色主题</span><input id="drawer-theme" class="g-switch" type="checkbox" checked role="switch"></label><label class="g-option row between"><span>动态效果</span><input id="drawer-motion" class="g-switch" type="checkbox" checked role="switch"></label><div class="drawer-note"><svg class="g-icon"><use href="#i-spark"/></svg><p>这里的设置会立即应用到展示页。</p></div><form method="dialog"><button class="g-button g-button--primary">完成</button></form></dialog>
   <div class="glass g-toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 </body>
 </html>

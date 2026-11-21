@@ -87,6 +87,47 @@ try {
   await page.goto(baseUrl, { waitUntil: 'networkidle' });
   await check('Default Chinese page, complete gallery and glass rendering', async () => {
     assert.equal(await page.locator('html').getAttribute('lang'), 'zh-CN');
+    assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
+    const assertTheme = async (dark, english = false) => {
+      assert.equal(await page.locator('html').getAttribute('data-theme'), dark ? 'dark' : 'light');
+      assert.equal(await page.locator('#theme-toggle').getAttribute('aria-pressed'), String(dark));
+      assert.equal(await page.locator('#drawer-theme').isChecked(), dark);
+      assert.equal(await page.locator('#theme-toggle use').getAttribute('href'), dark ? '#i-sun' : '#i-moon');
+      assert.match(await page.locator('#theme-toggle').getAttribute('aria-label'), english ? (dark ? /light/i : /dark/i) : (dark ? /浅色/ : /深色/));
+    };
+    await assertTheme(true);
+    await page.screenshot({path:path.join(output,'default-dark-first-screen.png')});
+    await page.locator('#theme-toggle').click(); await assertTheme(false);
+    await page.locator('#theme-toggle').click(); await assertTheme(true);
+    await language('en'); await assertTheme(true,true);
+    await page.locator('#theme-toggle').click(); await assertTheme(false,true);
+    await page.locator('#theme-toggle').click(); await assertTheme(true,true);
+    await language('zh'); await assertTheme(true);
+    await choosePanel('components');
+    await page.locator('.component-grid').screenshot({path:path.join(output,'default-dark-component-grid.png')});
+    await choosePanel('motion');
+    const materialStyles=()=>page.evaluate(()=>{
+      const css=s=>getComputedStyle(document.querySelector(s));
+      return {ambientOpacity:css('.ambient').opacity,ambientDisplay:css('.ambient').display,trackBlur:css('#demo-tabs').backdropFilter,pillImage:css('#demo-tabs .g-segment__pill').backgroundImage,sceneImage:css('.navigation-demo').backgroundImage,surface:css('.focus-card').backgroundColor};
+    });
+    const normal=await materialStyles(); assert.equal(normal.ambientOpacity,'0.68');assert.equal(normal.trackBlur,'blur(9px)');assert.match(normal.pillImage,/linear-gradient/);assert.match(normal.sceneImage,/gradient/);
+    for (const [attribute,value] of [['data-glass-transparency','reduced'],['data-glass-quality','static'],['data-no-blur','']]) {
+      await page.locator('html').evaluate((el,[attribute,value])=>el.setAttribute(attribute,value),[attribute,value]);
+      const fallback=await materialStyles(); assert.equal(fallback.ambientDisplay,'none');assert.equal(fallback.pillImage,'none');assert.equal(fallback.sceneImage,'none');
+      await page.locator('html').evaluate((el,attribute)=>el.removeAttribute(attribute),attribute);
+    }
+    await page.emulateMedia({forcedColors:'active'});const forced=await materialStyles();assert.equal(forced.ambientDisplay,'none');assert.equal(forced.pillImage,'none');assert.equal(forced.sceneImage,'none');await page.emulateMedia({forcedColors:'none'});
+    report.darkGlassStyles={normal,forced};
+    await page.locator('#demo-tabs').screenshot({path:path.join(output,'default-dark-navigation-pill.png')});
+    await page.locator('#demo-mine').click(); await page.waitForTimeout(650);
+    const navigationStage=page.locator('.specimen').filter({has:page.locator('#demo-tabs')});
+    await navigationStage.screenshot({path:path.join(output,'default-dark-navigation-stage.png')});
+    await page.locator('#theme-toggle').click(); await assertTheme(false);
+    await navigationStage.screenshot({path:path.join(output,'light-navigation-stage.png')});
+    await page.locator('#theme-toggle').click(); await assertTheme(true);
+    await page.locator('#demo-home').click(); await page.waitForTimeout(500);
+
+    await choosePanel('components'); await page.evaluate(()=>scrollTo(0,0));
     assert.match(await page.title(), /Glass UI/);
     assert.ok(await page.locator('#hero-card').isVisible());
     assert.ok(await page.locator('#component-search').isVisible());
@@ -155,6 +196,8 @@ try {
   });
   const configuredSettings = { theme: 'dark', material: 'tinted', blur: '16px', glow: '.13', quality: 'balanced', transparency: 'reduced', motion: 'off' };
   await check('Configuration menu copies the current changed settings as JSON', async () => {
+    if (await page.locator('html').getAttribute('data-theme') === 'dark') await page.locator('#theme-toggle').click();
+    assert.equal(await page.locator('html').getAttribute('data-theme'), 'light');
     await page.locator('#theme-toggle').click();
     await choosePanel('materials'); await page.locator('[name="material"][value="tinted"]').check();
     await choosePanel('motion'); await page.locator('#quality-select').selectOption('balanced');

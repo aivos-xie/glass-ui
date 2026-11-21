@@ -1,5 +1,5 @@
 {
-  "testedAt": "2026-11-21T07:11:47.834Z",
+  "testedAt": "2026-11-21T07:40:39.613Z",
   "browser": "edge",
   "tests": [
     {
@@ -97,6 +97,24 @@
   ],
   "target": "local static server",
   "browserVersion": "157.0.4341.60",
+  "darkGlassStyles": {
+    "normal": {
+      "ambientOpacity": "0.68",
+      "ambientDisplay": "block",
+      "trackBlur": "blur(9px)",
+      "pillImage": "linear-gradient(135deg, rgba(255, 255, 255, 0.13), rgba(213, 198, 255, 0.06) 52%, rgba(185, 233, 255, 0.094))",
+      "sceneImage": "radial-gradient(at 9% 12%, rgba(88, 175, 215, 0.36), rgba(0, 0, 0, 0) 56%), radial-gradient(at 90% 95%, rgba(151, 107, 211, 0.42), rgba(0, 0, 0, 0) 58%), linear-gradient(120deg, rgba(0, 0, 0, 0) 28%, rgba(185, 160, 230, 0.24) 29%, rgba(185, 160, 230, 0.24) 44%, rgba(0, 0, 0, 0) 45%)",
+      "surface": "rgba(29, 36, 56, 0.44)"
+    },
+    "forced": {
+      "ambientOpacity": "0.68",
+      "ambientDisplay": "none",
+      "trackBlur": "none",
+      "pillImage": "none",
+      "sceneImage": "none",
+      "surface": "rgb(255, 255, 255)"
+    }
+  },
   "summary": {
     "passed": 19,
     "failed": 0

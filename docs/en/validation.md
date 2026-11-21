@@ -15,6 +15,13 @@
 9. Disable blur and refraction enhancement: content must remain readable and operable. Measure contrast against the actual background. Target at least 4.5:1 for normal text, 3:1 for large text, and 3:1 for necessary control boundaries. Unmeasured translucent colors are not evidence of compliance.
 10. Stop RAF when at rest. An unmounted controller must not keep reacting or animating, and multiple instances must remain independent. Generate displacement maps only on resize; avoid generating a canvas every frame.
 
+## Visible material checks
+
+- Inspect the brightest, darkest, and most complex parts of the real scene. Normal mode should still reveal background colors or layers, with directional fine edges and clear text. If it looks like a white block, check the backdrop, fill, and stacked blur before increasing glow.
+- Actually scroll to lower content, change showcase panels, and vary content height. Confirm that the backdrop still covers the target. A first-screen screenshot is insufficient, and continuous background animation must not be necessary to recognize the material.
+- Compare the track, selected pill, and nested buttons. Their thickness should differ, and foreground content must not deform with filtering or pill motion. Theme changes synchronize button icons, labels, `aria-pressed`, and related settings.
+- Compare normal mode with explicit solid, static, no-blur, and system-preference fallbacks. Gradients and strong filters must not override solid fills; forced colors retain system colors. The base material must remain usable in engines that do not recognize `prefers-reduced-transparency`. Test the positive `reduce` branch where supported and record system preferences that could not be tested.
+
 ## Refraction checks
 
 Compare base and enhanced screenshots at the same position, size, and static grid/text background. Look for an almost unchanged center, curved edges, and undistorted content. A color change alone does not prove refraction.
@@ -25,7 +32,10 @@ The included refraction experiment uses a known local SVG background to make dis
 
 | Symptom | Check first |
 | --- | --- |
-| Glass looks like gray-white plastic | Flat background, excessive stacked blur/alpha, or edge highlights without direction |
+| Glass looks like a white block or gray plastic | Flat or missing backdrop, excessive stacked fill/blur, or edge highlights without direction |
+| Glass works at the top but lower cards look solid | Decoration only covers a fixed hero height, or a panel change leaves the target without a backdrop |
+| The selected pill resembles a white button | Track and pill fills/blur are equally dense; reduce pill fill while retaining fine highlights and label contrast |
+| An engine shows no base material at all | A negated query for an unknown media feature blocks base styling; separate baseline styles and positive preference fallbacks |
 | Hover near edges jitters | Measurement uses a transforming face; measure the fixed host instead |
 | Pill jumps during rapid changes | Animation state was recreated or a new target discarded current velocity |
 | Page becomes slower over time | Permanent RAF loop, repeated mount, uncleared observers, or large filters updated every frame |
