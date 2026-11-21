@@ -28,6 +28,15 @@
 
 可选：在 `[data-glass-tabs]` 上设 `data-refraction="true"`，先加载 `lens-map.js` 再 mount。默认 demo 关闭增强，用户可在“材质”页显式启用；同页的网格透镜实验用单独背景 SVG 展示真实位移与基础版本的差异。网页任意背景的 SVG backdrop 支持必须在目标浏览器截图确认。
 
+## 新增接入能力
+
+- 纵向 tabs：使用 `aria-orientation="vertical"`，同一控制器沿纵轴执行弹簧、拉伸和定位；Up/Down、Home/End 跳过禁用项。横向 RTL 保留语义对应的方向键。路由和 radio 不因需要胶囊就伪装成 tabs。
+- 指定图片：在 `glass.js` 后加载 `image-lens.js`，调用 `GlassImage.mount(container)`；完整结构与源图约束见[渲染与性能](rendering-and-performance.md)。每个实例独立清理；此路线不捕获任意 DOM。
+- 质量/可读性：`data-glass-quality="full|balanced|static"` 与 `data-glass-transparency="reduced"` 可加到公共祖先。值中的竖线表示选项，实际属性只填其中一个。样板即时响应属性与系统偏好变化。
+- 平台样板：`assets/adapters/flutter/glass_surface.dart` 和 `assets/adapters/miniprogram/glass-view/`；接入与验证边界见[平台适配](platform-adapters.md)。
+
+整页风格先看[设计决策](design-system.md)，不要仅通过加大 blur 或四处重复高光来制造层级。
+
 ## React / Vue / Svelte
 
 - 让框架管理 checked、selected 和 panel 状态；把原生控制器算法提取为 hook/composable/action，不让 DOM controller 与框架同时写同一状态。

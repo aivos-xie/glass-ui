@@ -130,6 +130,10 @@ button { color: inherit; }
 }
 .g-segment [role="tab"][aria-selected="true"] { color: var(--g-accent); }
 .g-segment [role="tab"]:focus-visible { outline-offset: -4px; }
+.g-segment[aria-orientation="vertical"] { flex-direction: column; border-radius: 24px; }
+.g-segment[aria-orientation="vertical"] [role="tab"] { text-align: left; justify-content: flex-start; border-radius: 18px; }
+.g-segment[aria-orientation="vertical"] .g-segment__pill { transform: translateY(var(--g-pill-x, 6px)) scaleX(var(--g-pill-y, 1)); border-radius: 18px; }
+.g-segment [role="tab"]:disabled { opacity: .5; cursor: not-allowed; }
 .g-segment__pill {
   pointer-events: none; position: absolute; z-index: 1; left: 0; top: 6px; height: calc(100% - 12px);
   width: var(--g-pill-w, 0px); transform: translateX(var(--g-pill-x, 6px)) scaleY(var(--g-pill-y, 1));
@@ -236,13 +240,31 @@ button { color: inherit; }
   .glass, .g-segment, .g-segment__pill, .g-menu__content, .g-tooltip { background: var(--g-solid); }
 }
 [data-no-blur] .glass, [data-no-blur] .g-segment, [data-no-blur] .g-segment__pill { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; background: var(--g-solid); }
+[data-no-blur] :is(.g-button,.g-icon-button,.g-chip), [data-no-blur] .g-dialog::backdrop { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+[data-glass-quality="balanced"] .glass { -webkit-backdrop-filter: blur(min(var(--g-blur), 10px)); backdrop-filter: blur(min(var(--g-blur), 10px)); }
+[data-glass-quality="balanced"] .g-segment__pill { -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }
+[data-glass-quality="static"] *, [data-glass-quality="static"] *::before, [data-glass-quality="static"] *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+[data-glass-quality="static"] [data-glass-face] { transform: none !important; }
+:is([data-glass-quality="static"],[data-glass-transparency="reduced"]) :is(.glass,.g-segment,.g-segment__pill,.g-button,.g-icon-button,.g-chip,.g-input,.g-select,.g-textarea,.g-menu__content,.g-tooltip) {
+  background: var(--g-solid); -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+}
+[data-glass-transparency="reduced"] .glass__light { display: none; }
+:is([data-glass-quality="static"],[data-glass-transparency="reduced"]) .g-dialog::backdrop { -webkit-backdrop-filter: none; backdrop-filter: none; }
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  :is(.glass,.g-segment,.g-segment__pill,.g-button,.g-icon-button,.g-chip,.g-input,.g-select,.g-textarea,.g-menu__content,.g-tooltip) {
+    background: var(--g-solid); -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+  }
+  .glass__light { display: none; }
+  .g-dialog::backdrop { -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .g-segment [role="tab"][aria-selected="true"] { text-decoration: underline; text-underline-offset: 5px; }
+}
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   [data-glass-face] { transform: none !important; }
   .g-segment__pill { -webkit-backdrop-filter: blur(5px) !important; backdrop-filter: blur(5px) !important; }
 }
 @media (forced-colors: active) {
-  .glass, .g-segment, .g-segment__pill, .g-button, .g-icon-button, .g-chip, .g-input, .g-select, .g-textarea, .g-menu__content, .g-tooltip { background: Canvas; color: CanvasText; border: 1px solid CanvasText; box-shadow: none; backdrop-filter: none; }
+  .glass, .g-segment, .g-segment__pill, .g-button, .g-icon-button, .g-chip, .g-input, .g-select, .g-textarea, .g-menu__content, .g-tooltip { background: Canvas; color: CanvasText; border: 1px solid CanvasText; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
   .glass__edge, .glass__light { display: none; }
   [role="tab"][aria-selected="true"] { color: Highlight !important; text-decoration: underline; }
   .g-option input { appearance: auto !important; }

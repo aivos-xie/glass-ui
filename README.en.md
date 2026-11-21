@@ -61,6 +61,18 @@ Open the [offline demo](assets/demo/index.html) directly. It needs no build step
 
 See also the [mobile screenshot](docs/preview-mobile.png).
 
+## Enhanced capabilities
+
+- **Choose a rendering route:** distinguish frosted surfaces, known-image refraction, arbitrary DOM backdrops, and video/shader work requiring additional implementation. Keep their compatibility evidence separate.
+- **Movable image lenses and vertical navigation:** align the image layer, reuse displacement maps during movement, and support horizontal/vertical/RTL pills with disabled-item skipping.
+- **Quality and readability controls:** full / balanced / static modes, with independent responses to reduced transparency, increased contrast, and reduced motion.
+- **Platform examples:** a Flutter SDK frosted container, a mini-program component with a solid default, and integration guidance for Apple, Android, desktop, and uni-app.
+- **Repeatable validation:** a multi-engine browser script with actual results and untested platforms recorded separately.
+
+See [research notes](docs/en/research-notes.md) for all five references, reviewed revisions, and adoption decisions. New implementations were written independently, without copying third-party code or images.
+
+![Edge refraction in the known-image lens](docs/preview-lens.png)
+
 ## Documentation
 
 | Topic | English | 简体中文 |
@@ -71,6 +83,10 @@ See also the [mobile screenshot](docs/preview-mobile.png).
 | Components | [Recipes](docs/en/components.md) | [组件配方](references/components.md) |
 | Framework integration | [Implementation](docs/en/implementation.md) | [实现与选库](references/implementation.md) |
 | Validation | [Checklist](docs/en/validation.md) | [验收清单](references/validation.md) |
+| Design decisions | [Material hierarchy and brand](docs/en/design-system.md) | [设计决策](references/design-system.md) |
+| Rendering and performance | [Routes and image lenses](docs/en/rendering-and-performance.md) | [渲染与性能](references/rendering-and-performance.md) |
+| Platform adapters | [Native and mini-program guidance](docs/en/platform-adapters.md) | [平台适配](references/platform-adapters.md) |
+| Reference projects | [Research and adoption decisions](docs/en/research-notes.md) | [参考记录](references/research-notes.md) |
 
 ```text
 SKILL.md                     Shared skill entrypoint
@@ -80,13 +96,19 @@ agents/openai.yaml           Optional Codex metadata; other hosts may ignore it
 references/                  Original material, component, and validation references
 docs/en/                     English skill guide and technical references
 assets/demo/                 Standalone HTML / CSS / JavaScript examples
+assets/adapters/             Flutter and mini-program baseline containers
 scripts/check_assets.py      Local resource, link, and basic semantic checks
+scripts/validate_browser.mjs Optional multi-engine checks and screenshots
 docs/                        Screenshots and validation records
 ```
 
 ## Validation
 
-The [UI validation record](docs/validation.json) contains 20 passing checks from November 21, 2026, including tilt limits, rapid retargeting, keyboard focus, forms, overlays, narrow layouts, and controller cleanup. Browser testing used Microsoft Edge / Chromium; Safari and Firefox have not been tested.
+The [browser validation record](docs/browser-validation.json) reports 66 passing checks on Windows on 2026-11-21: 22 each in Edge, Firefox, and Playwright WebKit, with no skips. These cover existing interactions, vertical navigation, image-refraction pixel differences, quality settings, and accessibility fallbacks. The WebKit result is not Safari or physical iPhone certification.
+
+The [adapter validation record](docs/adapter-validation.json) reports no static-analysis issues and four passing widget tests with Flutter 3.44.8. The mini-program adapter has only received source checks, with no DevTools or physical-device run. Apple and Android native guidance has not been compiled or validated on devices.
+
+The [historical UI validation record](docs/validation.json) retains the initial 20 checks. See [validation instructions](docs/en/validation.md) for the new suite and its scope.
 
 The [installation validation record](docs/installation-validation.json) reports installation checks separately. It does not claim runtime testing inside every supported agent product.
 

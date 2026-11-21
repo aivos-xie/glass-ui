@@ -16,10 +16,10 @@ Communicate in the user's language. The English and Chinese documentation must r
 
 ## Workflow
 
-1. Inspect the project's components, style variables, animation libraries, and target browsers. For reference screenshots, distinguish static material, motion deformation, and layering; do not copy their business text.
+1. Inspect the platform, components, style variables, animation libraries, and target browsers/devices. For screenshots, distinguish material, motion, and layering without copying business text. For broad redesigns, use [design decisions](design-system.md) to separate content, structure, and floating controls.
 2. Select materials for the current request: light glass for small controls, frosted glass for content containers, clear liquid glass for selection indicators, and tinted glass for primary actions or states. Add prism edges only when useful. See [materials and motion](materials-and-motion.md) for constraints.
 3. Implement states according to component semantics. Consult the [component recipes](components.md), retaining native form behavior or the project's existing accessible primitives.
-4. Use `assets/demo/glass.css` and `glass.js` as adaptable references. They are a dependency-free baseline, not a requirement to embed the entire showcase in the application. Open `assets/demo/index.html` directly for a preview. For initial integration, see [implementation and library selection](implementation.md).
+4. Use [rendering and performance](rendering-and-performance.md) to distinguish CSS baselines, known images, arbitrary DOM backdrops, and video/shaders. Take only needed resources from the dependency-free `assets/demo/glass.css` and `glass.js` baseline. Known-image lenses use `image-lens.js`; native/mini-program work uses [platform adapters](platform-adapters.md). Open `assets/demo/index.html` to preview, and see [implementation](implementation.md) for integration.
 5. Check appearance and real interactions using the [validation checklist](validation.md). Report browsers actually tested, untested platforms, and fallback behavior. Syntax support checks are not visual evidence.
 
 ## Required effects
@@ -31,11 +31,21 @@ Communicate in the user's language. The English and Chinese documentation must r
 - Transparency, blur, and refraction are different capabilities. Ordinary CSS blur is not physical refraction. Enhancements affect only the background, never foreground text. If an enhancement fails, retain the complete base material.
 - Provide clear feedback for applicable default, hover, pressed, keyboard focus, selected, disabled, loading, and error states. Touch interaction must not depend on hover, and color alone must not convey state.
 - Avoid repeated strong blur on nested glass layers. Check light, dark, and complex backgrounds. Provide usable fallbacks for reduced motion, forced colors, missing blur, and missing enhanced refraction.
+- Respect reduced-transparency and increased-contrast preferences. Use `data-glass-quality` for full/balanced/static and `data-glass-transparency="reduced"` for solid surfaces. Browser and device names do not replace rendering checks.
+
+## Read on demand
+
+- Page style, brand, and material hierarchy: [design decisions](design-system.md).
+- Refraction routes, quality controls, and performance: [rendering and performance](rendering-and-performance.md).
+- Flutter, Apple, Android, desktop, and mini programs: read only the relevant part of [platform adapters](platform-adapters.md).
+- The five reference projects and adoption decisions: [research notes](research-notes.md); routine tasks need not load them.
 
 ## Resource scope
 
 - `assets/demo/`: offline component examples, design tokens, pointer and pill controllers, and optional SVG background displacement. No remote fonts, images, analytics, or build step.
 - [Implementation reference](implementation.md): native, React, and Vue integration, with optional library choices. Before installing a third-party library, verify its current API, license, and target browser support. No third-party library is required.
 - `scripts/check_assets.py`: checks resource completeness, local references, and basic semantics. It does not replace browser testing.
+- `scripts/validate_browser.mjs`: optional Playwright/PNG checks reporting actual engines, screenshots, and passed/failed/skipped checks. WebKit engine tests are not Safari or physical iPhone certification.
+- `assets/adapters/`: baseline Flutter and mini-program containers, not complete native apps, video engines, or an untested promise of universal refraction.
 
 Implement only the components and effects needed for the task. Preserve licenses for added third-party resources. Reference screenshots do not grant permission to copy or publish them. Upload, deploy, or modify a remote repository only when the user separately requests it.

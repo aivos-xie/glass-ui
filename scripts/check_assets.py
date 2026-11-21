@@ -3,6 +3,7 @@
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
+import json
 import re
 import sys
 
@@ -36,12 +37,23 @@ def main():
                 'references/validation.md', 'assets/demo/index.html',
                 'assets/demo/glass.css', 'assets/demo/glass.js',
                 'assets/demo/demo.css', 'assets/demo/demo.js',
-                'assets/demo/lens-map.js', 'assets/demo/grid.svg']
+                'assets/demo/lens-map.js', 'assets/demo/image-lens.js', 'assets/demo/grid.svg',
+                'references/design-system.md', 'references/rendering-and-performance.md',
+                'references/platform-adapters.md', 'references/research-notes.md',
+                'assets/adapters/flutter/glass_surface.dart',
+                'assets/adapters/miniprogram/glass-view/index.js',
+                'assets/adapters/miniprogram/glass-view/index.json',
+                'assets/adapters/miniprogram/glass-view/index.wxml',
+                'assets/adapters/miniprogram/glass-view/index.wxss',
+                'scripts/validate_browser.mjs']
     for relative in required:
         if not (root / relative).is_file():
             errors.append(f'Missing resource: {relative}')
     if errors:
         print('\n'.join(errors)); return 1
+    mini_config = json.loads((root / 'assets/adapters/miniprogram/glass-view/index.json').read_text(encoding='utf-8'))
+    if mini_config.get('component') is not True:
+        errors.append('Mini-program adapter must be registered as a component')
     page = Page()
     page.feed((demo / 'index.html').read_text(encoding='utf-8'))
     ids = [attrs['id'] for _, attrs in page.nodes if 'id' in attrs]
@@ -87,7 +99,7 @@ def main():
                 errors.append(f'Broken encoding: {source.name}')
     if errors:
         print('\n'.join(errors)); return 1
-    print(f'PASS: {len(required)} resources, {len(ids)} unique ids, local links and demo semantics.')
+    print(f'PASS: {len(required)} resources, {len(ids)} unique ids, local links, adapter configuration and demo semantics.')
     return 0
 
 

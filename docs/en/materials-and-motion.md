@@ -52,3 +52,5 @@ Use `backdrop-filter: blur(...)` as the baseline. The example enhancement uses `
 - Never apply an ordinary `filter: url(...)` to text nodes or button containers; that would deform the foreground as well.
 
 Disable expansion, displacement, and spring bounce under reduced motion. Under `forced-colors`, use solid borders and selection markers in system colors. Without backdrop support, increase surface opacity and preserve the complete structure.
+
+Keep the ordinary SVG known-image route separate from arbitrary-DOM backdrop filtering; see [rendering and performance](rendering-and-performance.md). Vertical pills use the same leading/trailing-edge logic on the vertical axis, without deforming foreground text. Increased contrast or reduced transparency uses a stable solid fill and disables displacement rather than merely slowing animation.

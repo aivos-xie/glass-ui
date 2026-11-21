@@ -83,6 +83,8 @@ A custom agent with file access can load `SKILL.md` or the [English guide](docs/
 
 Report the agent, installation path, user or project scope, native skill or project-instruction integration, completed checks, and any remaining loading action. Do not change the user's application code as part of installation.
 
+The browser validator and Flutter/mini-program examples are optional development resources. Installing or reading the skill does not require Playwright, pngjs, the Flutter SDK, or mini-program developer tools. Prepare those environments only for the corresponding implementation or validation task.
+
 ## References
 
 - [Agent Skills format](https://agentskills.io/specification)

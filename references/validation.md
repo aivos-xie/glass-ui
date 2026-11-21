@@ -34,3 +34,22 @@
 | 弹层被裁切 | 父容器 overflow/mask，改用 top layer 或 portal |
 
 交付说明写清：已实现的组件、基础与增强的区别、验证平台、未验证项。不要给出未经验证的“所有浏览器完全一致”。
+
+## 可重复运行的浏览器验证
+
+`scripts/validate_browser.mjs` 使用可选的 Playwright 和 pngjs，在本地临时端口提供样板页面，逐引擎输出测试与截图。依赖仅用于开发验证，不是 Skill 或网页的运行依赖。
+
+```bash
+# 在独立开发目录安装，或使用项目已有依赖。
+npm install --no-save playwright pngjs
+npx playwright install chromium firefox webkit
+node /absolute/path/to/glass-ui/scripts/validate_browser.mjs --browser chromium,firefox,webkit --output ./glass-results --require-all true
+```
+
+`--module-dir` 可指定已有 Node 项目目录；`--browser edge` 使用本机 Microsoft Edge。路径用你自己的实际目录，不要把示例占位路径直接运行。脚本记录缺失浏览器为 skipped；`--require-all true` 会使跳过也返回失败。不要把 skipped 写成通过。Windows 上的 Playwright WebKit 只是该引擎的自动化测试，不是 macOS Safari 或 iPhone 真机测试。
+
+回归覆盖纵向/RTL tabs、禁用项跳过、已知图片折射像素差、图片移动时位移图复用、质量档位、透明与对比偏好、原有表单/焦点及清理行为。实际通过数量与浏览器版本以输出的 `report.json` 为准；测试用已知背景不能证明任意 DOM backdrop 有效。
+
+本次发布的[浏览器报告](../docs/browser-validation.json)记录 66 项通过。增加对比度在新建上下文中验证，因为测试所用 Firefox 的运行中偏好模拟没有更新既有 MediaQueryList；运行中减少动态效果另外验证。不要为这一自动化限制加入生产环境 UA 补丁。[平台样板报告](../docs/adapter-validation.json)单独记录 Flutter 测试与小程序尚未运行的范围。
+
+Flutter 样板应在目标 Flutter 工程中先 analyze，再运行含原生子控件、减少透明度、高对比与零 blur 的 widget tests。小程序至少检查 JSON/WXML/JS，再在目标基础库和真实设备验证 enhanced 模式；源文件检查不等于小程序真机成功。

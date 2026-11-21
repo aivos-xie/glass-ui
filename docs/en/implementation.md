@@ -28,6 +28,15 @@ See `data-glass-tabs` in the demo for pill markup: one `[data-glass-pill]`, mult
 
 Optionally set `data-refraction="true"` on `[data-glass-tabs]` and load `lens-map.js` before mounting. The demo disables enhancement by default; users can explicitly enable it on the materials page. A separate SVG background in the same page's grid-lens experiment demonstrates displacement against the base version. Confirm SVG backdrop behavior on arbitrary page backgrounds through screenshots in target browsers.
 
+## Additional integration capabilities
+
+- Vertical tabs: set `aria-orientation="vertical"` for springs, stretch, and alignment along the vertical axis. Up/Down and Home/End skip disabled items. Horizontal RTL uses the corresponding arrow semantics. Do not disguise routes or radio controls as tabs merely to get a pill.
+- Known images: load `image-lens.js` after `glass.js` and call `GlassImage.mount(container)`. See [rendering and performance](rendering-and-performance.md) for markup and source requirements. Dispose each instance independently; this route never captures arbitrary DOM.
+- Quality/readability: set `data-glass-quality="full|balanced|static"` and `data-glass-transparency="reduced"` on a common ancestor. The vertical bars denote alternatives; use one actual value. The baseline reacts to attribute and system preference changes.
+- Platform examples: `assets/adapters/flutter/glass_surface.dart` and `assets/adapters/miniprogram/glass-view/`. See [platform adapters](platform-adapters.md) for integration and validation limits.
+
+For page styling, consult [design decisions](design-system.md). More blur or repeated highlights alone do not create useful hierarchy.
+
 ## React, Vue, and Svelte
 
 - Let the framework own checked, selected, and panel state. Extract the native controller's algorithms into a hook, composable, or action; do not let both a DOM controller and the framework write the same state.

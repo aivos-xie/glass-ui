@@ -34,3 +34,22 @@ The included refraction experiment uses a known local SVG background to make dis
 | Overlay is clipped | Ancestor overflow or masks; use the top layer or a portal |
 
 In the delivery note, identify implemented components, base versus enhanced behavior, tested platforms, and untested items. Do not claim that all browsers behave identically without validation.
+
+## Reproducible browser validation
+
+`scripts/validate_browser.mjs` uses optional Playwright and pngjs dependencies. It serves the sample on a temporary local port and writes per-engine checks and screenshots. These are development dependencies, not runtime requirements for the skill or webpage.
+
+```bash
+# Use an isolated development directory or existing project dependencies.
+npm install --no-save playwright pngjs
+npx playwright install chromium firefox webkit
+node /absolute/path/to/glass-ui/scripts/validate_browser.mjs --browser chromium,firefox,webkit --output ./glass-results --require-all true
+```
+
+Use `--module-dir` to select an existing Node project; `--browser edge` uses installed Microsoft Edge. Replace example paths with real paths. Missing browsers are recorded as skipped; `--require-all true` makes skips fail the command. Never report skipped checks as passes. Playwright WebKit on Windows is an engine automation check, not macOS Safari or physical iPhone validation.
+
+Regression checks cover vertical/RTL tabs, disabled-item skipping, known-image refraction pixel changes, displacement-map reuse during movement, quality levels, transparency/contrast preferences, existing forms/focus, and disposal. Actual counts and browser versions are in `report.json`. A known-background test cannot prove arbitrary-DOM backdrop support.
+
+This release's [browser report](../browser-validation.json) records 66 passing checks. Increased contrast is validated in a new context because runtime preference emulation in the tested Firefox build did not update existing MediaQueryList objects. Runtime reduced motion is tested separately. Do not add production UA patches for this automation limitation. The [adapter report](../adapter-validation.json) separately records Flutter tests and the untested mini-program runtime.
+
+Analyze the Flutter adapter inside the target Flutter project and run widget tests for native child controls, reduced transparency, high contrast, and zero blur. For mini programs, check JSON/WXML/JS, then validate enhanced mode against the target base library and physical devices. Source checks are not a claim of device success.

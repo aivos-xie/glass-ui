@@ -1,0 +1,3 @@
+<view class="glass-view {{dark ? 'glass-view--dark' : ''}} {{enhanced ? 'glass-view--enhanced' : ''}}">
+  <slot></slot>
+</view>

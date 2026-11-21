@@ -1,0 +1,18 @@
+.glass-view {
+  position: relative;
+  padding: 32rpx;
+  overflow: hidden;
+  border: 1rpx solid rgba(90, 80, 120, .2);
+  border-radius: 32rpx;
+  background: #f8f8fc;
+  color: #202439;
+  box-shadow: 0 12rpx 40rpx rgba(35, 25, 65, .09);
+}
+.glass-view--dark { background: #29283e; color: #f2f0ff; border-color: rgba(255, 255, 255, .3); }
+.glass-view--enhanced {
+  background: rgba(255, 255, 255, .8);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-color: rgba(255, 255, 255, .8);
+}
+.glass-view--dark.glass-view--enhanced { background: rgba(41, 40, 62, .84); }

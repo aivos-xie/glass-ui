@@ -61,6 +61,18 @@ npx --yes skills@1.9.0 add aivos-xie/glass-ui --skill glass-ui --agent claude-co
 
 另有 [移动端截图](docs/preview-mobile.png)。
 
+## 增强能力
+
+- **按场景选择渲染**：区分普通磨砂、指定图片折射、任意 DOM backdrop 和需要额外实现的视频/shader；不混用兼容性结论。
+- **可移动图片透镜与纵向导航**：图片层保持对齐，移动时复用位移图；胶囊支持横向、纵向、RTL 和禁用项跳过。
+- **质量与可读性设置**：full / balanced / static 三档，减少透明度、增加对比度和减少动态分别响应。
+- **平台样板**：新增 Flutter SDK 磨砂容器、默认实色的小程序组件，并提供 Apple、Android、桌面和 uni-app 接入指南。
+- **可重复验证**：附多引擎浏览器测试脚本；实际结果与未验证平台分开记录。
+
+五个参考项目、阅读版本和采用/未采用的思路见[参考记录](references/research-notes.md)。新增实现独立编写，未复制第三方代码或图片。
+
+![指定图片透镜的边缘折射](docs/preview-lens.png)
+
 ## 多语言文档
 
 中英文文档覆盖项目说明、安装步骤、Skill 使用指南、材质与交互、组件配方、框架接入和验收要求。演示界面的文案目前为中文，本次多语言支持覆盖说明文档。
@@ -73,6 +85,10 @@ npx --yes skills@1.9.0 add aivos-xie/glass-ui --skill glass-ui --agent claude-co
 | 组件 | [组件配方](references/components.md) | [Component recipes](docs/en/components.md) |
 | 框架接入 | [实现与选库](references/implementation.md) | [Implementation](docs/en/implementation.md) |
 | 验收 | [验收清单](references/validation.md) | [Validation](docs/en/validation.md) |
+| 设计决策 | [材质层级与品牌](references/design-system.md) | [Design decisions](docs/en/design-system.md) |
+| 渲染与性能 | [路线与图片透镜](references/rendering-and-performance.md) | [Rendering and performance](docs/en/rendering-and-performance.md) |
+| 平台适配 | [原生与小程序](references/platform-adapters.md) | [Platform adapters](docs/en/platform-adapters.md) |
+| 参考项目 | [阅读与取舍](references/research-notes.md) | [Research notes](docs/en/research-notes.md) |
 
 ## 文件结构
 
@@ -84,13 +100,19 @@ agents/openai.yaml           可选 Codex 元数据，其他 Agent 可忽略
 references/                  材质、组件配方、实现与验收规则
 docs/en/                     英文使用指南与技术参考
 assets/demo/                 无依赖 HTML / CSS / JavaScript 样板
+assets/adapters/             Flutter 与小程序基础容器
 scripts/check_assets.py      资源、引用和基础语义检查
+scripts/validate_browser.mjs 可选多引擎回归与截图
 docs/                        演示截图与验证记录
 ```
 
 ## 验证
 
-[界面验证记录](docs/validation.json) 包含 2026 年 11 月 21 日通过的 20 项检查，覆盖倾角、快速切换、键盘与焦点、表单、弹层、窄屏布局及控制器清理。浏览器实测为 Microsoft Edge / Chromium；Safari 和 Firefox 尚未实测。
+[浏览器验证记录](docs/browser-validation.json)：2026-11-21 在 Windows 上运行 Edge、Firefox 和 Playwright WebKit，每个引擎 22 项，共 66 项通过，无跳过。覆盖原有交互、新增纵向导航、图片折射像素差、质量与无障碍回退。WebKit 结果不代表 Safari 或 iPhone 真机认证。
+
+[平台样板验证记录](docs/adapter-validation.json)：Flutter 3.44.8 静态分析无问题，4 项 widget tests 通过；小程序仅完成源文件检查，尚未在开发者工具和真机运行。Apple、Android 原生指南也未作编译或真机验证。
+
+[历史界面验证记录](docs/validation.json) 保留首版的 20 项检查。新版测试命令与判定范围见[验收说明](references/validation.md)。
 
 跨 Agent 的安装验证单独见 [安装验证记录](docs/installation-validation.json)，不把目录安装检查当成各产品的运行验证。
 

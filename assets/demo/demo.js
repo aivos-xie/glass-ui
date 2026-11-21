@@ -5,6 +5,7 @@
   const $$ = selector => [...document.querySelectorAll(selector)];
   const dispose = GlassUI.mount(document);
   const reducedMedia = matchMedia('(prefers-reduced-motion: reduce)');
+  const imageLens = GlassImage.mount($('#lens-experiment'));
   let toastTimer, savingTimer;
   function toast(message) {
     clearTimeout(toastTimer);
@@ -84,8 +85,15 @@
     const matches = components.filter(text => text.toLowerCase().includes(query));
     result.textContent = matches.length ? `找到 ${matches.length} 类组件：${matches.join('；')}` : '暂未找到匹配组件。试试“按钮”“卡片”或“开关”。';
   });
+  const dialogOpeners = new WeakMap();
   $$('[data-dialog]').forEach(button => button.addEventListener('click', () => {
-    const dialog = document.getElementById(button.dataset.dialog); dialog.returnValue = ''; dialog.showModal();
+    const dialog = document.getElementById(button.dataset.dialog);
+    dialogOpeners.set(dialog, button); dialog.returnValue = ''; dialog.showModal();
+  }));
+  $$('dialog').forEach(dialog => dialog.addEventListener('close', () => {
+    const opener = dialogOpeners.get(dialog);
+    if (opener?.isConnected && !opener.disabled) opener.focus({ preventScroll: true });
+    dialogOpeners.delete(dialog);
   }));
   $('#preview-dialog').addEventListener('close', event => {
     if (event.target.returnValue === 'save') toast($('#dialog-note').value.trim() ? '灵感已记下。' : '为下一次灵感留好位置。');
@@ -109,23 +117,26 @@
   $('#blur-range').addEventListener('input', event => { root.style.setProperty('--g-blur', `${event.target.value}px`); $('#blur-value').textContent = `${event.target.value}px`; });
   $('#glow-range').addEventListener('input', event => { root.style.setProperty('--g-glow', event.target.value / 100); $('#glow-value').textContent = `${event.target.value}%`; });
   $('#fallback-toggle').addEventListener('change', event => { root.toggleAttribute('data-no-blur', event.target.checked); });
+  $('#quality-select').addEventListener('change', event => { root.dataset.glassQuality = event.target.value; refreshLens(); });
+  $('#transparency-toggle').addEventListener('change', event => { root.dataset.glassTransparency = event.target.checked ? 'reduced' : 'auto'; refreshLens(); });
+  $('#lens-position').addEventListener('input', event => {
+    imageLens.setPosition(Number(event.target.value) / 100, .5);
+    $('#lens-position-value').textContent = `${event.target.value}%`;
+  });
   $('#reset-style').addEventListener('click', () => {
     material('frosted'); root.style.removeProperty('--g-glow'); $('#glow-range').value = 13; $('#glow-value').textContent = '13%';
   });
-  let experimentFilter;
   function refreshLens() {
     const requested = $('#refraction-toggle').checked;
-    const enabled = requested && !reducedMedia.matches && root.dataset.glassMotion !== 'off';
+    const prefs = demoPreferences.current();
+    const enabled = requested && !prefs.reduced && prefs.enhanced;
     $$('[data-glass-tabs]').forEach(track => { track.dataset.refraction = String(enabled); });
-    if (enabled) {
-      experimentFilter ||= GlassLens.createFilter();
-      experimentFilter.region(300, 150); experimentFilter.update(300, 150);
-      $('#lens-image').setAttribute('filter', `url(#${experimentFilter.id})`);
-    } else $('#lens-image').removeAttribute('filter');
-    $('#lens-status').textContent = requested && !enabled ? '减少动态已生效：折射位移暂停。' : enabled ? '增强已开启。观察透镜边缘的网格弯曲与文字变化。' : '增强已关闭。上方为已知 SVG 背景的对照实验。';
+    imageLens.setEnabled(requested);
+    $('#lens-status').textContent = requested && !enabled ? '当前质量或可读性设置已暂停折射位移。' : enabled ? '增强已开启。观察透镜边缘的网格弯曲与文字变化。' : '增强已关闭。上方为已知 SVG 背景的对照实验。';
   }
   $('#refraction-toggle').addEventListener('change', refreshLens);
+  const demoPreferences = GlassUI.observePreferences(root, refreshLens);
   motion(true);
   // Controller cleanup for behavioral validation; the standalone demo owns its page listeners.
-  globalThis.GlassDemo = { dispose() { dispose(); experimentFilter?.dispose(); clearTimeout(toastTimer); clearTimeout(savingTimer); } };
+  globalThis.GlassDemo = { imageLens, dispose() { dispose(); imageLens.dispose(); demoPreferences.dispose(); clearTimeout(toastTimer); clearTimeout(savingTimer); } };
 })();

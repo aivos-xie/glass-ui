@@ -94,7 +94,7 @@
       "name": "Every project installation preserves resource bytes, frontmatter values and skill instructions",
       "pass": true,
       "uniqueDirectoryCount": 53,
-      "filesComparedPerDirectory": 27
+      "filesComparedPerDirectory": 45
     },
     {
       "name": "Installed skills can be listed by the CLI for the eight documented agent IDs",

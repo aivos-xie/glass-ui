@@ -83,6 +83,8 @@ npx --yes skills@1.9.0 add aivos-xie/glass-ui --skill glass-ui --agent <agent-id
 
 最后报告：Agent 名称、安装路径、全局或项目范围、原生或项目指令接入方式、已执行的验证及仍需用户完成的加载动作。安装结束不自动修改用户业务代码。
 
+浏览器验证脚本、Flutter 和小程序样板是按需使用的开发资源。安装或读取 Skill 不要求安装 Playwright、pngjs、Flutter SDK 或小程序开发工具；只有实际做对应开发/验收时才准备这些环境。
+
 ## 依据
 
 - [Agent Skills 格式](https://agentskills.io/specification)

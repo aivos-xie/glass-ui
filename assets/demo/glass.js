@@ -17,13 +17,24 @@
   function watchMotion(element, callback) {
     const media = matchMedia('(prefers-reduced-motion: reduce)');
     const fine = matchMedia('(hover: hover) and (pointer: fine)');
-    const current = () => ({ reduced: media.matches || !!element.closest('[data-glass-motion="off"]'), fine: fine.matches });
+    const transparency = matchMedia('(prefers-reduced-transparency: reduce)');
+    const contrast = matchMedia('(prefers-contrast: more)');
+    const forced = matchMedia('(forced-colors: active)');
+    const current = () => {
+      const quality = element.closest('[data-glass-quality]')?.getAttribute('data-glass-quality') || 'full';
+      const solid = transparency.matches || contrast.matches || forced.matches || quality === 'static' ||
+        !!element.closest('[data-glass-transparency="reduced"], [data-no-blur]');
+      return { reduced: media.matches || quality === 'static' || !!element.closest('[data-glass-motion="off"]'),
+        fine: fine.matches, quality, solid, enhanced: quality === 'full' && !solid };
+    };
     const notify = () => callback(current());
-    media.addEventListener('change', notify); fine.addEventListener('change', notify);
+    const queries = [media, fine, transparency, contrast, forced];
+    queries.forEach(query => query.addEventListener('change', notify));
     const observer = new MutationObserver(notify);
     // Observe ancestors only, so per-frame style changes on descendants never trigger this observer.
-    for (let node = element; node; node = node.parentElement) observer.observe(node, { attributes: true, attributeFilter: ['data-glass-motion'] });
-    return { current, dispose() { media.removeEventListener('change', notify); fine.removeEventListener('change', notify); observer.disconnect(); } };
+    for (let node = element; node; node = node.parentElement) observer.observe(node, { attributes: true,
+      attributeFilter: ['data-glass-motion', 'data-glass-quality', 'data-glass-transparency', 'data-no-blur'] });
+    return { current, dispose() { queries.forEach(query => query.removeEventListener('change', notify)); observer.disconnect(); } };
   }
   function card(host) {
     const face = host.querySelector('[data-glass-face]');
@@ -46,7 +57,7 @@
     function tick(time) {
       if (disposed) return;
       raf = 0;
-      const dt = Math.min(last ? time - last : 16.67, 40); last = time;
+      const dt = Math.min(last ? time - last : 16.67, 100); last = time;
       if (pendingPoint && active) {
         const rect = host.getBoundingClientRect();
         if (rect.width && rect.height) {
@@ -86,7 +97,7 @@
     const vertical = track.getAttribute('aria-orientation') === 'vertical';
     let selected = Math.max(0, items.findIndex(el => el.getAttribute('aria-selected') === 'true'));
     let l = 0, r = 0, vl = 0, vr = 0, naturalWidth = 0, widthVelocity = 0, targetL = 0, targetR = 0, targetY = 0, targetH = 0;
-    let direction = 1, raf = 0, last = 0, ready = false, disposed = false, held = false, reduced = false;
+    let direction = 1, raf = 0, last = 0, ready = false, disposed = false, held = false, reduced = false, enhanced = true;
     const lens = global.GlassLens?.attach(pill);
     function syncSemantics() {
       items.forEach((item, index) => {
@@ -100,13 +111,14 @@
       if (disposed) return;
       const a = track.getBoundingClientRect(), b = items[selected].getBoundingClientRect();
       if (!a.width || !b.width) return;
-      targetL = b.left - a.left - track.clientLeft + track.scrollLeft;
-      targetR = targetL + b.width;
-      targetY = b.top - a.top - track.clientTop + track.scrollTop; targetH = b.height;
+      targetL = vertical ? b.top - a.top - track.clientTop + track.scrollTop : b.left - a.left - track.clientLeft + track.scrollLeft;
+      targetR = targetL + (vertical ? b.height : b.width);
+      targetY = vertical ? b.left - a.left - track.clientLeft + track.scrollLeft : b.top - a.top - track.clientTop + track.scrollTop;
+      targetH = vertical ? b.width : b.height;
       direction = (targetL + targetR) / 2 >= (l + r) / 2 ? 1 : -1;
       if (snap || reduced || !ready) {
         l = targetL; r = targetR; naturalWidth = targetR - targetL; vl = vr = widthVelocity = 0; ready = true;
-        cancelAnimationFrame(raf); raf = 0; last = 0; paint(); lens?.resize(r - l, targetH);
+        cancelAnimationFrame(raf); raf = 0; last = 0; paint(); resizeLens();
       } else kick();
     }
     function paint() {
@@ -114,11 +126,15 @@
       pill.style.setProperty('--g-pill-x', `${l.toFixed(3)}px`);
       pill.style.setProperty('--g-pill-w', `${Math.max(r - l, 1).toFixed(3)}px`);
       pill.style.setProperty('--g-pill-y', reduced ? '1' : String(held ? 1.035 : 1 - Math.min(speed / 17000, .035)));
-      pill.style.top = `${targetY}px`; pill.style.height = `${targetH}px`;
+      pill.style.top = vertical ? '0px' : `${targetY}px`;
+      pill.style.left = vertical ? `${targetY}px` : '0px';
+      pill.style.width = vertical ? `${targetH}px` : 'var(--g-pill-w)';
+      pill.style.height = vertical ? 'var(--g-pill-w)' : `${targetH}px`;
     }
+    function resizeLens() { lens?.resize(vertical ? targetH : r - l, vertical ? r - l : targetH); }
     function tick(time) {
       raf = 0; if (disposed) return;
-      let remaining = Math.min(last ? (time - last) / 1000 : 1 / 60, .034); last = time;
+      let remaining = Math.min(last ? (time - last) / 1000 : 1 / 60, .1); last = time;
       // Small fixed maximum steps keep spring stable across refresh rates and long frames.
       while (remaining > 0) {
         const dt = Math.min(remaining, 1 / 120); remaining -= dt;
@@ -137,7 +153,7 @@
         if (r - l < minW) { const center = (l + r) / 2; l = center - minW / 2; r = center + minW / 2; }
       }
       const moving = Math.abs(l - targetL) + Math.abs(r - targetR) + Math.abs(naturalWidth - (targetR - targetL)) > .04 || Math.abs(vl) + Math.abs(vr) + Math.abs(widthVelocity) > .4;
-      if (!moving) { l = targetL; r = targetR; naturalWidth = r - l; vl = vr = widthVelocity = 0; last = 0; lens?.resize(r - l, targetH); }
+      if (!moving) { l = targetL; r = targetR; naturalWidth = r - l; vl = vr = widthVelocity = 0; last = 0; resizeLens(); }
       paint(); if (moving) raf = requestAnimationFrame(tick);
     }
     function kick() { if (!raf && !disposed) raf = requestAnimationFrame(tick); }
@@ -150,11 +166,12 @@
     }
     const motion = watchMotion(track, value => {
       reduced = value.reduced;
+      enhanced = value.enhanced;
       if (reduced) held = false;
-      lens?.setEnabled(track.dataset.refraction === 'true' && !reduced);
+      lens?.setEnabled(track.dataset.refraction === 'true' && !reduced && enhanced);
       measure(true);
     });
-    reduced = motion.current().reduced;
+    reduced = motion.current().reduced; enhanced = motion.current().enhanced;
     syncSemantics(); measure(true);
     items.forEach((item, index) => {
       item.addEventListener('click', () => select(index), on);
@@ -175,9 +192,9 @@
     }, on);
     const observer = new ResizeObserver(() => measure(true));
     observer.observe(track); items.forEach(item => observer.observe(item));
-    const attributeObserver = new MutationObserver(() => { lens?.setEnabled(track.dataset.refraction === 'true' && !reduced); measure(true); });
+    const attributeObserver = new MutationObserver(() => { lens?.setEnabled(track.dataset.refraction === 'true' && !reduced && enhanced); measure(true); });
     attributeObserver.observe(track, { attributes: true, attributeFilter: ['data-refraction'] });
-    lens?.setEnabled(track.dataset.refraction === 'true' && !reduced);
+    lens?.setEnabled(track.dataset.refraction === 'true' && !reduced && enhanced);
     const fonts = () => measure(true);
     document.fonts?.addEventListener('loadingdone', fonts);
     return () => { disposed = true; abort.abort(); motion.dispose(); observer.disconnect(); attributeObserver.disconnect(); document.fonts?.removeEventListener('loadingdone', fonts); cancelAnimationFrame(raf); lens?.dispose(); };
@@ -194,5 +211,5 @@
     }
     return () => cleanups.splice(0).forEach(dispose => dispose());
   }
-  global.GlassUI = Object.freeze({ mount, math: Object.freeze({ tiltAt, normalAngle }) });
+  global.GlassUI = Object.freeze({ mount, observePreferences: watchMotion, math: Object.freeze({ tiltAt, normalAngle }) });
 })(window);

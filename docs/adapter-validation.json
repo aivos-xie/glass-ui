@@ -1,0 +1,42 @@
+{
+  "testedAt": "2026-11-21",
+  "platform": "win32",
+  "flutter": {
+    "version": "3.44.8",
+    "dartVersion": "3.12.2",
+    "source": "assets/adapters/flutter/glass_surface.dart",
+    "sha256": "09ec06ec56dad64caa85a14523b88b83f72cf2048ee452c41543400051cdce87",
+    "analysis": {
+      "command": "flutter --no-version-check analyze --no-pub",
+      "status": "passed",
+      "issues": 0
+    },
+    "widgetTests": {
+      "command": "flutter --no-version-check test --no-pub --reporter expanded",
+      "status": "passed",
+      "passed": 4,
+      "failed": 0,
+      "cases": [
+        "Clipped blur and interactive native child button",
+        "Reduced-transparency solid fallback",
+        "High contrast with dark theme",
+        "Zero-blur fallback"
+      ]
+    }
+  },
+  "miniprogram": {
+    "status": "source-checks-only",
+    "checks": [
+      "JavaScript syntax",
+      "JSON parses and declares component: true",
+      "Required resources and documentation references exist"
+    ],
+    "runtimeTested": false
+  },
+  "limitations": [
+    "Flutter validation used an isolated SDK-only test project; integration in a consuming application still requires testing.",
+    "Mini-program rendering and enhanced mode were not run in WeChat DevTools or on physical devices.",
+    "Apple, Android native and other platform guidance was not compiled or validated on devices.",
+    "These results do not certify performance or full accessibility compliance."
+  ]
+}
