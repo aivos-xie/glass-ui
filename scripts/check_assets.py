@@ -70,7 +70,8 @@ def main():
                 errors.append(f'Control lacks label: {attrs["id"]}')
         if tag == 'img' and 'alt' not in attrs:
             errors.append('Image missing alt text')
-    for source in [*sorted(root.glob('*.md')), *sorted((root / 'references').glob('*.md'))]:
+    for source in [*sorted(root.glob('*.md')), *sorted((root / 'references').glob('*.md')),
+                   *sorted((root / 'docs').rglob('*.md'))]:
         text = source.read_text(encoding='utf-8')
         for path in re.findall(r'\]\(([^)]+)\)', text):
             if urlsplit(path).scheme or path.startswith('#'):

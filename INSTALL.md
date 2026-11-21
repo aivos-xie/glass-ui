@@ -1,10 +1,12 @@
 # Glass UI 安装说明 · 给执行安装任务的 Agent
 
-将完整的 Glass UI Skill 安装到你当前宿主能读取的位置，然后验证入口与资源。核心格式是 `SKILL.md` 加相对路径资源，不依赖任何特定厂商。本文只负责安装；安装后的玻璃设计任务从 [SKILL.md](SKILL.md) 开始。
+[简体中文](INSTALL.md) | [English](INSTALL.en.md)
+
+将完整的 Glass UI Skill 安装到你当前宿主能读取的位置，然后验证入口与资源。核心格式是 `SKILL.md` 加相对路径资源，不依赖任何特定厂商。本文只负责安装；安装后的玻璃设计任务从 [SKILL.md](SKILL.md) 或其 [英文指南](docs/en/skill-guide.md) 开始。
 
 ## 一句话入口
 
-> 请从 https://github.com/aivos-xie/glass-ui 安装 Glass UI Skill，先阅读 INSTALL.md，按你当前 Agent 的原生机制安装并验证，完成后告诉我安装位置。
+> 请从 https://github.com/aivos-xie/glass-ui 安装 Glass UI Skill，先阅读 INSTALL.md，按你当前 Agent 的方式安装或接入并验证，完成后告诉我安装位置。
 
 ## 选择当前环境
 
@@ -46,7 +48,7 @@ npx --yes skills@1.9.0 add aivos-xie/glass-ui --skill glass-ui --agent <agent-id
 
 从宿主文档或现有配置确定它实际读取的 Skill 目录，再通过已有 Git、下载/解压工具或本地文件操作，将仓库完整复制为其中的 `glass-ui` 子目录。入口必须是 `<安装目录>/glass-ui/SKILL.md`；不能多套一层仓库目录，也不能只复制 `SKILL.md`。
 
-至少保留 `SKILL.md`、`INSTALL.md`、`references/`、`assets/` 和 `scripts/` 的相对位置。`agents/openai.yaml` 是可选元数据，缺少它不会阻止其他宿主使用本 Skill。仓库 README、截图与验证记录可以一起保留。
+保留完整目录及所有本地文档链接，包括 `SKILL.md`、中英文 README 和安装说明、`references/`、`docs/`、`assets/` 和 `scripts/`。`agents/openai.yaml` 是可选元数据，缺少它不会阻止其他宿主使用本 Skill。
 
 不要假定 `.codex/skills`、`.claude/skills` 或 `.agents/skills` 对所有产品都生效；优先使用该宿主的原生位置及加载规则。
 
@@ -59,8 +61,9 @@ npx --yes skills@1.9.0 add aivos-xie/glass-ui --skill glass-ui --agent <agent-id
 ```markdown
 <!-- glass-ui:start -->
 遇到玻璃 UI、磨砂卡片、液态导航或追光组件任务时，先读取
-`.agent-resources/skills/glass-ui/SKILL.md`，再按需读取其中引用的
-`references/` 和 `assets/`；其他任务无需加载。
+`.agent-resources/skills/glass-ui/SKILL.md` 或英文指南
+`.agent-resources/skills/glass-ui/docs/en/skill-guide.md`，再按需读取
+当前任务需要的引用资源；其他任务无需加载。
 <!-- glass-ui:end -->
 ```
 
@@ -68,11 +71,11 @@ npx --yes skills@1.9.0 add aivos-xie/glass-ui --skill glass-ui --agent <agent-id
 
 ### 自定义 Agent 或只有聊天能力的环境
 
-能读取文件的自定义 Agent 可直接把 `SKILL.md` 作为按需加载的指令，并给它访问相邻资源的能力。只有聊天、没有持久文件或配置权限的环境只能在当前会话读取和使用 Skill；向用户说明这个限制，不声称已经永久安装，也不创建无法被宿主发现的目录冒充成功。
+能读取文件的自定义 Agent 可直接把 `SKILL.md` 或 [英文指南](docs/en/skill-guide.md) 作为按需加载的指令，并给它访问相邻资源的能力。只有聊天、没有持久文件或配置权限的环境只能在当前会话读取和使用 Skill；向用户说明这个限制，不声称已经永久安装，也不创建无法被宿主发现的目录冒充成功。
 
 ## 安装后必须验证
 
-- 确认实际安装路径存在，`SKILL.md` 的名称为 `glass-ui`，引用的 `references/`、`assets/demo/` 和脚本均存在。
+- 确认实际安装路径存在，`SKILL.md` 的名称为 `glass-ui`，引用的中英文文档、演示资源和脚本均存在。
 - 有 Python 3 时运行安装目录中的 `scripts/check_assets.py`。没有 Python 时检查相同的文件与相对引用，并说明没有运行脚本。
 - 走原生 CLI 时执行 `npx --yes skills@1.9.0 list --agent <agent-id> --global --json`，项目安装则去掉 `--global`；同时直接读取已安装文件，不只相信退出码。
 - 原生宿主支持枚举/重载 Skill 时，用其机制确认可发现。需要新会话或重载时明确说明；不把安装器目录识别当成真实宿主已加载。

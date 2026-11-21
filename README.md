@@ -1,12 +1,14 @@
 # Glass UI · 通用玻璃界面 Skill
 
+[简体中文](README.md) | [English](README.en.md)
+
 给能读取 Markdown 和项目文件的 AI Agent 使用的玻璃 UI 设计规则与组件样板。核心指令不依赖 Codex、Claude 或任何厂商专用工具，采用 [Agent Skills 开放格式](https://agentskills.io/specification)。
 
 ## 给 Agent 一句话就能安装
 
 复制下面这句话，发给你正在使用的 Agent：
 
-> 请从 https://github.com/aivos-xie/glass-ui 安装 Glass UI Skill，先阅读 INSTALL.md，按你当前 Agent 的原生机制安装并验证，完成后告诉我安装位置。
+> 请从 https://github.com/aivos-xie/glass-ui 安装 Glass UI Skill，先阅读 INSTALL.md，按你当前 Agent 的方式安装或接入并验证，完成后告诉我安装位置。
 
 Agent 会根据 [安装说明](INSTALL.md) 选择自己的安装位置。支持原生 Skill 的产品使用原生发现机制；没有原生 Skill 的产品可使用本地指令文件接入。只有聊天、没有文件或工具权限的产品可以阅读内容用于当前会话，但不能宣称已经持久安装。
 
@@ -59,13 +61,28 @@ npx --yes skills@1.9.0 add aivos-xie/glass-ui --skill glass-ui --agent claude-co
 
 另有 [移动端截图](docs/preview-mobile.png)。
 
+## 多语言文档
+
+中英文文档覆盖项目说明、安装步骤、Skill 使用指南、材质与交互、组件配方、框架接入和验收要求。演示界面的文案目前为中文，本次多语言支持覆盖说明文档。
+
+| 内容 | 简体中文 | English |
+| --- | --- | --- |
+| 安装 | [安装说明](INSTALL.md) | [Installation guide](INSTALL.en.md) |
+| Skill 使用 | [Skill 入口](SKILL.md) | [Skill guide](docs/en/skill-guide.md) |
+| 材质与交互 | [参考说明](references/materials-and-motion.md) | [Materials and motion](docs/en/materials-and-motion.md) |
+| 组件 | [组件配方](references/components.md) | [Component recipes](docs/en/components.md) |
+| 框架接入 | [实现与选库](references/implementation.md) | [Implementation](docs/en/implementation.md) |
+| 验收 | [验收清单](references/validation.md) | [Validation](docs/en/validation.md) |
+
 ## 文件结构
 
 ```text
 SKILL.md                     所有 Agent 共用的核心指令
-INSTALL.md                   给执行安装任务的 Agent 阅读
+README.md / README.en.md      中英文项目说明
+INSTALL.md / INSTALL.en.md    给执行安装任务的 Agent 阅读
 agents/openai.yaml           可选 Codex 元数据，其他 Agent 可忽略
 references/                  材质、组件配方、实现与验收规则
+docs/en/                     英文使用指南与技术参考
 assets/demo/                 无依赖 HTML / CSS / JavaScript 样板
 scripts/check_assets.py      资源、引用和基础语义检查
 docs/                        演示截图与验证记录

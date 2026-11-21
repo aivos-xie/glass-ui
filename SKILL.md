@@ -5,6 +5,8 @@ description: "创建或改造玻璃风格前端界面与组件。适用于磨砂
 
 # Glass UI
 
+[简体中文](SKILL.md) | [English](docs/en/skill-guide.md)
+
 把玻璃作为完整的组件设计语言：材质、层次、状态、交互和可读性一起实现。沿用用户项目的框架、设计语义、业务行为和品牌；单个组件请求只改所需范围。
 
 ## Agent 兼容性
@@ -12,6 +14,8 @@ description: "创建或改造玻璃风格前端界面与组件。适用于磨砂
 本文件采用通用 Agent Skills 格式，不依赖特定模型厂商、工具名称或对话产品。支持原生 Skill 的 Agent 按自己的机制加载；其他 Agent 可直接读取本文件，并按需读取相对路径中的参考资料和代码。用户可以直接说“使用 Glass UI Skill”，调用语法由宿主决定。
 
 `agents/openai.yaml` 只是可选的 Codex 界面元数据，其他 Agent 可以忽略。终端、文件编辑、浏览器检查分别使用当前环境提供的等效工具；缺少浏览器时报告尚未实测，不把文件检查称为交互验证。安装方式见 [INSTALL.md](INSTALL.md)，正常使用时无需执行安装流程。
+
+按用户使用的语言交流。英文使用指南及配套参考资料见 [English guide](docs/en/skill-guide.md)，英文安装流程见 [INSTALL.en.md](INSTALL.en.md)；两种语言的数值约束、安装命令和验收范围保持一致。
 
 ## 工作方式
 

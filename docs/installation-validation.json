@@ -94,14 +94,14 @@
       "name": "Every project installation preserves resource bytes, frontmatter values and skill instructions",
       "pass": true,
       "uniqueDirectoryCount": 53,
-      "filesComparedPerDirectory": 20
+      "filesComparedPerDirectory": 27
     },
     {
       "name": "Installed skills can be listed by the CLI for the eight documented agent IDs",
       "pass": true
     },
     {
-      "name": "A minimal package with no Codex metadata installs and validates for Claude Code",
+      "name": "The complete package without Codex metadata installs and validates for Claude Code",
       "pass": true
     },
     {

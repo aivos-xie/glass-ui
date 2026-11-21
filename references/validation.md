@@ -1,8 +1,10 @@
 # 验收
 
+[简体中文](validation.md) | [English](../docs/en/validation.md)
+
 ## 最少验证
 
-1. 原始 SKILL.md 通过 skill-creator 的 quick_validate.py；`python scripts/check_assets.py` 通过。
+1. 有 skill-creator 的环境中，原始 SKILL.md 通过其 quick_validate.py；`python scripts/check_assets.py` 通过。
 2. 在目标浏览器打开 demo，查看无控制台错误、无资源请求失败；如声称支持某个平台，要实际测试或明确未验证。
 3. 以鼠标扫过卡片中心、四角、边缘，确认内部柔光裁切、边缘局部提亮、倾角 ≤4°、离开平滑回零。卡片含按钮时仍能点击。
 4. 连续点击不同宽度 tab；动画中逆向切换；确认胶囊从当前形状延续，停稳贴合目标（误差≤1px），文本不拉伸。窗口 resize、字体尺寸变化后重新对齐。

@@ -1,5 +1,7 @@
 # 实现与选库
 
+[简体中文](implementation.md) | [English](../docs/en/implementation.md)
+
 ## 随附原生基线
 
 `assets/demo/index.html`、`glass.css`、`glass.js`、`demo.css`、`demo.js` 和 `lens-map.js` 同目录可直接打开。生产接入通常只取 `glass.css`、`glass.js`，需要折射增强再取 `lens-map.js`；demo 两文件只负责展示页排版和操作。全局对象为 `GlassUI` / `GlassLens`，没有 bundler 和网络依赖。

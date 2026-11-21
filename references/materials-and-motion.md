@@ -1,5 +1,7 @@
 # 材质与交互
 
+[简体中文](materials-and-motion.md) | [English](../docs/en/materials-and-motion.md)
+
 ## 分层
 
 从后往前：有变化的场景背景 → 背景处理层 → 半透明染色层 → 厚度/投影 → 细边缘高光 → 指针光斑 → 内容和焦点。背景处理层与内容是兄弟，不在内容祖先上使用 `filter`。所有装饰设 `pointer-events: none`、`aria-hidden="true"`。
