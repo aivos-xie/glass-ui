@@ -133,6 +133,7 @@ button { color: inherit; }
 .g-segment [role="tab"]:focus-visible { outline-offset: -4px; }
 .g-segment[aria-orientation="vertical"] { flex-direction: column; border-radius: 24px; }
 .g-segment[aria-orientation="vertical"] [role="tab"] { text-align: left; justify-content: flex-start; border-radius: 18px; }
+.g-segment__pill[data-glass-pill-axis="vertical"],
 .g-segment[aria-orientation="vertical"] .g-segment__pill { transform: translateY(var(--g-pill-x, 6px)) scaleX(var(--g-pill-y, 1)); border-radius: 18px; }
 .g-segment [role="tab"]:disabled { opacity: .5; cursor: not-allowed; }
 .g-segment__pill {

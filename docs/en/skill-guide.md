@@ -20,7 +20,7 @@ Communicate in the user's language. The English and Chinese documentation must r
 
 1. Inspect the platform, components, style variables, animation libraries, and target browsers/devices. For screenshots, distinguish material, motion, and layering without copying business text. For broad redesigns, use [design decisions](design-system.md) to separate content, structure, and floating controls.
 2. Select materials for the current request: light glass for small controls, frosted glass for content containers, clear liquid glass for selection indicators, and tinted glass for primary actions or states. For a standalone showcase, or an explicit request for pronounced glass without an established theme, dark frost is a useful starting point. Preserve existing project themes and brands. See [materials and motion](materials-and-motion.md) for parameters and hierarchy.
-3. Follow the [component recipes](components.md) to generate or adapt real components in the current project. Reuse existing structure, state, and accessible primitives, combining only needed materials and behaviors. Use the same process for unlisted components, without requiring a fixed parameter form or a prebuilt component package.
+3. For explicit “settings navigation capsule / settings pill / 设置导航胶囊” or “sidebar drawer / glass drawer / 侧栏抽屉” requests, or matching scenarios, first read the relevant [preset recipe](presets.md). For other components, follow the [component recipes](components.md) to generate or adapt real components in the current project. Reuse existing structure, state, and accessible primitives, combining only needed materials and behaviors. Use the same process for unlisted components, without requiring a fixed parameter form or a prebuilt component package.
 4. Read [implementation](implementation.md) as needed. Take only relevant parts of the dependency-free `assets/demo/glass.css` and `glass.js` baseline; a single component does not need the entire demo. Consult [rendering and performance](rendering-and-performance.md) for refraction or performance work. Known-image lenses use `image-lens.js`; native/mini-program work uses [platform adapters](platform-adapters.md). `assets/demo/index.html` is only a preview.
 5. Check appearance and real interactions using the [validation checklist](validation.md). Report browsers actually tested, untested platforms, and fallback behavior. Syntax support checks are not visual evidence.
 
@@ -47,6 +47,7 @@ Select effects for the current task. The interaction constraints below apply to 
 
 ## Resource scope
 
+- `docs/presets/`: two runnable Web presets; other platforms retain native primitives and port materials.
 - `assets/demo/`: offline component examples, design tokens, pointer and pill controllers, and optional SVG background displacement. No remote fonts, images, analytics, or build step.
 - [Implementation reference](implementation.md): native, React, and Vue integration, with optional library choices. Before installing a third-party library, verify its current API, license, and target browser support. No third-party library is required.
 - `scripts/check_assets.py`: checks resource completeness, local references, and basic semantics. It does not replace browser testing.

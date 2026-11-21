@@ -62,6 +62,14 @@ npx --yes skills@1.9.0 add aivos-xie/glass-ui --skill glass-ui --agent claude-co
 
 组件名称、内容、状态、材质和交互都可用自然语言描述，不必填写固定参数表。Agent 根据当前技术栈生成项目内的实际源文件、接入代码并验证；未列在[组件配方](references/components.md)中的组件也按其语义和结构组合实现。自然语言要求中的倾角等选项由 Agent 实现，不是现有控制器的同名参数。生成后的组件随项目运行。
 
+已提供两个[按需预设](references/presets.md)：**设置导航胶囊**（横向 / 纵向）与**侧栏抽屉**。直接说：
+
+> 用 glass-ui 的“设置导航胶囊”预设改造当前设置页，使用深色磨砂和细银边，保留原来的选中状态和键盘操作。
+>
+> 用 glass-ui 的“侧栏抽屉”预设生成玻璃详情侧栏，保留开合和焦点逻辑，收起后仍可从原入口再次打开。
+
+[打开预设样板](docs/presets/index.html)。Agent 按需提取到项目，生成后独立运行；随附样板面向 Web，原生平台按对应规则适配。
+
 ## 交互效果
 
 ![默认深色玻璃展示站](docs/preview.png?v=20261121-dark-glass)
@@ -103,6 +111,7 @@ npx --yes skills@1.9.0 add aivos-xie/glass-ui --skill glass-ui --agent claude-co
 | Skill 使用 | [Skill 入口](SKILL.md) | [Skill guide](docs/en/skill-guide.md) |
 | 材质与交互 | [参考说明](references/materials-and-motion.md) | [Materials and motion](docs/en/materials-and-motion.md) |
 | 组件 | [组件配方](references/components.md) | [Component recipes](docs/en/components.md) |
+| 按需预设 | [设置导航与侧栏](references/presets.md) | [Presets](docs/en/presets.md) |
 | 框架接入 | [实现与选库](references/implementation.md) | [Implementation](docs/en/implementation.md) |
 | 验收 | [验收清单](references/validation.md) | [Validation](docs/en/validation.md) |
 | 设计决策 | [材质层级与品牌](references/design-system.md) | [Design decisions](docs/en/design-system.md) |

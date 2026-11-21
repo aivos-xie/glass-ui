@@ -62,6 +62,14 @@ You can name the component to generate or adapt directly:
 
 Describe the component, content, states, material, and interactions in natural language; no fixed parameter form is required. The agent generates real source files for the current stack, integrates them, and validates them. Components absent from the [recipe list](docs/en/components.md) are composed according to their semantics and structure. Options such as a requested tilt angle are implemented by the agent; they are not existing controller parameters with matching names. Generated components run as part of the project.
 
+Two [on-demand presets](docs/en/presets.md) are available: **settings navigation capsule** (horizontal / vertical) and **sidebar drawer**. Ask directly:
+
+> Use glass-ui’s “settings navigation capsule” preset to adapt this settings page, with dark frost and fine silver edges, preserving selection and keyboard behavior.
+>
+> Use glass-ui’s “sidebar drawer” preset for a glass details sidebar. Preserve disclosure and focus behavior, and keep the original opener usable after collapse.
+
+[Open the preset samples](docs/presets/index.html). The agent extracts needed parts into independently running project code. Bundled samples target Web; native platforms adapt the corresponding rules.
+
 ## Interactions
 
 ![Default dark glass showcase](docs/preview.png?v=20261121-dark-glass)
@@ -101,6 +109,7 @@ See [research notes](docs/en/research-notes.md) for all five references, reviewe
 | Skill instructions | [Skill guide](docs/en/skill-guide.md) | [Skill 入口](SKILL.md) |
 | Materials and motion | [Reference](docs/en/materials-and-motion.md) | [材质与交互](references/materials-and-motion.md) |
 | Components | [Recipes](docs/en/components.md) | [组件配方](references/components.md) |
+| On-demand presets | [Settings navigation and sidebar](docs/en/presets.md) | [按需预设](references/presets.md) |
 | Framework integration | [Implementation](docs/en/implementation.md) | [实现与选库](references/implementation.md) |
 | Validation | [Checklist](docs/en/validation.md) | [验收清单](references/validation.md) |
 | Design decisions | [Material hierarchy and brand](docs/en/design-system.md) | [设计决策](references/design-system.md) |

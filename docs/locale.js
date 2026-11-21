@@ -2,7 +2,7 @@
 window.GlassLocale = {
   'Glass UI：可交互的磨砂、液态与染色玻璃组件样板。':'An interactive showcase of frosted, liquid and tinted glass UI components.',
   'Glass UI · 玻璃组件交互展厅':'Glass UI · A live glass component playground',
-  '跳到组件展示':'Skip to components','Glass UI 首页':'Glass UI home','主导航':'Main navigation','组件':'Components','材质':'Materials','使用':'Use it',
+  '跳到组件展示':'Skip to components','Glass UI 首页':'Glass UI home','主导航':'Main navigation','组件':'Components','材质':'Materials','使用':'Use it','试用组件预设':'Try component presets',
   '切换深色主题':'Switch to dark theme','切换浅色主题':'Switch to light theme','让界面，':'Give your interface','透一点光。':'a little light.',
   '柔和的磨砂，流动的光，恰到好处的回弹。':'Soft frost, flowing light, and just the right spring.',
   '从一个按钮，到一整套轻盈的界面。':'From one button to an entire lighter interface.','探索组件':'Explore components','原生实现':'Native web','零外部依赖':'No dependencies',

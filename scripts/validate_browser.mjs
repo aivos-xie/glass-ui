@@ -146,8 +146,14 @@ async function run(name) {
     });
     await check('Dialog focus, Escape and return focus', async () => {
       await page.getByRole('button', { name: '打开对话框', exact: true }).click(); await page.keyboard.press('Tab'); assert.ok(await page.evaluate(() => !!document.activeElement.closest('dialog')));
-      await page.keyboard.press('Escape'); assert.ok(!(await page.locator('#preview-dialog').isVisible())); assert.equal(await page.evaluate(() => document.activeElement.textContent.trim()), '打开对话框');
+      await page.keyboard.press('Escape');
+      await page.locator('#preview-dialog').waitFor({ state: 'hidden' });
+      // The native close event can run after Escape resolves (notably in WebKit).
+      await page.waitForFunction(() => document.activeElement === document.querySelector('[data-dialog="preview-dialog"]'));
+      assert.equal(await page.evaluate(() => document.activeElement.textContent.trim()), '打开对话框');
       await page.getByRole('button', { name: '设置抽屉', exact: true }).click(); await page.locator('#drawer-theme').check(); await page.keyboard.press('Escape');
+      await page.locator('#settings-drawer').waitFor({ state: 'hidden' });
+      await page.waitForFunction(() => document.activeElement === document.querySelector('[data-dialog="settings-drawer"]'));
       await page.screenshot({ path: path.join(output, `${name}-dark.png`), fullPage: true }); await page.locator('#theme-toggle').click();
     });
     await check('Disclosure outside click and tooltip dismissal', async () => {

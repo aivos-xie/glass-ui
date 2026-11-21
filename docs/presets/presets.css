@@ -1,0 +1,162 @@
+/* Settings navigation capsule. Keep the positioning, stacking and readable fallback when adapting the palette. */
+[data-glass-settings] {
+  box-sizing: border-box;
+  display: flex;
+  position: relative;
+  isolation: isolate;
+  gap: 3px;
+  padding: 6px;
+  overflow: hidden;
+  border: 1px solid #adb9d64e;
+  border-radius: 999px;
+  inline-size: fit-content;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  background: #212632;
+  box-shadow: inset 0 1px #eaf0ff47, 0 14px 30px -18px #000b;
+}
+[data-glass-settings="vertical"] { flex-direction: column; inline-size: 14rem; border-radius: 24px; }
+[data-glass-settings] > [data-glass-setting] {
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  min-inline-size: 0;
+  min-block-size: 44px;
+  padding: .6rem .9rem;
+  border-radius: 999px;
+  color: #dde2ee;
+  text-decoration: none;
+  font: inherit;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+[data-glass-settings="vertical"] > [data-glass-setting] { border-radius: 18px; }
+[data-glass-settings] > [data-glass-setting]:hover { color: #fff; }
+[data-glass-settings] > [data-glass-setting]:focus-visible { outline: 2px solid #d9d0ff; outline-offset: -3px; }
+[data-glass-settings] > [data-glass-setting][aria-current="page"],
+[data-glass-settings] > [data-glass-setting][aria-selected="true"] {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: .3em;
+  text-decoration-color: #e1dbff9c;
+}
+[data-glass-settings] > [data-glass-pill] {
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 1;
+  inset: 0 auto auto 0;
+  inline-size: var(--g-pill-w, 0px);
+  transform: translateX(var(--g-pill-x, 0px)) scaleY(var(--g-pill-y, 1));
+  border: 1px solid #dce4f580;
+  border-radius: 999px;
+  pointer-events: none;
+  background: linear-gradient(155deg, #c5cffa29, #948bbf13 75%), #3c4259;
+  box-shadow: inset 0 1px 1px #f5f7ffc0, inset 0 -2px 4px #9f94da38, 0 5px 14px -6px #080b19;
+}
+[data-glass-settings] > [data-glass-pill]:not([data-glass-pill-axis]) { visibility: hidden; }
+[data-glass-settings] > [data-glass-pill-axis="vertical"] {
+  transform: translateY(var(--g-pill-x, 0px)) scaleX(var(--g-pill-y, 1));
+  border-radius: 18px;
+}
+
+/* Drawer material. The host's panel establishes the containing block; its trigger stays outside any collapsing rail. */
+[data-glass-drawer] { isolation: isolate; }
+[data-glass-drawer] > [data-glass-drawer-surface] {
+  box-sizing: border-box;
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border: 1px solid #b0bdd46b;
+  border-radius: inherit;
+  background: linear-gradient(160deg, #abbefd17, transparent 70%), #222b3b;
+  box-shadow: inset 0 1px #ecf2ff63, inset 1px 0 #d1ddfc40, 0 10px 55px #070b1459;
+  pointer-events: none;
+}
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  :root:where(:not([data-no-blur], [data-glass-quality="static"], [data-glass-transparency="reduced"])) [data-glass-settings] {
+    background: #24283578;
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+  }
+  :root:where(:not([data-no-blur], [data-glass-quality="static"], [data-glass-transparency="reduced"])) [data-glass-settings] > [data-glass-pill] {
+    background: linear-gradient(155deg, #c5cffa47, #a798d41f 75%), #66759a2e;
+  }
+  :root:where(:not([data-no-blur], [data-glass-quality="static"], [data-glass-transparency="reduced"])) [data-glass-drawer] > [data-glass-drawer-surface] {
+    background: linear-gradient(160deg, #a1b7f226, transparent 65%), #202a3bd9;
+    -webkit-backdrop-filter: blur(22px) saturate(1.32);
+    backdrop-filter: blur(22px) saturate(1.32);
+  }
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  :root [data-glass-settings] { background: #212632; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  :root [data-glass-settings] > [data-glass-pill] { background: #3c4259; }
+  :root [data-glass-drawer] > [data-glass-drawer-surface] { background: #222b3b; -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (forced-colors: active) {
+  :root [data-glass-settings], :root [data-glass-drawer] > [data-glass-drawer-surface] {
+    background: Canvas; border-color: CanvasText; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none;
+  }
+  :root [data-glass-settings] > [data-glass-pill] { background: Canvas; border-color: Highlight; box-shadow: none; }
+  [data-glass-settings] > [data-glass-setting][aria-current="page"],
+  [data-glass-settings] > [data-glass-setting][aria-selected="true"] { color: Highlight; text-decoration-color: Highlight; }
+  [data-glass-settings] > [data-glass-setting]:focus-visible { outline-color: Highlight; }
+}
+
+/* Preview frame and standalone native dialog geometry. Match these to the project when generating a new drawer. */
+.preset-page {
+  margin: 0;
+  min-block-size: 100vh;
+  background: radial-gradient(ellipse at 15% 40%, #283855 0, transparent 61%), radial-gradient(ellipse at 72% 3%, #303350 0, transparent 59%), #131927;
+  color: var(--g-ink);
+  font: 1rem/1.6 system-ui, "Segoe UI", sans-serif;
+}
+.preset-page h1, .preset-page h2, .preset-page h3, .preset-page p { margin: 0; }
+.preset-page p { margin-block-start: .5rem; color: var(--g-muted); }
+.preset-page [hidden] { display: none; }
+.preset-header, .preset-main { box-sizing: border-box; max-inline-size: 56rem; margin-inline: auto; padding-inline: clamp(1rem, 5vw, 3rem); }
+.preset-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .65rem 1.5rem; padding-block: 1.2rem; }
+.preset-header nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+.preset-header a { color: inherit; text-underline-offset: .25em; }
+.preset-brand { font-size: 1.18rem; font-weight: 750; text-decoration: none; }
+.preset-main { padding-block: clamp(2rem, 6vw, 4.5rem); }
+.preset-main h1 { font-size: clamp(2rem, 7vw, 3.6rem); line-height: 1.15; margin-block-end: 2rem; }
+.preset-example { padding: clamp(1rem, 4vw, 2rem); margin-block-end: 1rem; border: 1px solid #d5dcff30; border-radius: 1.5rem; background: #8699ce0d; }
+.preset-example h2 { font-size: 1.3rem; }
+.preset-settings-layout { display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr); gap: clamp(1rem, 4vw, 2rem); align-items: start; margin-block-start: 1rem; }
+.preset-settings-copy { padding-block: .6rem; }
+.preset-drawer-example { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.preset-native-drawer {
+  box-sizing: border-box;
+  position: fixed;
+  inset-block: 0;
+  inset-inline: auto 0;
+  margin: 0;
+  inline-size: min(25rem, calc(100% - 1rem));
+  max-inline-size: none;
+  block-size: 100vh;
+  block-size: 100dvh;
+  max-block-size: none;
+  padding: 0;
+  border: 0;
+  border-start-start-radius: 24px;
+  border-end-start-radius: 24px;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+}
+.preset-native-drawer[open] { display: grid; animation: preset-drawer-in 240ms cubic-bezier(.2,.8,.2,1); }
+.preset-native-drawer::backdrop { background: #080c174d; }
+.preset-drawer-content { overflow: auto; overscroll-behavior: contain; padding: clamp(1rem, 5vw, 2rem); }
+.preset-drawer-content form { margin-block-start: 1.5rem; }
+@keyframes preset-drawer-in { from { transform: translateX(100%); } }
+:root[dir="rtl"] .preset-native-drawer[open] { animation-name: preset-drawer-in-rtl; }
+@keyframes preset-drawer-in-rtl { from { transform: translateX(-100%); } }
+@media (prefers-reduced-motion: reduce) { .preset-native-drawer[open] { animation: none; } }
+:root[data-glass-motion="off"] .preset-native-drawer[open],
+:root[data-glass-quality="static"] .preset-native-drawer[open] { animation: none; }
+@media (max-width: 36rem) {
+  .preset-settings-layout { grid-template-columns: minmax(0, 1fr); }
+}

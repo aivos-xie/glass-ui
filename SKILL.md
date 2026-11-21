@@ -23,7 +23,7 @@ description: "按需生成或改造玻璃风格界面与组件，支持 Web、Fl
 
 1. 检查项目平台、已有组件、样式变量、动画库和目标浏览器/设备。用户有截图时，分别提取静止材质、运动形变与层叠关系，不照搬截图中的业务文字。大范围改造按[设计决策](references/design-system.md)分清内容、结构和浮动操作层。
 2. 为当前请求挑选材质：轻玻璃用于小控件，磨砂用于内容容器，清透液态用于选中指示器，染色用于主操作或状态。独立展示页或用户要求明显玻璃、且没有既定主题时，可从深色磨砂起步；已有项目沿用其主题与品牌。参数与层级见 [材质与交互](references/materials-and-motion.md)。
-3. 按[组件配方](references/components.md)在当前项目生成或改造真实组件，复用已有结构、状态与无障碍 primitives，只组合所需材质和行为。未列出的组件使用同一流程，无需固定参数表或预制组件包。
+3. 明确请求“设置导航胶囊 / settings navigation capsule / settings pill”或“侧栏抽屉 / sidebar drawer / glass drawer”，或需求匹配这些场景时，先读[按需预设](references/presets.md)的对应部分。其他组件按[组件配方](references/components.md)在当前项目生成或改造真实组件，复用已有结构、状态与无障碍 primitives，只组合所需材质和行为。未列出的组件使用同一流程，无需固定参数表或预制组件包。
 4. 按需读取[实现与选库](references/implementation.md)。`assets/demo/glass.css` 和 `glass.js` 是无依赖基线，只取所需片段；单组件不复制整页 demo。涉及折射或性能时查[渲染与性能](references/rendering-and-performance.md)，指定图片透镜使用 `image-lens.js`；原生/小程序查[平台适配](references/platform-adapters.md)。`assets/demo/index.html` 仅用于预览。
 5. 按 [验收清单](references/validation.md) 检查视觉和真实交互。报告实际验证过的浏览器、尚未验证的平台及降级效果，不把语法支持检测当作视觉证明。
 
@@ -50,6 +50,7 @@ description: "按需生成或改造玻璃风格界面与组件，支持 Web、Fl
 
 ## 资源边界
 
+- `docs/presets/`：两个可运行 Web 预设；其他平台保留原生组件并迁移材质。
 - `assets/demo/`：可离线运行的组件样板、设计 tokens、指针与胶囊控制器、可选 SVG 背景位移增强。没有远程字体、图片、分析或构建步骤。
 - `references/implementation.md`：原生 / React / Vue 接入方式与按需选库。安装第三方库前核实当前 API、许可证和目标浏览器；不把任何第三方库设为必需依赖。
 - `scripts/check_assets.py`：检查 skill 资源完整性、本地引用及基础语义；不替代浏览器实测。

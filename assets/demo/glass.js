@@ -89,28 +89,29 @@
     document.addEventListener('visibilitychange', () => { if (document.hidden) reset(true); }, on);
     return () => { disposed = true; abort.abort(); motion.dispose(); cancelAnimationFrame(raf); face.style.willChange = ''; x = y = lit = 0; write(); };
   }
-  function tabs(track) {
-    const items = [...track.querySelectorAll('[role="tab"]')].filter(el => el.closest('[data-glass-tabs]') === track);
-    const pill = track.querySelector('[data-glass-pill]');
-    if (!pill || !items.length) return () => {};
-    const abort = new AbortController(), on = { signal: abort.signal };
-    const vertical = track.getAttribute('aria-orientation') === 'vertical';
-    let selected = Math.max(0, items.findIndex(el => el.getAttribute('aria-selected') === 'true'));
+  // The host owns selection, navigation, keyboard behavior, and panels.
+  function mountSelectionPill(track, { vertical = false } = {}) {
+    const pill = track.querySelector(':scope > [data-glass-pill]');
+    if (!pill) return { select() {}, setPressed() {}, dispose() {} };
+    pill.setAttribute('aria-hidden', 'true');
+    pill.dataset.glassPillAxis = vertical ? 'vertical' : 'horizontal';
+    pill.style.visibility = 'hidden';
     let l = 0, r = 0, vl = 0, vr = 0, naturalWidth = 0, widthVelocity = 0, targetL = 0, targetR = 0, targetY = 0, targetH = 0;
     let direction = 1, raf = 0, last = 0, ready = false, disposed = false, held = false, reduced = false, enhanced = true;
+    let selected = null;
     const lens = global.GlassLens?.attach(pill);
-    function syncSemantics() {
-      items.forEach((item, index) => {
-        const yes = index === selected;
-        item.setAttribute('aria-selected', String(yes)); item.tabIndex = yes ? 0 : -1;
-        const panel = document.getElementById(item.getAttribute('aria-controls'));
-        if (panel) panel.hidden = !yes;
-      });
-    }
     function measure(snap = false) {
       if (disposed) return;
-      const a = track.getBoundingClientRect(), b = items[selected].getBoundingClientRect();
-      if (!a.width || !b.width) return;
+      if (!selected || !track.contains(selected) || !selected.isConnected) {
+        pill.style.visibility = 'hidden'; ready = false;
+        cancelAnimationFrame(raf); raf = 0; last = 0; return;
+      }
+      const a = track.getBoundingClientRect(), b = selected.getBoundingClientRect();
+      if (!a.width || !a.height || !b.width || !b.height) {
+        pill.style.visibility = 'hidden'; ready = false;
+        cancelAnimationFrame(raf); raf = 0; last = 0; return;
+      }
+      pill.style.visibility = '';
       targetL = vertical ? b.top - a.top - track.clientTop + track.scrollTop : b.left - a.left - track.clientLeft + track.scrollLeft;
       targetR = targetL + (vertical ? b.height : b.width);
       targetY = vertical ? b.left - a.left - track.clientLeft + track.scrollLeft : b.top - a.top - track.clientTop + track.scrollTop;
@@ -157,27 +158,74 @@
       paint(); if (moving) raf = requestAnimationFrame(tick);
     }
     function kick() { if (!raf && !disposed) raf = requestAnimationFrame(tick); }
-    function select(index, focus = false) {
-      if (items[index]?.disabled) return;
-      const changed = selected !== index; selected = index;
-      syncSemantics(); measure();
-      if (focus) items[index].focus({ preventScroll: true });
-      if (changed) track.dispatchEvent(new CustomEvent('glass:change', { bubbles: true, detail: { index, id: items[index].id } }));
+    function select(element) {
+      if (disposed) return;
+      if (element && (element === pill || !track.contains(element))) throw new TypeError('Selection target must be an item inside its track.');
+      if (selected !== element) {
+        if (selected) observer.unobserve(selected);
+        selected = element || null;
+        if (selected) observer.observe(selected);
+      }
+      measure();
+    }
+    function setPressed(value) {
+      if (disposed) return;
+      held = !reduced && !!value;
+      if (ready) paint();
     }
     const motion = watchMotion(track, value => {
-      reduced = value.reduced;
-      enhanced = value.enhanced;
+      reduced = value.reduced; enhanced = value.enhanced;
       if (reduced) held = false;
       lens?.setEnabled(track.dataset.refraction === 'true' && !reduced && enhanced);
       measure(true);
     });
     reduced = motion.current().reduced; enhanced = motion.current().enhanced;
-    syncSemantics(); measure(true);
+    const observer = new ResizeObserver(() => measure());
+    observer.observe(track);
+    const attributeObserver = new MutationObserver(() => {
+      lens?.setEnabled(track.dataset.refraction === 'true' && !reduced && enhanced);
+      measure(true);
+    });
+    attributeObserver.observe(track, { attributes: true, attributeFilter: ['data-refraction'] });
+    lens?.setEnabled(track.dataset.refraction === 'true' && !reduced && enhanced);
+    const fonts = () => measure(true);
+    document.fonts?.addEventListener('loadingdone', fonts);
+    return { select, setPressed, dispose() {
+      if (disposed) return;
+      disposed = true; motion.dispose(); observer.disconnect(); attributeObserver.disconnect();
+      document.fonts?.removeEventListener('loadingdone', fonts); cancelAnimationFrame(raf); lens?.dispose();
+    } };
+  }
+  function tabs(track) {
+    const items = [...track.querySelectorAll('[role="tab"]')].filter(el => el.closest('[data-glass-tabs]') === track);
+    if (!track.querySelector('[data-glass-pill]') || !items.length) return () => {};
+    const abort = new AbortController(), on = { signal: abort.signal };
+    const vertical = track.getAttribute('aria-orientation') === 'vertical';
+    const decoration = mountSelectionPill(track, { vertical });
+    let selected = Math.max(0, items.findIndex(el => el.getAttribute('aria-selected') === 'true'));
+    function syncSemantics() {
+      items.forEach((item, index) => {
+        const yes = index === selected;
+        item.setAttribute('aria-selected', String(yes)); item.tabIndex = yes ? 0 : -1;
+        const panel = document.getElementById(item.getAttribute('aria-controls'));
+        if (panel) panel.hidden = !yes;
+      });
+    }
+    function select(index, focus = false) {
+      if (items[index]?.disabled) return;
+      const changed = selected !== index; selected = index;
+      syncSemantics(); decoration.select(items[selected]);
+      if (focus) items[index].focus({ preventScroll: true });
+      if (changed) track.dispatchEvent(new CustomEvent('glass:change', { bubbles: true, detail: { index, id: items[index].id } }));
+    }
+    syncSemantics(); decoration.select(items[selected]);
+    const itemObserver = new ResizeObserver(() => decoration.select(items[selected]));
+    items.forEach(item => itemObserver.observe(item));
     items.forEach((item, index) => {
       item.addEventListener('click', () => select(index), on);
-      item.addEventListener('pointerdown', () => { if (!reduced) { held = true; paint(); } }, on);
+      item.addEventListener('pointerdown', () => decoration.setPressed(true), on);
     });
-    const release = () => { if (held) { held = false; paint(); } };
+    const release = () => decoration.setPressed(false);
     global.addEventListener('pointerup', release, on); global.addEventListener('pointercancel', release, on); global.addEventListener('blur', release, on);
     track.addEventListener('keydown', event => {
       const allowed = vertical ? ['ArrowUp', 'ArrowDown', 'Home', 'End'] : ['ArrowLeft', 'ArrowRight', 'Home', 'End'];
@@ -190,14 +238,7 @@
       const index = event.key === 'Home' ? enabled[0] : event.key === 'End' ? enabled.at(-1) : enabled[(enabled.indexOf(selected) + step + enabled.length) % enabled.length];
       select(index, true);
     }, on);
-    const observer = new ResizeObserver(() => measure(true));
-    observer.observe(track); items.forEach(item => observer.observe(item));
-    const attributeObserver = new MutationObserver(() => { lens?.setEnabled(track.dataset.refraction === 'true' && !reduced && enhanced); measure(true); });
-    attributeObserver.observe(track, { attributes: true, attributeFilter: ['data-refraction'] });
-    lens?.setEnabled(track.dataset.refraction === 'true' && !reduced && enhanced);
-    const fonts = () => measure(true);
-    document.fonts?.addEventListener('loadingdone', fonts);
-    return () => { disposed = true; abort.abort(); motion.dispose(); observer.disconnect(); attributeObserver.disconnect(); document.fonts?.removeEventListener('loadingdone', fonts); cancelAnimationFrame(raf); lens?.dispose(); };
+    return () => { abort.abort(); itemObserver.disconnect(); decoration.dispose(); };
   }
   function mount(root = document) {
     const cleanups = [];
@@ -211,5 +252,5 @@
     }
     return () => cleanups.splice(0).forEach(dispose => dispose());
   }
-  global.GlassUI = Object.freeze({ mount, observePreferences: watchMotion, math: Object.freeze({ tiltAt, normalAngle }) });
+  global.GlassUI = Object.freeze({ mount, mountSelectionPill, observePreferences: watchMotion, math: Object.freeze({ tiltAt, normalAngle }) });
 })(window);

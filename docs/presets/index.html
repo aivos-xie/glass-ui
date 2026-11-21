@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark" data-material="frosted">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>组件预设 · Glass UI</title>
+  <link rel="stylesheet" href="../glass.css">
+  <link rel="stylesheet" href="presets.css">
+  <script defer src="../glass.js"></script>
+  <script defer src="presets.js"></script>
+</head>
+<body class="preset-page">
+  <header class="preset-header">
+    <a class="preset-brand" href="../index.html">Glass UI</a>
+    <nav aria-label="预设">
+      <a href="#settings-preset">设置导航</a>
+      <a href="#drawer-preset">侧栏抽屉</a>
+    </nav>
+  </header>
+  <main class="preset-main">
+    <h1>玻璃组件预设</h1>
+    <section class="preset-example" id="settings-preset" aria-labelledby="settings-title">
+      <h2 id="settings-title">设置导航胶囊</h2>
+      <div class="preset-settings-layout">
+        <nav data-glass-settings="vertical" aria-label="设置分类">
+          <span data-glass-pill aria-hidden="true"></span>
+          <a data-glass-setting href="#settings-general" aria-current="page">常规</a>
+          <a data-glass-setting href="#settings-appearance">外观、透明度与对比度设置</a>
+          <a data-glass-setting href="#settings-shortcuts">键盘快捷键</a>
+        </nav>
+        <div class="preset-settings-copy" aria-live="polite">
+          <div id="settings-general" data-settings-view>
+            <h3>常规</h3>
+            <p>用 Tab 在导航项之间移动，按 Enter 切换。浏览器的前进和后退也会更新选中胶囊。</p>
+          </div>
+          <div id="settings-appearance" data-settings-view hidden>
+            <h3>外观</h3>
+            <p>两行标签的高度由内容决定。选中胶囊会填满该项，文字保持原来的排版。</p>
+          </div>
+          <div id="settings-shortcuts" data-settings-view hidden>
+            <h3>键盘快捷键</h3>
+            <p>在系统设置中开启减少动态效果后，胶囊会直接对齐到新选项。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="preset-example preset-drawer-example" id="drawer-preset" aria-labelledby="drawer-title">
+      <div>
+        <h2 id="drawer-title">侧栏抽屉</h2>
+        <p>打开后按 Esc 关闭，再从同一个入口打开。</p>
+      </div>
+      <button class="g-button" type="button" data-drawer-open aria-haspopup="dialog" aria-controls="preset-drawer">打开侧栏</button>
+      <dialog class="preset-native-drawer" id="preset-drawer" data-glass-drawer aria-labelledby="preset-drawer-title">
+        <span data-glass-drawer-surface aria-hidden="true"></span>
+        <div class="preset-drawer-content">
+          <h3 id="preset-drawer-title">快速设置</h3>
+          <p>关闭后，焦点会回到打开侧栏的按钮。</p>
+          <form method="dialog">
+            <button class="g-button" autofocus>关闭侧栏</button>
+          </form>
+        </div>
+      </dialog>
+    </section>
+  </main>
+</body>
+</html>

@@ -28,6 +28,40 @@ class Page(HTMLParser):
             self.label_depth = max(0, self.label_depth - 1)
 
 
+def check_page(page_path, errors):
+    issues = []
+    page = Page()
+    page.feed(page_path.read_text(encoding='utf-8'))
+    ids = [attrs['id'] for _, attrs in page.nodes if 'id' in attrs]
+    if len(ids) != len(set(ids)):
+        issues.append('Duplicate HTML ids')
+    id_set = set(ids)
+    labels = {attrs.get('for') for tag, attrs in page.nodes if tag == 'label'} | page.implicit_labels
+    for tag, attrs in page.nodes:
+        for name in ['src', 'href']:
+            value = attrs.get(name, '')
+            parsed = urlsplit(value)
+            if not value or parsed.scheme:
+                continue
+            if parsed.path and not (page_path.parent / unquote(parsed.path)).is_file():
+                issues.append(f'Missing HTML asset: {value}')
+            if not parsed.path and parsed.fragment not in id_set:
+                issues.append(f'Missing HTML fragment: {value}')
+        for name in ['aria-controls', 'aria-labelledby', 'aria-describedby']:
+            for target in attrs.get(name, '').split():
+                if target not in id_set:
+                    issues.append(f'Missing {name} target: {target}')
+        if attrs.get('role') == 'tab' and not attrs.get('aria-controls'):
+            issues.append(f'Tab has no associated panel: {attrs.get("id")}')
+        if tag in ['input', 'select', 'textarea']:
+            if attrs.get('id') and attrs['id'] not in labels and not attrs.get('aria-label') and not attrs.get('aria-labelledby'):
+                issues.append(f'Control lacks label: {attrs["id"]}')
+        if tag == 'img' and 'alt' not in attrs:
+            issues.append('Image missing alt text')
+    errors.extend(f'{page_path.parent.name}/{page_path.name}: {issue}' for issue in issues)
+    return len(ids)
+
+
 def main():
     root = Path(__file__).resolve().parents[1]
     demo = root / 'assets' / 'demo'
@@ -45,7 +79,8 @@ def main():
                 'assets/adapters/miniprogram/glass-view/index.json',
                 'assets/adapters/miniprogram/glass-view/index.wxml',
                 'assets/adapters/miniprogram/glass-view/index.wxss',
-                'scripts/validate_browser.mjs']
+                'scripts/validate_browser.mjs', 'references/presets.md', 'docs/en/presets.md',
+                'docs/presets/index.html', 'docs/presets/presets.css', 'docs/presets/presets.js']
     for relative in required:
         if not (root / relative).is_file():
             errors.append(f'Missing resource: {relative}')
@@ -54,34 +89,8 @@ def main():
     mini_config = json.loads((root / 'assets/adapters/miniprogram/glass-view/index.json').read_text(encoding='utf-8'))
     if mini_config.get('component') is not True:
         errors.append('Mini-program adapter must be registered as a component')
-    page = Page()
-    page.feed((demo / 'index.html').read_text(encoding='utf-8'))
-    ids = [attrs['id'] for _, attrs in page.nodes if 'id' in attrs]
-    if len(ids) != len(set(ids)):
-        errors.append('Duplicate HTML ids')
-    id_set = set(ids)
-    labels = {attrs.get('for') for tag, attrs in page.nodes if tag == 'label'} | page.implicit_labels
-    for tag, attrs in page.nodes:
-        for name in ['src', 'href']:
-            value = attrs.get(name, '')
-            parsed = urlsplit(value)
-            if not value or parsed.scheme:
-                continue
-            if parsed.path and not (demo / unquote(parsed.path)).is_file():
-                errors.append(f'Missing HTML asset: {value}')
-            if not parsed.path and parsed.fragment not in id_set:
-                errors.append(f'Missing HTML fragment: {value}')
-        for name in ['aria-controls', 'aria-labelledby', 'aria-describedby']:
-            for target in attrs.get(name, '').split():
-                if target not in id_set:
-                    errors.append(f'Missing {name} target: {target}')
-        if attrs.get('role') == 'tab' and not attrs.get('aria-controls'):
-            errors.append(f'Tab has no associated panel: {attrs.get("id")}')
-        if tag in ['input', 'select', 'textarea']:
-            if attrs.get('id') and attrs['id'] not in labels and not attrs.get('aria-label') and not attrs.get('aria-labelledby'):
-                errors.append(f'Control lacks label: {attrs["id"]}')
-        if tag == 'img' and 'alt' not in attrs:
-            errors.append('Image missing alt text')
+    pages = [demo / 'index.html', root / 'docs' / 'presets' / 'index.html']
+    ids = sum(check_page(page, errors) for page in pages)
     for source in [*sorted(root.glob('*.md')), *sorted((root / 'references').glob('*.md')),
                    *sorted((root / 'docs').rglob('*.md'))]:
         text = source.read_text(encoding='utf-8')
@@ -93,14 +102,14 @@ def main():
                 errors.append(f'{source.name}: missing relative reference {path}')
         if '[TODO:' in text or '\ufffd' in text:
             errors.append(f'{source.name}: unfinished placeholder or broken encoding')
-    for source in demo.iterdir():
+    for source in [*demo.iterdir(), *(root / 'docs' / 'presets').iterdir()]:
         if source.suffix in ['.html', '.js', '.css', '.svg']:
             text = source.read_text(encoding='utf-8')
             if '\ufffd' in text:
                 errors.append(f'Broken encoding: {source.name}')
     if errors:
         print('\n'.join(errors)); return 1
-    print(f'PASS: {len(required)} resources, {len(ids)} unique ids, local links, adapter configuration and demo semantics.')
+    print(f'PASS: {len(required)} resources, {ids} HTML ids, local links, adapter configuration and sample semantics.')
     return 0
 
 
